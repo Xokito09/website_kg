@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { getHCaptchaToken, resetHCaptcha } from "../components/HCaptchaWidget";
 
 const WEB3FORMS_KEY = import.meta.env.VITE_WEB3FORMS_KEY || "";
 
@@ -95,6 +96,11 @@ export function useContactForm(source: string) {
       setError("Please fill in your name and email.");
       return;
     }
+    const captchaToken = getHCaptchaToken();
+    if (!captchaToken) {
+      setError("Please complete the verification below.");
+      return;
+    }
     setIsSubmitting(true);
     setError("");
     const pageUrl = typeof window !== "undefined" ? window.location.href : source;
@@ -104,6 +110,7 @@ export function useContactForm(source: string) {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           access_key: WEB3FORMS_KEY,
+          "h-captcha-response": captchaToken,
           subject: `New inquiry from ${form.name} at ${form.company} — ${pageUrl}`,
           from_name: "Kaptas Global Website",
           name: form.name,
@@ -134,6 +141,7 @@ export function useContactForm(source: string) {
       setError("Network error. Please check your connection and try again.");
     } finally {
       setIsSubmitting(false);
+      resetHCaptcha();
     }
   }
 

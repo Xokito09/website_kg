@@ -144,6 +144,7 @@ for (const route of ALL_ROUTES) {
       url.includes("px.ads.linkedin.com") ||
       url.includes("googletagmanager.com") ||
       url.includes("google-analytics.com") ||
+      url.includes("hcaptcha.com") ||
       url.includes("grainy-gradients.vercel.app");
     if (blocked) return req.abort();
     req.continue();
@@ -192,6 +193,7 @@ for (const route of ALL_ROUTES) {
       url.includes("px.ads.linkedin.com") ||
       url.includes("googletagmanager.com") ||
       url.includes("google-analytics.com") ||
+      url.includes("hcaptcha.com") ||
       url.includes("grainy-gradients.vercel.app");
     if (blocked) return req.abort();
     req.continue();

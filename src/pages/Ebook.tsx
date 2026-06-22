@@ -6,6 +6,7 @@ import { SEO } from "../components/SEO";
 import { AEOContent } from "../components/AEOContent";
 import { organizationSchema, buildBreadcrumbSchema, SITE_URL, ORG_ID } from "../data/seoSchemas";
 import { AEO_PARAGRAPHS } from "../data/aeoContent";
+import { HCaptchaWidget, getHCaptchaToken, resetHCaptcha } from "../components/HCaptchaWidget";
 
 /**
  * The ebook is hosted on Gamma (not a downloadable PDF). After a successful
@@ -80,6 +81,11 @@ export default function Ebook() {
       setError("Please fill in all fields so we can deliver the guide.");
       return;
     }
+    const captchaToken = getHCaptchaToken();
+    if (!captchaToken) {
+      setError("Please complete the verification below.");
+      return;
+    }
     setIsSubmitting(true);
     setError("");
     try {
@@ -88,6 +94,7 @@ export default function Ebook() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           access_key: WEB3FORMS_KEY,
+          "h-captcha-response": captchaToken,
           subject: `Ebook download — ${form.name} (${form.role} at ${form.company})`,
           from_name: "Kaptas Global Website — Ebook",
           source: "Ebook — The Smart Guide to Hiring Brazilian Engineers",
@@ -127,6 +134,7 @@ export default function Ebook() {
       setError("Network error. Please check your connection and try again, or email support@kaptasglobal.io.");
     } finally {
       setIsSubmitting(false);
+      resetHCaptcha();
     }
   }
 
@@ -296,6 +304,10 @@ export default function Ebook() {
                 {error && (
                   <p className="text-sm text-red-400 mt-1" role="alert">{error}</p>
                 )}
+
+                <div className="mt-1">
+                  <HCaptchaWidget theme="dark" />
+                </div>
 
                 <button
                   type="submit"
