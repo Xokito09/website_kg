@@ -3,7 +3,7 @@ import { motion } from "motion/react";
 import { fadeIn } from "./animations";
 import { useContactForm } from "../../hooks/useContactForm";
 import { ThankYouModal } from "../ThankYouModal";
-import { HCaptchaWidget } from "../HCaptchaWidget";
+import { TurnstileWidget } from "../TurnstileWidget";
 
 // Componente de formulário de geração de leads
 export function LeadGenerationForm({
@@ -127,7 +127,7 @@ export function LeadGenerationForm({
                 <textarea id="lg-message" name="message" value={form.message} onChange={handleChange} rows={4} className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:ring-2 focus:ring-kaptas-green/20 focus:border-kaptas-green transition-all resize-none" placeholder="Tell us about your hiring needs, timeline, or any specific challenges..." />
               </div>
               {error && <p className="text-red-500 text-sm">{error}</p>}
-              <HCaptchaWidget theme="light" />
+              <TurnstileWidget theme="light" />
               <button type="submit" disabled={isSubmitting} className="w-full bg-[#111111] text-white font-semibold rounded-xl px-6 py-4 hover:bg-gray-900 transition-colors flex items-center justify-center gap-2 group disabled:opacity-60 disabled:cursor-not-allowed">
                 {isSubmitting ? "Sending..." : (ctaText || "Start for free")}
                 {!isSubmitting && <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />}

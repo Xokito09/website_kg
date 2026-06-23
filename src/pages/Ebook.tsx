@@ -6,7 +6,7 @@ import { SEO } from "../components/SEO";
 import { AEOContent } from "../components/AEOContent";
 import { organizationSchema, buildBreadcrumbSchema, SITE_URL, ORG_ID } from "../data/seoSchemas";
 import { AEO_PARAGRAPHS } from "../data/aeoContent";
-import { HCaptchaWidget, getHCaptchaToken, resetHCaptcha } from "../components/HCaptchaWidget";
+import { TurnstileWidget, getCaptchaToken, resetCaptcha } from "../components/TurnstileWidget";
 
 /**
  * The ebook is hosted on Gamma (not a downloadable PDF). After a successful
@@ -81,7 +81,7 @@ export default function Ebook() {
       setError("Please fill in all fields so we can deliver the guide.");
       return;
     }
-    const captchaToken = getHCaptchaToken();
+    const captchaToken = getCaptchaToken();
     if (!captchaToken) {
       setError("Please complete the verification below.");
       return;
@@ -94,7 +94,7 @@ export default function Ebook() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           access_key: WEB3FORMS_KEY,
-          "h-captcha-response": captchaToken,
+          "cf-turnstile-response": captchaToken,
           subject: `Ebook download — ${form.name} (${form.role} at ${form.company})`,
           from_name: "Kaptas Global Website — Ebook",
           source: "Ebook — The Smart Guide to Hiring Brazilian Engineers",
@@ -134,7 +134,7 @@ export default function Ebook() {
       setError("Network error. Please check your connection and try again, or email support@kaptasglobal.io.");
     } finally {
       setIsSubmitting(false);
-      resetHCaptcha();
+      resetCaptcha();
     }
   }
 
@@ -306,7 +306,7 @@ export default function Ebook() {
                 )}
 
                 <div className="mt-1">
-                  <HCaptchaWidget theme="dark" />
+                  <TurnstileWidget theme="dark" />
                 </div>
 
                 <button
