@@ -45,6 +45,7 @@ const STATIC_ROUTES = [
   "/contractor-staffing",
   "/executive-mapping",
   "/hire-in-brazil",
+  "/get-started",
   "/ebook",
   "/privacy-policy",
   "/terms-of-service",
