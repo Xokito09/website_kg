@@ -1,8 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { getCaptchaToken, resetCaptcha } from "../components/TurnstileWidget";
 
-const WEB3FORMS_KEY = import.meta.env.VITE_WEB3FORMS_KEY || "";
-
 interface FormData {
   name: string;
   company: string;
@@ -105,11 +103,10 @@ export function useContactForm(source: string) {
     setError("");
     const pageUrl = typeof window !== "undefined" ? window.location.href : source;
     try {
-      const res = await fetch("https://api.web3forms.com/submit", {
+      const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          access_key: WEB3FORMS_KEY,
           "cf-turnstile-response": captchaToken,
           subject: `New inquiry from ${form.name} at ${form.company} — ${pageUrl}`,
           from_name: "Kaptas Global Website",

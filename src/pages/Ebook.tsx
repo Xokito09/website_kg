@@ -19,8 +19,6 @@ const EBOOK_URL = "https://ebook-22gajw1.gamma.site/";
 const EBOOK_TITLE = "The Smart Guide to Hiring Brazilian Engineers";
 const EBOOK_SUBTITLE = "A founder's playbook for hiring senior remote engineering talent in Brazil — costs, contract models, vetting, and the operational reality of running a nearshore engineering team in 2026.";
 
-const WEB3FORMS_KEY = import.meta.env.VITE_WEB3FORMS_KEY || "";
-
 const valueProps = [
   { icon: DollarSign, text: "What a senior Brazilian engineer actually costs in 2026 — loaded cost, not just gross salary" },
   { icon: FileText, text: "CLT vs PJ vs EOR — choosing the right contract model for your stage" },
@@ -89,11 +87,10 @@ export default function Ebook() {
     setIsSubmitting(true);
     setError("");
     try {
-      const res = await fetch("https://api.web3forms.com/submit", {
+      const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          access_key: WEB3FORMS_KEY,
           "cf-turnstile-response": captchaToken,
           subject: `Ebook download — ${form.name} (${form.role} at ${form.company})`,
           from_name: "Kaptas Global Website — Ebook",
