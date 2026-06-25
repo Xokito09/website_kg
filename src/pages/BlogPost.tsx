@@ -176,7 +176,7 @@ export default function BlogPost() {
             <p className="text-gray-400 text-sm">Pre-vetted shortlist in 5 days. Zero upfront cost.</p>
           </div>
           <Link
-            to="/pricing"
+            to="/get-started"
             className="bg-kaptas-green text-kaptas-black px-8 py-3 rounded-full font-semibold text-sm hover:brightness-90 transition-all whitespace-nowrap"
           >
             Get Started

@@ -84,8 +84,8 @@ export function Header() {
           </nav>
 
           <div className="hidden md:block">
-            <Link 
-              to="/pricing" 
+            <Link
+              to="/get-started"
               className="bg-kaptas-green text-kaptas-black px-6 py-2.5 rounded-full text-sm font-semibold hover:brightness-90 transition-colors"
             >
               Get Started
@@ -125,6 +125,12 @@ export function Header() {
                   </Link>
                 ))}
               </div>
+              <Link
+                to="/get-started"
+                className="bg-kaptas-green text-kaptas-black px-6 py-3 rounded-full text-base font-semibold text-center hover:brightness-90 transition-colors mt-2"
+              >
+                Get Started
+              </Link>
             </motion.div>
           )}
         </AnimatePresence>
