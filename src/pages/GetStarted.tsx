@@ -75,9 +75,9 @@ export default function GetStarted() {
               </div>
 
               <h1 className="font-semibold tracking-tight leading-[1.1] mb-8 text-[40px] md:text-[52px] text-white">
-                Hire Brazilian{" "}
+                Hire{" "}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-kaptas-green to-kaptas-purple">
-                  talent
+                  Brazilian talent
                 </span>
               </h1>
 
@@ -87,7 +87,7 @@ export default function GetStarted() {
 
               <div className="border-l-2 border-kaptas-purple/50 pl-5 max-w-xl mb-12 mt-[40px]">
                 <p className="text-base text-gray-400 leading-relaxed font-light">
-                  Kaptas Global is a US incorporated company founded by Brazilians.
+                  Kaptas Global is a US-incorporated company founded by Brazilians. Companies from the US, UK, Germany, China, and other markets trust us to make their first hire in Brazil.
                 </p>
               </div>
 
