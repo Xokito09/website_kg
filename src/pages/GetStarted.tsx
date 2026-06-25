@@ -3,6 +3,7 @@ import { useContactForm } from "../hooks/useContactForm";
 import { ThankYouModal } from "../components/ThankYouModal";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { motion } from "motion/react";
+import { HowItWorks } from "../components/home/HowItWorks";
 import { organizationSchema, buildBreadcrumbSchema, SITE_URL } from "../data/seoSchemas";
 
 /**
@@ -40,7 +41,7 @@ export default function GetStarted() {
           description="We source, screen, and validate senior remote talent in Brazil, aligned with your time zone, fully compliant, with no local entity required."
           canonical="https://kaptasglobal.io/get-started"
           eyebrow="Get Started"
-          ogTitle="Hire senior Brazilian talent without the guesswork."
+          ogTitle="Hire Brazilian talent"
           ogSubtitle="Tell us what you're hiring for and we'll come back with a tailored shortlist."
           schemas={[
             organizationSchema,
@@ -66,19 +67,17 @@ export default function GetStarted() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" as any }}
-              className="max-w-3xl"
+              className="max-w-3xl -mt-[80px]"
             >
               <div className="inline-flex items-center gap-2 bg-kaptas-green/10 text-kaptas-green px-4 py-2 rounded-sm text-xs font-bold border border-kaptas-green/20 mb-8 tracking-widest uppercase backdrop-blur-md">
                 <span className="w-2 h-2 bg-kaptas-green rounded-full animate-pulse"></span>
                 HIRE IN BRAZIL
               </div>
 
-              <h1 className="font-semibold tracking-tight leading-[1.1] mb-8">
-                <span className="block text-[40px] md:text-[52px] text-white">
-                  Hire senior Brazilian talent
-                </span>
-                <span className="block mt-1 text-[40px] md:text-[52px] text-transparent bg-clip-text bg-gradient-to-r from-kaptas-green to-kaptas-purple">
-                  without the guesswork.
+              <h1 className="font-semibold tracking-tight leading-[1.1] mb-8 text-[40px] md:text-[52px] text-white">
+                Hire Brazilian{" "}
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-kaptas-green to-kaptas-purple">
+                  talent
                 </span>
               </h1>
 
@@ -116,7 +115,7 @@ export default function GetStarted() {
                 x: { duration: 0.8, delay: 0.4, ease: "easeOut" },
                 y: { duration: 6, repeat: Infinity, ease: "easeInOut" },
               }}
-              className="relative w-full max-w-[500px] mx-auto mt-12 lg:mt-0"
+              className="relative w-full max-w-[500px] mx-auto mt-12 lg:mt-0 lg:-mt-[30px]"
             >
               <div className="relative group">
                 {/* Glow Effect Layer */}
@@ -226,44 +225,16 @@ export default function GetStarted() {
           </div>
         </motion.section>
 
-        {/* 2. How it works — site section styling */}
-        <motion.section
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-50px" }}
-          transition={{ duration: 0.6 }}
-          className="px-6 md:px-12 max-w-7xl mx-auto w-full relative z-10"
-        >
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight text-white">
-              How it works
-            </h2>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
-            {[
-              "1) Alignment call",
-              "2) Curated shortlist",
-              "3) You interview and decide",
-            ].map((step, i) => (
-              <div
-                key={i}
-                className="bg-[#0A0A0A]/80 backdrop-blur-xl border border-white/10 rounded-3xl p-8 flex flex-col"
-              >
-                <span className="text-[40px] leading-[48px] font-semibold text-kaptas-green mb-4 tracking-tight">
-                  {i + 1}
-                </span>
-                <p className="text-lg font-semibold text-white">{step}</p>
-              </div>
-            ))}
-          </div>
+        {/* 2. How it works — reuse the exact homepage "From kickoff to hire
+            in 14 days" 4-step timeline so it is visually identical. */}
+        <HowItWorks />
 
-          {/*
-            FUTURE SOFT CTA SLOT — "get the benchmark"
-            Placeholder only. Do not build the benchmark here.
-            When ready, replace the hidden block below with the soft CTA.
-          */}
-          <div data-slot="benchmark-soft-cta" hidden></div>
-        </motion.section>
+        {/*
+          FUTURE SOFT CTA SLOT — "get the benchmark"
+          Placeholder only. Do not build the benchmark here.
+          When ready, replace the hidden block below with the soft CTA.
+        */}
+        <div data-slot="benchmark-soft-cta" hidden></div>
       </div>
     </>
   );
