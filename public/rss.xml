@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Kaptas Global Blog</title>
+    <link>https://kaptasglobal.io/blog</link>
+    <atom:link href="https://kaptasglobal.io/rss.xml" rel="self" type="application/rss+xml"/>
+    <description>Guides on hiring senior remote engineering talent in Brazil: salaries, hiring models (CLT, PJ, EOR), compliance, and building US-Brazil remote teams.</description>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 06 Jul 2026 20:25:27 GMT</lastBuildDate>
+    <item>
+      <title>How to choose the right LatAm country for your first nearshore engineering pod</title>
+      <link>https://kaptasglobal.io/blog/choose-right-latam-country-nearshore-engineering-pod</link>
+      <guid isPermaLink="true">https://kaptasglobal.io/blog/choose-right-latam-country-nearshore-engineering-pod</guid>
+      <pubDate>Mon, 08 Dec 2025 12:00:00 GMT</pubDate>
+      <description>If you are serious about LatAm nearshore engineering, “LatAm” cannot be a single bucket. Brazil, Mexico, Colombia and Argentina play very different roles in your strategy. Choosing the right country is not about who is “best” in general. It is about who is best for the way your product team works, the systems you run …</description>
+    </item>
+    <item>
+      <title>Nearshore for AI delivery in 2026: what U.S. startups actually move first and why Brazil fits</title>
+      <link>https://kaptasglobal.io/blog/nearshore-brazil-ai-delivery-roles</link>
+      <guid isPermaLink="true">https://kaptasglobal.io/blog/nearshore-brazil-ai-delivery-roles</guid>
+      <pubDate>Mon, 17 Nov 2025 12:00:00 GMT</pubDate>
+      <description>U.S. startups need to ship AI features faster while protecting runway. Through 2025, budgets moved toward AI software and infrastructure and that changed hiring dynamics. Global IT spending is projected at 5.43 trillion dollars in 2025, up 7.9% year over year, which lifted demand across engineering, data and cloud roles. Roles that work closely with …</description>
+    </item>
+    <item>
+      <title>Salaries in Brazil for U.S. remote teams in 2026</title>
+      <link>https://kaptasglobal.io/blog/salaries-in-brazil-for-us-remote-teams-2026</link>
+      <guid isPermaLink="true">https://kaptasglobal.io/blog/salaries-in-brazil-for-us-remote-teams-2026</guid>
+      <pubDate>Fri, 31 Oct 2025 12:00:00 GMT</pubDate>
+      <description>Hiring in Brazil gives U.S. companies senior talent, fluent English, and cost efficiency above 50% while keeping delivery speed. The tables below show typical annual USD salary ranges offered by U.S. employers to professionals based in Brazil. These are market expectations for remote roles, not BRL conversions.</description>
+    </item>
+    <item>
+      <title>Brazil hiring costs in 2025 – The complete total cost guide for US teams</title>
+      <link>https://kaptasglobal.io/blog/brazil-hiring-costs-2025-total-cost-guide</link>
+      <guid isPermaLink="true">https://kaptasglobal.io/blog/brazil-hiring-costs-2025-total-cost-guide</guid>
+      <pubDate>Thu, 16 Oct 2025 12:00:00 GMT</pubDate>
+      <description>A complete total cost guide Hiring in Brazil can deliver senior quality at a lower total cost of ownership when you match structure to reality. This guide explains how CLT/W2 employment works, how PJ/1099 contractors work, what employers actually pay under each model, and how to build a reliable budget for hiring in Brazil. The …</description>
+    </item>
+    <item>
+      <title>H 1B explained, what just changed, and how it could reshape hiring in Brazil, Latam, and the United States</title>
+      <link>https://kaptasglobal.io/blog/h1b-explained-new-100000-fee-guide</link>
+      <guid isPermaLink="true">https://kaptasglobal.io/blog/h1b-explained-new-100000-fee-guide</guid>
+      <pubDate>Thu, 25 Sep 2025 12:00:00 GMT</pubDate>
+      <description>The headline in plain language The White House announced a new one time fee of $100,000 tied to new H 1B cases. Early reporting and clarifications indicate the fee is targeted at new petitions filed from outside the United States, is one time rather than annual, and does not apply to existing H 1B holders …</description>
+    </item>
+    <item>
+      <title>Five things you should know before hiring in Brazil</title>
+      <link>https://kaptasglobal.io/blog/five-things-to-know-before-hiring-in-brazil</link>
+      <guid isPermaLink="true">https://kaptasglobal.io/blog/five-things-to-know-before-hiring-in-brazil</guid>
+      <pubDate>Thu, 18 Sep 2025 12:00:00 GMT</pubDate>
+      <description>Hiring in Brazil can lift quality and reduce cost when you set structure and process early. Use the points below to brief your team or your recruitment agency in Brazil and to shape a reliable plan for nearshore hiring. 1. Choose the right hiring model early Brazil supports two common paths. CLT is the employment …</description>
+    </item>
+    <item>
+      <title>The Complete Guide to Hiring Remote Brazilian Developers in 2025</title>
+      <link>https://kaptasglobal.io/blog/guide-to-hiring-remote-brazilian-developers</link>
+      <guid isPermaLink="true">https://kaptasglobal.io/blog/guide-to-hiring-remote-brazilian-developers</guid>
+      <pubDate>Sun, 07 Sep 2025 12:00:00 GMT</pubDate>
+      <description>Brazil has emerged as Latin America’s premier destination for sourcing world-class software engineers, and for good reason. With over 500,000 tech professionals and a rapidly growing digital economy, Brazil offers an unmatched combination of technical excellence, cultural compatibility, and cost efficiency that’s transforming how global companies build their engineering teams. Ready to Build Your…</description>
+    </item>
+    <item>
+      <title>Why Brazilian Developers Are Perfect for US Startups: A Data-Driven Analysis</title>
+      <link>https://kaptasglobal.io/blog/brazilian-developers-for-us-startups</link>
+      <guid isPermaLink="true">https://kaptasglobal.io/blog/brazilian-developers-for-us-startups</guid>
+      <pubDate>Sun, 07 Sep 2025 12:00:00 GMT</pubDate>
+      <description>For US startups navigating the competitive landscape of 2025, access to top-tier technical talent often determines the difference between breakthrough success and stagnation. While the domestic tech talent shortage continues to drive up hiring costs and extend recruitment timelines, forward-thinking startups are discovering a strategic advantage in Brazilian developers—a solution that delivers…</description>
+    </item>
+    <item>
+      <title>Managing Remote Brazilian Teams: Best Practices for Global Success</title>
+      <link>https://kaptasglobal.io/blog/managing-remote-brazilian-teams</link>
+      <guid isPermaLink="true">https://kaptasglobal.io/blog/managing-remote-brazilian-teams</guid>
+      <pubDate>Sun, 07 Sep 2025 12:00:00 GMT</pubDate>
+      <description>Successfully managing remote Brazilian development teams requires more than just traditional project management skills—it demands cultural intelligence, strategic communication approaches, and an understanding of the unique dynamics that make Brazilian professionals exceptionally productive in remote environments. Companies that master these management practices often discover that their…</description>
+    </item>
+    <item>
+      <title>Cost Analysis: Brazilian vs Other Nearshore Development Options in 2025</title>
+      <link>https://kaptasglobal.io/blog/brazilian-vs-other-nearshore-development-options</link>
+      <guid isPermaLink="true">https://kaptasglobal.io/blog/brazilian-vs-other-nearshore-development-options</guid>
+      <pubDate>Sun, 07 Sep 2025 12:00:00 GMT</pubDate>
+      <description>The global competition for tech talent has fundamentally transformed hiring economics, forcing companies to carefully evaluate the total cost of ownership when building development teams. While domestic US hiring costs continue to escalate, nearshore options have emerged as strategic alternatives that promise significant cost savings without compromising quality. However, not all nearshore…</description>
+    </item>
+    <item>
+      <title>Cultural Bridge: Integrating Brazilian Developers into Your US Tech Team</title>
+      <link>https://kaptasglobal.io/blog/integrating-brazilian-developers-into-your-us-tech-team</link>
+      <guid isPermaLink="true">https://kaptasglobal.io/blog/integrating-brazilian-developers-into-your-us-tech-team</guid>
+      <pubDate>Sun, 07 Sep 2025 12:00:00 GMT</pubDate>
+      <description>The technical skills and cost advantages of Brazilian developers are well-documented, but the most successful international hiring initiatives go beyond these basics to create genuine cultural integration that enhances entire team dynamics. Companies that master the art of cultural bridge-building often discover that their Brazilian team members become catalysts for improved collaboration,…</description>
+    </item>
+    <item>
+      <title>Employer of Record (EOR) in Brazil or Contractor (PJ) – Which structure fits your remote team</title>
+      <link>https://kaptasglobal.io/blog/employer-of-record-vs-contractor-pj-brazil</link>
+      <guid isPermaLink="true">https://kaptasglobal.io/blog/employer-of-record-vs-contractor-pj-brazil</guid>
+      <pubDate>Thu, 04 Sep 2025 12:00:00 GMT</pubDate>
+      <description>Many international companies plan to hire developers in Brazil as part of a nearshore strategy in Latam. The decision often comes down to two models. Employer of Record provides an employment wrapper with payroll and statutory benefits. Contractor PJ provides a service based route with flexibility and cost efficiency. The right choice depends on compliance …</description>
+    </item>
+    <item>
+      <title>Do you need a recruitment agency in Brazil to hire developers</title>
+      <link>https://kaptasglobal.io/blog/recruitment-agency-brazil-hire-developers</link>
+      <guid isPermaLink="true">https://kaptasglobal.io/blog/recruitment-agency-brazil-hire-developers</guid>
+      <pubDate>Thu, 28 Aug 2025 12:00:00 GMT</pubDate>
+      <description>What a local recruitment agency sees that you might miss Many international companies can hire developers in Brazil on their own. Processes look solid on paper and the Latam tech market is full of motivated Brazilian software engineers. Yet a local recruitment agency often sees patterns earlier and more clearly. The result is faster hiring, …</description>
+    </item>
+    <item>
+      <title>Hiring software engineers in Brazil and Latam</title>
+      <link>https://kaptasglobal.io/blog/hiring-software-engineers-brazil-latam-complete-guide</link>
+      <guid isPermaLink="true">https://kaptasglobal.io/blog/hiring-software-engineers-brazil-latam-complete-guide</guid>
+      <pubDate>Thu, 21 Aug 2025 12:00:00 GMT</pubDate>
+      <description>A complete guide to build hire and manage remote teams Expanding your remote development team in Latin America gives you access to a highly skilled talent pool. Your choice of engagement model will shape costs, compliance, administrative effort, and long term results. One important challenge to consider is salary negotiation. Candidates in the technology market, …</description>
+    </item>
+    <item>
+      <title>Best hiring model for remote teams in Brazil</title>
+      <link>https://kaptasglobal.io/blog/best-hiring-model-remote-team-brazil</link>
+      <guid isPermaLink="true">https://kaptasglobal.io/blog/best-hiring-model-remote-team-brazil</guid>
+      <pubDate>Thu, 14 Aug 2025 12:00:00 GMT</pubDate>
+      <description>Hiring a remote tech team in Brazil gives your company access to highly skilled professionals in one of the most vibrant nearshore markets in Latin America. Expanding your remote development team in Latin America gives you access to a highly skilled talent pool and one of the most dynamic nearshore markets. Your choice of engagement …</description>
+    </item>
+    <item>
+      <title>Where to find top tech talent in Brazil</title>
+      <link>https://kaptasglobal.io/blog/where-to-find-top-tech-talent-in-brazil</link>
+      <guid isPermaLink="true">https://kaptasglobal.io/blog/where-to-find-top-tech-talent-in-brazil</guid>
+      <pubDate>Thu, 07 Aug 2025 12:00:00 GMT</pubDate>
+      <description>When building remote engineering teams in Latin America, many companies start by looking at Brazil. As the region’s largest tech hub, Brazil offers both scale and depth for international hiring. However, understanding where the tech talent is concentrated helps companies make smarter hiring decisions and optimize for retention and cost. Brazil is not a single …</description>
+    </item>
+    <item>
+      <title>How hiring models work in Brazil: PJ vs CLT</title>
+      <link>https://kaptasglobal.io/blog/hiring-models-brazil-pj-vs-clt</link>
+      <guid isPermaLink="true">https://kaptasglobal.io/blog/hiring-models-brazil-pj-vs-clt</guid>
+      <pubDate>Wed, 02 Jul 2025 12:00:00 GMT</pubDate>
+      <description>When hiring remote software engineers in Latin America, understanding how local employment models work can save you time, reduce legal risk, and simplify operations. Brazil, the region’s largest tech market, offers two primary ways of engaging professionals: CLT and PJ. For international companies, choosing the right model is not just about cost. It directly impacts …</description>
+    </item>
+    <item>
+      <title>How much does it cost to hire a Software Engineer in Brazil?</title>
+      <link>https://kaptasglobal.io/blog/cost-hire-software-engineer-brazil</link>
+      <guid isPermaLink="true">https://kaptasglobal.io/blog/cost-hire-software-engineer-brazil</guid>
+      <pubDate>Wed, 25 Jun 2025 12:00:00 GMT</pubDate>
+      <description>In a competitive market where top U.S. based engineers can cost between $220,000 and $250,000 annually, many startups and tech companies are exploring Latin America, especially Brazil, as a smarter and more scalable alternative. But what does hiring in Brazil actually cost? A side-by-side cost comparison Here’s how hiring a senior software engineer compares in …</description>
+    </item>
+    <item>
+      <title>7 Advantages of Working as a Contractor for American Companies</title>
+      <link>https://kaptasglobal.io/blog/7-advantages-of-working-as-a-contractor-for-american-companies</link>
+      <guid isPermaLink="true">https://kaptasglobal.io/blog/7-advantages-of-working-as-a-contractor-for-american-companies</guid>
+      <pubDate>Thu, 14 Nov 2024 12:00:00 GMT</pubDate>
+      <description>The Seventh Will Surprise You!Many say that one year working as a contractor for American companies can be equivalent to three years of experience at Brazilian companies. For Brazilian professionals, this is a unique opportunity to strengthen their careers, achieve financial growth, and expand their professional reach on a global scale. Discover the immense advantages! …</description>
+    </item>
+    <item>
+      <title>How Brazilian professionals save up to 70% in taxes by working remotely for international companies</title>
+      <link>https://kaptasglobal.io/blog/how-brazilian-professionals-save-up-to-70-in-taxes-by-working-remotely-for-international-companies</link>
+      <guid isPermaLink="true">https://kaptasglobal.io/blog/how-brazilian-professionals-save-up-to-70-in-taxes-by-working-remotely-for-international-companies</guid>
+      <pubDate>Thu, 05 Sep 2024 12:00:00 GMT</pubDate>
+      <description>Why Brazilian Professionals Working Remotely for Internacional Companies Pay Up to 70% Less in Taxes Compared to Working for Brazilian CompaniesDid you know that Brazilian professionals working for American and European companies can save up to 70% on taxes compared to working for Brazilian employers? This substantial tax advantage makes remote work for international clients …</description>
+    </item>
+    <item>
+      <title>How Brazilians are embracing global job opportunities</title>
+      <link>https://kaptasglobal.io/blog/how-brazilians-are-embracing-global-professionalism</link>
+      <guid isPermaLink="true">https://kaptasglobal.io/blog/how-brazilians-are-embracing-global-professionalism</guid>
+      <pubDate>Tue, 03 Sep 2024 12:00:00 GMT</pubDate>
+      <description>Brazilian professionals are making significant strides in the global job market, capitalizing on the opportunities presented by remote work and digital transformation. This shift is evident in several areas, from the growing emphasis on qualifications to the economic and tax benefits that come with working for foreign companies. Rising Demand for English Proficiency A clear …</description>
+    </item>
+    <item>
+      <title>Why Brazil’s time zone is an ideal fit for international teams</title>
+      <link>https://kaptasglobal.io/blog/why-brazils-time-zone-is-an-ideal-fit-for-international-teams</link>
+      <guid isPermaLink="true">https://kaptasglobal.io/blog/why-brazils-time-zone-is-an-ideal-fit-for-international-teams</guid>
+      <pubDate>Thu, 29 Aug 2024 12:00:00 GMT</pubDate>
+      <description>As companies continue to source talent across borders, aligning time zones has become a key factor in the success of remote teams. Brazil, with its advantageous location, offers a valuable alignment for American and Canadian companies. The country is just 4 hours ahead of San Francisco, 2 hours ahead of Austin, and only 1 hour …</description>
+    </item>
+  </channel>
+</rss>
