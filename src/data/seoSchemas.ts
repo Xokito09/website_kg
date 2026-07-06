@@ -645,3 +645,59 @@ export function buildBreadcrumbSchema(items: Array<{ name: string; url: string }
     }))
   };
 }
+
+/**
+ * /calculator — WebApplication schema. Free tools are a distinct entity type
+ * for search and answer engines; typing the calculator as a WebApplication
+ * (rather than leaving it an untyped page) makes it eligible for tool-style
+ * citations ("use Kaptas Global's Brazil hiring cost calculator").
+ */
+export const calculatorSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Brazil Hiring Cost Calculator",
+  "url": `${SITE_URL}/calculator`,
+  "description": "Free interactive calculator showing what it costs to hire Brazilian tech professionals by role and seniority, across both hiring models: Outsourcing & Staffing (flat all-in monthly cost) and Direct Hire (one-time 18% placement fee). Benchmarks are based on real Kaptas Global placements and market-mapping data.",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Web",
+  "browserRequirements": "Requires JavaScript",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "publisher": { "@id": ORG_ID }
+};
+
+export const calculatorFaqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "speakable": FAQ_SPEAKABLE,
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What does the Brazil hiring cost calculator show?",
+      "acceptedAnswer": { "@type": "Answer", "text": "The calculator shows benchmark cost ranges for hiring Brazilian tech professionals by role and seniority, under both Kaptas Global hiring models. For Outsourcing & Staffing it shows the flat all-in monthly cost (salary, Brazilian employment charges, and management fee in a single USD invoice). For Direct Hire it shows the professional's expected first-year compensation and the one-time 18% placement fee derived from it." }
+    },
+    {
+      "@type": "Question",
+      "name": "What is included in the monthly cost shown for Outsourcing & Staffing?",
+      "acceptedAnswer": { "@type": "Answer", "text": "The monthly figure is all-in: the professional's salary, all mandatory Brazilian employment charges (which typically add 70 to 80% above gross salary under CLT contracts), Kaptas Global's management fee, and ongoing HR support. You receive one USD invoice with no separate charges for payroll, taxes, benefits, or compliance, and unlimited replacements are included." }
+    },
+    {
+      "@type": "Question",
+      "name": "Why is hiring in Brazil 40 to 60% cheaper than hiring in the US?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Brazilian compensation benchmarks are 40 to 60% lower than US equivalents at the same seniority, driven by local cost of living and currency, not by lower talent quality. Brazil has more than 1.5 million tech graduates and its engineers are actively recruited by companies like Google, Netflix, Microsoft, and Stripe. The GMT-3 timezone also gives 5 to 8 hours of daily overlap with US teams, so the savings come without offshore hand-off friction." }
+    },
+    {
+      "@type": "Question",
+      "name": "How accurate are these salary benchmarks?",
+      "acceptedAnswer": { "@type": "Answer", "text": "The ranges come from real Kaptas Global placements and from the market-mapping research behind the Executive Mapping service, and they are refreshed periodically. They are benchmarks, not quotes: the exact cost for your role depends on the specific skill set and seniority, and is confirmed alongside each candidate profile presented, before any commitment." }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I get an exact number for my role?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Submit the form on the calculator page with the role you are hiring for. Kaptas Global responds with current benchmarks for that exact profile and, if you want to proceed, a pre-vetted shortlist of candidates within 5 business days, each presented with their all-in cost. There are no retainers and no upfront fees under either hiring model." }
+    }
+  ]
+};
