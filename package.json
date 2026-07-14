@@ -16,7 +16,7 @@
     "build-blog": "node scripts/build-blog.mjs",
     "sync-blog": "node scripts/sync-blog.mjs",
     "perf-audit": "node scripts/perf-audit.mjs",
-    "test": "node --test scripts/"
+    "test": "node --test scripts/*.test.mjs"
   },
   "dependencies": {
     "@google/genai": "^1.29.0",
