@@ -4,6 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+    <!-- Inter font: loaded via <link> instead of a CSS @import so the browser
+         discovers it in parallel with the stylesheet instead of serially
+         after it (saves one full round trip on the critical path). Same URL,
+         same font files — zero visual change. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" />
+
     <!-- Google Tag Manager (production hostname only — keeps localhost dev,
          Vercel preview deployments, and any other host from polluting GA4) -->
     <script>
