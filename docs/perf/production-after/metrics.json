@@ -1,0 +1,87 @@
+{
+  "url": "https://kaptasglobal.io",
+  "capturedAt": "2026-07-14T23:38:36.495Z",
+  "viewports": {
+    "desktop": {
+      "timing": {
+        "ttfbMs": 353,
+        "domContentLoadedMs": 1137,
+        "loadMs": 3023,
+        "htmlTransferKB": 165.2
+      },
+      "bytesByType": {
+        "link": 17.9,
+        "script": 72,
+        "other": 137.1,
+        "img": 150.5,
+        "fetch": 38.7,
+        "xmlhttprequest": 0,
+        "beacon": 0,
+        "iframe": 0
+      },
+      "totalTransferKB": 581.5,
+      "requestCount": 40,
+      "cspViolations": [
+        {
+          "directive": "script-src",
+          "blocked": "eval"
+        }
+      ],
+      "consoleErrors": [
+        "%c%d font-size:0;color:transparent NaN",
+        "%c%d font-size:0;color:transparent NaN"
+      ],
+      "sections": {
+        "total": 13,
+        "hidden": 0,
+        "formVisible": true
+      }
+    },
+    "mobile": {
+      "timing": {
+        "ttfbMs": 113,
+        "domContentLoadedMs": 946,
+        "loadMs": 1499,
+        "htmlTransferKB": 0.3
+      },
+      "bytesByType": {
+        "link": 0.3,
+        "script": 3.3,
+        "other": 1.2,
+        "img": 1.8,
+        "xmlhttprequest": 0,
+        "fetch": 0.3,
+        "iframe": 0
+      },
+      "totalTransferKB": 7.2,
+      "requestCount": 34,
+      "cspViolations": [
+        {
+          "directive": "script-src",
+          "blocked": "eval"
+        }
+      ],
+      "consoleErrors": [
+        "%c%d font-size:0;color:transparent NaN",
+        "%c%d font-size:0;color:transparent NaN"
+      ],
+      "sections": {
+        "total": 13,
+        "hidden": 0,
+        "formVisible": true
+      }
+    }
+  },
+  "nojs": {
+    "desktop": {
+      "total": 13,
+      "hidden": 0,
+      "formVisible": true
+    },
+    "mobile": {
+      "total": 13,
+      "hidden": 0,
+      "formVisible": true
+    }
+  }
+}
