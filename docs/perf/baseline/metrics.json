@@ -1,0 +1,169 @@
+{
+  "url": "https://kaptasglobal.io",
+  "capturedAt": "2026-07-14T14:24:42.982Z",
+  "viewports": {
+    "desktop": {
+      "timing": {
+        "ttfbMs": 523,
+        "domContentLoadedMs": 2189,
+        "loadMs": 3662,
+        "htmlTransferKB": 164.9
+      },
+      "bytesByType": {
+        "script": 304.8,
+        "link": 16.8,
+        "img": 150.5,
+        "css": 1.1,
+        "xmlhttprequest": 0,
+        "other": 8,
+        "fetch": 38.2,
+        "iframe": 0,
+        "beacon": 0
+      },
+      "totalTransferKB": 684.3,
+      "requestCount": 43,
+      "cspViolations": [
+        {
+          "directive": "script-src",
+          "blocked": "eval"
+        },
+        {
+          "directive": "connect-src",
+          "blocked": "https://ad.doubleclick.net/ccm/s/collect?auid=61978114.1784039085&gtm=45He67a1v9227832668za200zd9227832668xea"
+        },
+        {
+          "directive": "connect-src",
+          "blocked": "https://ad.doubleclick.net/ccm/s/collect?auid=61978114.1784039085&gtm=45He67a1v9227832668za200zd9227832668xea"
+        },
+        {
+          "directive": "connect-src",
+          "blocked": "https://www.google.com/ccm/collect?rcb=5&frm=0&ae=g&auid=61978114.1784039085&dt=Hire%20Developers%20in%20Brazil%20%E2%80"
+        },
+        {
+          "directive": "connect-src",
+          "blocked": "https://www.google.com/ccm/collect?rcb=5&frm=0&ae=g&auid=61978114.1784039085&dt=Hire%20Developers%20in%20Brazil%20%E2%80"
+        },
+        {
+          "directive": "connect-src",
+          "blocked": "https://analytics.google.com/g/collect?v=2&tid=G-B94RYK9N6S&gtm=45je67a1v9177088093z89227832668za20gzb9227832668zd922783"
+        },
+        {
+          "directive": "connect-src",
+          "blocked": "https://analytics.google.com/g/collect?v=2&tid=G-B94RYK9N6S&gtm=45je67a1v9177088093z89227832668za20gzb9227832668zd922783"
+        },
+        {
+          "directive": "script-src-elem",
+          "blocked": "https://googleads.g.doubleclick.net/pagead/viewthroughconversion/17704393304/?random=1784039086068&cv=11&fst=17840390860"
+        },
+        {
+          "directive": "connect-src",
+          "blocked": "https://www.google.com/rmkt/collect/17704393304/?random=1784039086068&cv=11&fst=1784039086068&fmt=8&bg=ffffff&guid=ON&as"
+        },
+        {
+          "directive": "connect-src",
+          "blocked": "https://www.google.com/rmkt/collect/17704393304/?random=1784039086068&cv=11&fst=1784039086068&fmt=8&bg=ffffff&guid=ON&as"
+        },
+        {
+          "directive": "connect-src",
+          "blocked": "https://www.google.com/ccm/collect?rcb=3&frm=0&auid=61978114.1784039085&dt=Hire%20Developers%20in%20Brazil%20%E2%80%94%2"
+        },
+        {
+          "directive": "connect-src",
+          "blocked": "https://www.google.com/ccm/collect?rcb=3&frm=0&auid=61978114.1784039085&dt=Hire%20Developers%20in%20Brazil%20%E2%80%94%2"
+        }
+      ],
+      "consoleErrors": [
+        "%c%d font-size:0;color:transparent NaN",
+        "%c%d font-size:0;color:transparent NaN"
+      ],
+      "sections": {
+        "total": 13,
+        "hidden": 0,
+        "formVisible": true
+      }
+    },
+    "mobile": {
+      "timing": {
+        "ttfbMs": 119,
+        "domContentLoadedMs": 695,
+        "loadMs": 1185,
+        "htmlTransferKB": 0.3
+      },
+      "bytesByType": {
+        "script": 3.3,
+        "link": 0.3,
+        "img": 1.8,
+        "xmlhttprequest": 0,
+        "other": 1.8,
+        "fetch": 0,
+        "css": 0,
+        "iframe": 0
+      },
+      "totalTransferKB": 7.4,
+      "requestCount": 36,
+      "cspViolations": [
+        {
+          "directive": "script-src",
+          "blocked": "eval"
+        },
+        {
+          "directive": "connect-src",
+          "blocked": "https://www.google.com/ccm/collect?rcb=6&frm=0&ae=g&auid=61978114.1784039085&dt=Hire%20Developers%20in%20Brazil%20%E2%80"
+        },
+        {
+          "directive": "connect-src",
+          "blocked": "https://www.google.com/ccm/collect?rcb=6&frm=0&ae=g&auid=61978114.1784039085&dt=Hire%20Developers%20in%20Brazil%20%E2%80"
+        },
+        {
+          "directive": "script-src-elem",
+          "blocked": "https://googleads.g.doubleclick.net/pagead/viewthroughconversion/17704393304/?random=1784039100688&cv=11&fst=17840391006"
+        },
+        {
+          "directive": "connect-src",
+          "blocked": "https://www.google.com/rmkt/collect/17704393304/?random=1784039100688&cv=11&fst=1784039100688&fmt=8&bg=ffffff&guid=ON&as"
+        },
+        {
+          "directive": "connect-src",
+          "blocked": "https://www.google.com/rmkt/collect/17704393304/?random=1784039100688&cv=11&fst=1784039100688&fmt=8&bg=ffffff&guid=ON&as"
+        },
+        {
+          "directive": "connect-src",
+          "blocked": "https://www.google.com/ccm/collect?rcb=7&frm=0&auid=61978114.1784039085&dt=Hire%20Developers%20in%20Brazil%20%E2%80%94%2"
+        },
+        {
+          "directive": "connect-src",
+          "blocked": "https://www.google.com/ccm/collect?rcb=7&frm=0&auid=61978114.1784039085&dt=Hire%20Developers%20in%20Brazil%20%E2%80%94%2"
+        },
+        {
+          "directive": "connect-src",
+          "blocked": "https://analytics.google.com/g/collect?v=2&tid=G-B94RYK9N6S&gtm=45je67a1v9177088093z89227832668za20gzb9227832668zd922783"
+        },
+        {
+          "directive": "connect-src",
+          "blocked": "https://analytics.google.com/g/collect?v=2&tid=G-B94RYK9N6S&gtm=45je67a1v9177088093z89227832668za20gzb9227832668zd922783"
+        }
+      ],
+      "consoleErrors": [
+        "%c%d font-size:0;color:transparent NaN",
+        "%c%d font-size:0;color:transparent NaN"
+      ],
+      "sections": {
+        "total": 13,
+        "hidden": 0,
+        "formVisible": true
+      }
+    }
+  },
+  "nojs": {
+    "desktop": {
+      "total": 13,
+      "hidden": 10,
+      "formVisible": true
+    },
+    "mobile": {
+      "total": 13,
+      "hidden": 10,
+      "formVisible": true
+    }
+  }
+}
