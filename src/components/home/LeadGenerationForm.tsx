@@ -26,7 +26,12 @@ export function LeadGenerationForm({
   return (
     <>
     <ThankYouModal isOpen={showModal} onClose={() => setShowModal(false)} />
-    <div className="w-full bg-[#F9FAFB] pt-[80px] h-[680px] relative overflow-hidden">
+    {/* Height is content-driven with symmetric padding. The previous fixed
+        h-[680px] + overflow-hidden clipped the stacked mobile layout (~1,370px
+        of content in a 680px box) — the entire form card sat below the clip
+        edge and was invisible on mobile, and the desktop card touched the
+        section's bottom edge with no framing. */}
+    <div className="w-full bg-[#F9FAFB] py-[80px] relative overflow-hidden">
       {/* Background Effects */}
       <div className="absolute top-0 right-0 w-full h-full bg-gradient-to-l from-kaptas-green/5 via-transparent to-transparent pointer-events-none"></div>
       <div className="absolute -bottom-32 -left-32 w-[500px] h-[500px] bg-neon-blue/10 rounded-full blur-[100px] pointer-events-none opacity-50"></div>

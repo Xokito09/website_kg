@@ -68,13 +68,25 @@ function sectionStats() {
   });
   const form = document.getElementById("lead-form");
   const formVisible = !!form && (() => {
-    let el = form;
+    const target = form.querySelector("form") || form;
+    const fr = target.getBoundingClientRect();
+    if (fr.height <= 0) return false;
+    let el = target;
     while (el) {
       const cs = getComputedStyle(el);
       if (cs.opacity === "0" || cs.display === "none" || cs.visibility === "hidden") return false;
+      // Clipped away by an overflow-hidden ancestor? (Caught a real bug: a
+      // fixed-height h-[680px] overflow-hidden wrapper pushed the entire
+      // form card below its clip edge on mobile — opacity checks alone
+      // reported it "visible".)
+      const o = cs.overflow + cs.overflowX + cs.overflowY;
+      if (/(hidden|clip)/.test(o)) {
+        const ar = el.getBoundingClientRect();
+        if (fr.top >= ar.bottom || fr.bottom <= ar.top || fr.left >= ar.right || fr.right <= ar.left) return false;
+      }
       el = el.parentElement;
     }
-    return form.getBoundingClientRect().height > 0;
+    return true;
   })();
   return { total: sections.length, hidden: hidden.length, formVisible };
 }
