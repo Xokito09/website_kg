@@ -1,18 +1,18 @@
 {
   "url": "https://kaptas-global-git-perf-us-first-loading-websitekg.vercel.app",
-  "capturedAt": "2026-07-14T19:07:24.902Z",
+  "capturedAt": "2026-07-14T19:33:07.009Z",
   "viewports": {
     "desktop": {
       "timing": {
-        "ttfbMs": 513,
-        "domContentLoadedMs": 2301,
-        "loadMs": 2305,
+        "ttfbMs": 485,
+        "domContentLoadedMs": 2174,
+        "loadMs": 2176,
         "htmlTransferKB": 165.2
       },
       "bytesByType": {
         "link": 17.8,
-        "script": 68,
         "other": 136.8,
+        "script": 67.9,
         "img": 149.5,
         "fetch": 38.7,
         "iframe": 0
@@ -23,15 +23,15 @@
       "consoleErrors": [],
       "sections": {
         "total": 13,
-        "hidden": 1,
+        "hidden": 0,
         "formVisible": true
       }
     },
     "mobile": {
       "timing": {
-        "ttfbMs": 121,
-        "domContentLoadedMs": 818,
-        "loadMs": 823,
+        "ttfbMs": 122,
+        "domContentLoadedMs": 837,
+        "loadMs": 843,
         "htmlTransferKB": 0.3
       },
       "bytesByType": {
