@@ -23,7 +23,40 @@ test("strips baked Turnstile script tag", () => {
   assert.equal(stripMotionArtifacts(html).includes("challenges.cloudflare.com"), false);
 });
 
+test("strips combined transform functions (Ebook.tsx shape)", () => {
+  const html = `<div class="book" style="opacity: 0; transform: scale(0.95) rotateY(-8deg);">book</div>`;
+  const out = stripMotionArtifacts(html);
+  assert.equal(out.includes("opacity: 0"), false);
+  assert.equal(out.includes(`class="book"`), true);
+  assert.equal(out.includes(">book</div>"), true);
+});
+
+test("strips blur filter and will-change carriers", () => {
+  const html =
+    `<span style="opacity: 0; filter: blur(4px);">word</span>` +
+    `<div style="opacity: 0; transform: translateY(20px); will-change: transform;">y</div>`;
+  const out = stripMotionArtifacts(html);
+  assert.equal(out.includes("opacity: 0"), false);
+  assert.equal(out.includes(">word</span>"), true);
+});
+
+test("leaves accordion height:0 panels alone (opacity not first token)", () => {
+  // Collapsed FAQ panels are legitimately hidden — intentional blind spot.
+  const html = `<div style="height: 0px; opacity: 0;">answer</div>`;
+  assert.equal(stripMotionArtifacts(html), html);
+  assert.doesNotThrow(() => assertNoHiddenContent(html, "/"));
+});
+
 test("assertNoHiddenContent throws when opacity:0 remains", () => {
   assert.throws(() => assertNoHiddenContent(`<div style="opacity: 0;">x</div>`, "/"));
   assert.doesNotThrow(() => assertNoHiddenContent(`<div style="opacity: 1;">x</div>`, "/"));
+});
+
+test("assertNoHiddenContent throws on fractional mid-animation opacity", () => {
+  assert.throws(() =>
+    assertNoHiddenContent(`<h1 style="opacity: 0.42; filter: blur(2px);">word</h1>`, "/")
+  );
+  assert.doesNotThrow(() =>
+    assertNoHiddenContent(`<div style="opacity: 1; filter: blur(2px);">x</div>`, "/")
+  );
 });

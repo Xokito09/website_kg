@@ -128,6 +128,43 @@ const browser = await puppeteer.launch({
   headless: true,
 });
 
+/**
+ * Settle the page's animations and capture clean HTML.
+ *
+ * 1. Scroll through the full page so every whileInView reveal fires.
+ * 2. Freeze all pending JS timers so nothing re-triggers mid-capture
+ *    (e.g. the Hero word rotator swaps its AnimatePresence word every 3s
+ *    with a 0.4s blur transition — an unlucky snapshot would bake a
+ *    half-faded, blurred headline word that no opacity:0 regex catches).
+ * 3. Wait out the longest entrance animation (0.8s) so every in-flight
+ *    transition completes. This bakes the SETTLED state (opacity:1)
+ *    instead of the initial hidden state.
+ * 4. Strip any remaining motion initial styles and fail the build if
+ *    hidden content would still ship.
+ */
+async function settleAndCapture(page, route) {
+  await page.evaluate(async () => {
+    const step = window.innerHeight;
+    for (let y = 0; y <= document.body.scrollHeight; y += step) {
+      window.scrollTo(0, y);
+      await new Promise((r) => setTimeout(r, 120));
+    }
+    window.scrollTo(0, 0);
+  });
+  await page.evaluate(() => {
+    // Freeze JS-driven animation loops (e.g. the Hero word rotator) so the
+    // snapshot is deterministic: any in-flight transition completes during
+    // the settle wait below and nothing re-fires mid-capture.
+    let id = window.setTimeout(() => {}, 0);
+    while (id--) { window.clearTimeout(id); window.clearInterval(id); }
+  });
+  await new Promise((r) => setTimeout(r, 900));
+
+  const html = stripMotionArtifacts(await page.content());
+  assertNoHiddenContent(html, route);
+  return html;
+}
+
 console.log(`📸 Pre-rendering ${ALL_ROUTES.length} routes...`);
 
 let failures = 0;
@@ -162,21 +199,7 @@ for (const route of ALL_ROUTES) {
     // motion components to render their initial frame.
     await new Promise((r) => setTimeout(r, 250));
 
-    // Scroll through the full page so every whileInView reveal fires, then
-    // wait out the longest entrance animation (0.8s). This bakes the
-    // SETTLED state (opacity:1) instead of the initial hidden state.
-    await page.evaluate(async () => {
-      const step = window.innerHeight;
-      for (let y = 0; y <= document.body.scrollHeight; y += step) {
-        window.scrollTo(0, y);
-        await new Promise((r) => setTimeout(r, 120));
-      }
-      window.scrollTo(0, 0);
-    });
-    await new Promise((r) => setTimeout(r, 900));
-
-    const html = stripMotionArtifacts(await page.content());
-    assertNoHiddenContent(html, route);
+    const html = await settleAndCapture(page, route);
 
     const isRoot = route === "/";
     const outDir = isRoot ? DIST_DIR : path.join(DIST_DIR, route);
@@ -221,21 +244,7 @@ for (const route of ALL_ROUTES) {
     });
     await new Promise((r) => setTimeout(r, 250));
 
-    // Scroll through the full page so every whileInView reveal fires, then
-    // wait out the longest entrance animation (0.8s). This bakes the
-    // SETTLED state (opacity:1) instead of the initial hidden state.
-    await page.evaluate(async () => {
-      const step = window.innerHeight;
-      for (let y = 0; y <= document.body.scrollHeight; y += step) {
-        window.scrollTo(0, y);
-        await new Promise((r) => setTimeout(r, 120));
-      }
-      window.scrollTo(0, 0);
-    });
-    await new Promise((r) => setTimeout(r, 900));
-
-    const html = stripMotionArtifacts(await page.content());
-    assertNoHiddenContent(html, "/404.html");
+    const html = await settleAndCapture(page, "/404.html");
     await fs.writeFile(path.join(DIST_DIR, "404.html"), html, "utf-8");
     console.log(`  ✓ /404.html`);
   } catch (err) {
