@@ -31,6 +31,7 @@ import { fileURLToPath } from "node:url";
 import http from "node:http";
 import puppeteer from "puppeteer-core";
 import chromium from "@sparticuz/chromium";
+import { stripMotionArtifacts, assertNoHiddenContent } from "./prerender-postprocess.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const DIST_DIR = path.join(__dirname, "../dist");
@@ -161,7 +162,21 @@ for (const route of ALL_ROUTES) {
     // motion components to render their initial frame.
     await new Promise((r) => setTimeout(r, 250));
 
-    const html = await page.content();
+    // Scroll through the full page so every whileInView reveal fires, then
+    // wait out the longest entrance animation (0.8s). This bakes the
+    // SETTLED state (opacity:1) instead of the initial hidden state.
+    await page.evaluate(async () => {
+      const step = window.innerHeight;
+      for (let y = 0; y <= document.body.scrollHeight; y += step) {
+        window.scrollTo(0, y);
+        await new Promise((r) => setTimeout(r, 120));
+      }
+      window.scrollTo(0, 0);
+    });
+    await new Promise((r) => setTimeout(r, 900));
+
+    const html = stripMotionArtifacts(await page.content());
+    assertNoHiddenContent(html, route);
 
     const isRoot = route === "/";
     const outDir = isRoot ? DIST_DIR : path.join(DIST_DIR, route);
@@ -205,7 +220,22 @@ for (const route of ALL_ROUTES) {
       timeout: 30000,
     });
     await new Promise((r) => setTimeout(r, 250));
-    const html = await page.content();
+
+    // Scroll through the full page so every whileInView reveal fires, then
+    // wait out the longest entrance animation (0.8s). This bakes the
+    // SETTLED state (opacity:1) instead of the initial hidden state.
+    await page.evaluate(async () => {
+      const step = window.innerHeight;
+      for (let y = 0; y <= document.body.scrollHeight; y += step) {
+        window.scrollTo(0, y);
+        await new Promise((r) => setTimeout(r, 120));
+      }
+      window.scrollTo(0, 0);
+    });
+    await new Promise((r) => setTimeout(r, 900));
+
+    const html = stripMotionArtifacts(await page.content());
+    assertNoHiddenContent(html, "/404.html");
     await fs.writeFile(path.join(DIST_DIR, "404.html"), html, "utf-8");
     console.log(`  ✓ /404.html`);
   } catch (err) {
