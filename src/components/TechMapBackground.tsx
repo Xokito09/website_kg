@@ -1,8 +1,12 @@
 import { motion } from "motion/react";
 import { ComposableMap, Geographies, Geography, Marker, Line } from "react-simple-maps";
 
-// Using a reliable CDN for the world map TopoJSON
-const geoUrl = "https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json";
+// Self-hosted (public/map-data/) — same world-atlas@2 file, served from our
+// own edge cache instead of a third-party CDN (saves a DNS+TLS round trip
+// and removes the jsdelivr dependency/CSP entry). Deliberately not under
+// /data/ — vercel.json already redirects /data/:path* to /contractor-staffing
+// (legacy WordPress cleanup), which would 301 this JSON fetch in production.
+const geoUrl = "/map-data/countries-110m.json";
 
 const markers = [
   { name: "San Francisco", coordinates: [-122.4194, 37.7749], tz: "GMT -8", offset: [-10, -15] },
