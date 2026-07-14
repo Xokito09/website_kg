@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { motion } from "motion/react";
 import { fadeIn, staggerContainer, staggerItem } from "./animations";
-import blogPosts from "../../data/blog-posts.json";
+import blogPosts from "../../data/blog-index.json";
 import { formatDateShort } from "../../lib/utils";
 
 const ACCENT_COLORS = ["kaptas-green", "kaptas-purple", "neon-blue"];

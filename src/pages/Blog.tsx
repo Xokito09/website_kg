@@ -5,7 +5,7 @@ import { SEO } from "../components/SEO";
 import { AEOContent } from "../components/AEOContent";
 import { organizationSchema, buildBreadcrumbSchema, SITE_URL } from "../data/seoSchemas";
 import { AEO_PARAGRAPHS } from "../data/aeoContent";
-import blogPosts from "../data/blog-posts.json";
+import blogPosts from "../data/blog-index.json";
 import { useContactForm } from "../hooks/useContactForm";
 import { ThankYouModal } from "../components/ThankYouModal";
 import { formatDateShort } from "../lib/utils";

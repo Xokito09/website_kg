@@ -61,11 +61,43 @@ function loadTurnstile(): Promise<void> {
   if (window.turnstile) return Promise.resolve();
   if (scriptPromise) return scriptPromise;
   scriptPromise = new Promise<void>((resolve) => {
+    // Reuse a tag that already exists (e.g., injected by an earlier mount or
+    // baked into prerendered HTML) instead of adding a duplicate — Turnstile
+    // logs "already has been loaded" warnings on double-injection.
+    const existing = document.querySelector<HTMLScriptElement>(
+      'script[src^="https://challenges.cloudflare.com/turnstile"]'
+    );
+    if (existing) {
+      // Poll until the existing tag's script initializes window.turnstile.
+      // (Its load event may have fired before we attached anything, so a
+      // poll is the only race-free signal.)
+      const poll = window.setInterval(() => {
+        if (window.turnstile) {
+          window.clearInterval(poll);
+          resolve();
+        }
+      }, 50);
+      window.setTimeout(() => {
+        if (!window.turnstile) {
+          // Tag is stuck or blocked: settle the promise (callers already
+          // no-op when window.turnstile is absent) and drop the cache so a
+          // future call can retry with a fresh tag.
+          window.clearInterval(poll);
+          scriptPromise = null;
+          resolve();
+        }
+      }, 10000);
+      return;
+    }
     const s = document.createElement("script");
     s.src = TURNSTILE_SCRIPT;
     s.async = true;
     s.defer = true;
     s.onload = () => resolve();
+    s.onerror = () => {
+      scriptPromise = null; // allow retry on a later call
+      resolve();
+    };
     document.head.appendChild(s);
   });
   return scriptPromise;

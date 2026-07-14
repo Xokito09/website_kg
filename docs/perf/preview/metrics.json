@@ -1,0 +1,68 @@
+{
+  "url": "https://kaptas-global-git-perf-us-first-loading-websitekg.vercel.app",
+  "capturedAt": "2026-07-14T19:33:07.009Z",
+  "viewports": {
+    "desktop": {
+      "timing": {
+        "ttfbMs": 485,
+        "domContentLoadedMs": 2174,
+        "loadMs": 2176,
+        "htmlTransferKB": 165.2
+      },
+      "bytesByType": {
+        "link": 17.8,
+        "other": 136.8,
+        "script": 67.9,
+        "img": 149.5,
+        "fetch": 38.7,
+        "iframe": 0
+      },
+      "totalTransferKB": 576,
+      "requestCount": 15,
+      "cspViolations": [],
+      "consoleErrors": [],
+      "sections": {
+        "total": 13,
+        "hidden": 0,
+        "formVisible": true
+      }
+    },
+    "mobile": {
+      "timing": {
+        "ttfbMs": 122,
+        "domContentLoadedMs": 837,
+        "loadMs": 843,
+        "htmlTransferKB": 0.3
+      },
+      "bytesByType": {
+        "link": 0.3,
+        "script": 0.3,
+        "other": 0.9,
+        "img": 1.2,
+        "fetch": 0.3,
+        "iframe": 0
+      },
+      "totalTransferKB": 3.2,
+      "requestCount": 14,
+      "cspViolations": [],
+      "consoleErrors": [],
+      "sections": {
+        "total": 13,
+        "hidden": 0,
+        "formVisible": true
+      }
+    }
+  },
+  "nojs": {
+    "desktop": {
+      "total": 13,
+      "hidden": 0,
+      "formVisible": true
+    },
+    "mobile": {
+      "total": 13,
+      "hidden": 0,
+      "formVisible": true
+    }
+  }
+}

@@ -1,8 +1,14 @@
 import { ArrowRight, ShieldCheck, TrendingDown, Zap } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
-import { useState, useEffect } from "react";
-import { TechMapBackground } from "../TechMapBackground";
+import { useState, useEffect, lazy, Suspense } from "react";
 import { staggerContainer, staggerItem } from "./animations";
+
+// Lazy: pulls react-simple-maps + d3 out of the critical bundle. The map is
+// a decorative background that already appeared late (its TopoJSON is
+// fetched at runtime), so deferring the JS does not change the experience.
+const TechMapBackground = lazy(() =>
+  import("../TechMapBackground").then((m) => ({ default: m.TechMapBackground }))
+);
 
 const words = ["Talent", "Developers", "Executives", "AI Engineers", "for Sales", "for Marketing", "QA Engineers"];
 
@@ -24,7 +30,9 @@ export function Hero() {
       transition={{ duration: 0.8, ease: "easeOut" as any }}
       className="relative pt-12 lg:pt-24 px-6 md:px-12 max-w-7xl mx-auto w-full min-h-[75vh] flex items-center"
     >
-      <TechMapBackground />
+      <Suspense fallback={null}>
+        <TechMapBackground />
+      </Suspense>
       <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_80%_80%_at_top_right,_#0047FF33,transparent_80%)] blur-[120px] pointer-events-none"></div>
       <div className="max-w-3xl lg:max-w-4xl relative z-10">
         <h1 className="text-4xl md:text-5xl lg:text-[64px] font-extrabold tracking-tight leading-[1.1] mb-6 text-white">

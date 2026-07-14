@@ -23,4 +23,16 @@ export default defineConfig({
       'prop-types': path.resolve(__dirname, './src/prop-types-shim.js'),
     },
   },
+  build: {
+    rollupOptions: {
+      output: {
+        // Split rarely-changing vendors from app code so a content deploy
+        // doesn't invalidate the visitor's cached React/motion bytes.
+        manualChunks: {
+          "react-vendor": ["react", "react-dom", "react-router-dom"],
+          "motion": ["motion"],
+        },
+      },
+    },
+  },
 })
