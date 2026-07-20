@@ -23,6 +23,8 @@
  * to this endpoint (same origin) instead of to api.web3forms.com.
  */
 
+import { neon } from "@neondatabase/serverless";
+
 export const config = { runtime: "edge" };
 
 const TURNSTILE_VERIFY = "https://challenges.cloudflare.com/turnstile/v0/siteverify";
@@ -33,6 +35,29 @@ function json(body: unknown, status: number): Response {
     status,
     headers: { "content-type": "application/json; charset=utf-8" },
   });
+}
+
+// Fail-open visibility layer: after the email is sent, best-effort-record the
+// lead in Neon (gtm_inbound_leads) so it shows in the LDR /inbound panel. This
+// NEVER affects the email or the visitor — any failure (no URL, timeout, driver
+// error) is swallowed. Web3Forms (the email) stays the durable system of record.
+// Uses an INSERT-only, single-table Neon role (INBOUND_DB_URL), server-side only.
+async function captureLead(fields: Record<string, unknown>): Promise<void> {
+  const url = process.env.INBOUND_DB_URL;
+  if (!url) return;
+  const str = (v: unknown) => (v === undefined || v === null || v === "" ? null : String(v));
+  try {
+    const sql = neon(url);
+    const insert = sql`
+      INSERT INTO gtm_inbound_leads (name, company, email, message, page_url, form_source, form_type)
+      VALUES (${str(fields.name) ?? ""}, ${str(fields.company)}, ${str(fields.email) ?? ""},
+              ${str(fields.message)}, ${str(fields.page_url)}, ${str(fields.form_source)},
+              ${str(fields.form_type)})`;
+    const timeout = new Promise<never>((_, rej) => setTimeout(() => rej(new Error("timeout")), 2000));
+    await Promise.race([insert, timeout]);
+  } catch {
+    // swallow — email already sent; the row is best-effort visibility only.
+  }
 }
 
 export default async function handler(req: Request): Promise<Response> {
@@ -94,6 +119,10 @@ export default async function handler(req: Request): Promise<Response> {
       body: JSON.stringify({ access_key: accessKey, ...fields }),
     });
     const data = await wfRes.json();
+    // Best-effort capture only on a confirmed successful send (fail-open inside).
+    if (wfRes.ok && (data as { success?: boolean })?.success) {
+      await captureLead(fields);
+    }
     return json(data, wfRes.status);
   } catch {
     return json({ success: false, message: "Could not send your message. Please email us at rodolfo@kaptasglobal.io." }, 502);

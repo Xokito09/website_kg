@@ -115,6 +115,8 @@ export function useContactForm(source: string) {
           email: form.email,
           message: form.message,
           page_url: pageUrl,
+          form_source: currentFormSource(),
+          form_type: "contact",
         }),
       });
       const data = await res.json();
