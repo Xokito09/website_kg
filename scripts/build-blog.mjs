@@ -52,6 +52,10 @@ for (const file of files) {
       categories: data.categories ? (Array.isArray(data.categories) ? data.categories : [data.categories]) : existing[idx].categories,
       featured_image: data.featured_image || existing[idx].featured_image,
       content: marked.parse(content),
+      // Written SERP metadata. Falls back to whatever is already in the JSON, so
+      // a markdown edit never silently wipes a meta written directly there.
+      metaTitle: data.metaTitle ?? existing[idx].metaTitle ?? "",
+      metaDescription: data.metaDescription ?? existing[idx].metaDescription ?? "",
     };
     console.log(`✏️  Updated: ${slug}`);
   } else {
@@ -67,6 +71,12 @@ for (const file of files) {
       categories: data.categories
         ? Array.isArray(data.categories) ? data.categories : [data.categories]
         : ["Blog"],
+      // ALWAYS emit these two keys, even empty. blog-posts.json is imported as a
+      // typed literal in BlogPost.tsx — an entry missing them makes the array a
+      // union and `post.metaTitle` a compile error, so a new markdown post would
+      // break the build. Empty string means "fall back to the derived title/meta".
+      metaTitle: data.metaTitle || "",
+      metaDescription: data.metaDescription || "",
     });
     console.log(`✅ Added: ${slug}`);
   }

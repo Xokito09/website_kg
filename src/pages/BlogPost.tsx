@@ -47,6 +47,17 @@ export default function BlogPost() {
   const plainTitle = stripHtml(post.title);
   const plainExcerpt = stripHtml(post.excerpt).replace(/\[\.\.\.\]$/, "").trim();
 
+  // SERP metadata, written per post (blog-posts.json: metaTitle / metaDescription).
+  // Both fall back to today's derived behaviour when empty, so the 22 posts that
+  // have no written meta are untouched.
+  //
+  // metaTitle REPLACES the whole <title> — it is NOT suffixed with
+  // " | Kaptas Global Blog". That suffix costs 23 characters, and Google truncates
+  // around 60: a 54-char written title plus the suffix renders as 77 and the
+  // differentiator gets cut, which is the exact failure this change exists to fix.
+  const metaTitle = post.metaTitle?.trim() || `${plainTitle} | Kaptas Global Blog`;
+  const metaDescription = post.metaDescription?.trim() || plainExcerpt.slice(0, 160);
+
   // AEO block for this post: lead with the article's own title + excerpt
   // (per-post context so the 22 posts don't all ship an identical sr-only
   // block), then the shared blog/company overview that gives answer engines
@@ -78,12 +89,12 @@ export default function BlogPost() {
   return (
     <div className="flex flex-col pb-24">
       <SEO
-        title={`${plainTitle} | Kaptas Global Blog`}
-        description={plainExcerpt.slice(0, 160)}
+        title={metaTitle}
+        description={metaDescription}
         canonical={`https://kaptasglobal.io/blog/${post.slug}`}
         eyebrow="Blog"
         ogTitle={plainTitle}
-        ogSubtitle={plainExcerpt.slice(0, 140)}
+        ogSubtitle={metaDescription.slice(0, 140)}
         ogType="article"
         preloadImage={post.featured_image || undefined}
         schemas={[organizationSchema, articleSchema, breadcrumbSchema]}
