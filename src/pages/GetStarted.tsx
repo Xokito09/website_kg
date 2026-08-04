@@ -107,7 +107,10 @@ export default function GetStarted() {
               </div>
             </motion.div>
 
-            {/* Right: Lead Generation Form — same dark card + green glow as the service hero */}
+            {/* Right: Lead Generation Form — same dark card + green glow as the service hero.
+                The card's lg:-mt-[80px] matches the copy column's -mt-[80px] on purpose: it
+                used to be -mt-[30px], which started the card 50px lower and pushed the same
+                50px out the bottom, reading as the card overhanging the hero. */}
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0, y: [0, -10, 0] }}
@@ -116,7 +119,7 @@ export default function GetStarted() {
                 x: { duration: 0.8, delay: 0.4, ease: "easeOut" },
                 y: { duration: 6, repeat: Infinity, ease: "easeInOut" },
               }}
-              className="relative w-full max-w-[500px] mx-auto mt-12 lg:mt-0 lg:-mt-[30px]"
+              className="relative w-full max-w-[500px] mx-auto mt-12 lg:mt-0 lg:-mt-[80px]"
             >
               <div className="relative group">
                 {/* Glow Effect Layer */}
@@ -143,7 +146,7 @@ export default function GetStarted() {
                   </div>
 
                   {/* Inner Form Container */}
-                  <div className="bg-[#111111] rounded-[23px] p-8 md:p-10 relative z-10 h-full w-full">
+                  <div className="bg-[#111111] rounded-[23px] p-8 relative z-10 h-full w-full">
                     <div className="mb-6 text-center">
                       <h3 className="text-2xl font-bold text-white -mt-[5px]">Get your shortlist</h3>
                       <p className="text-sm text-gray-400 mt-2 leading-relaxed">
