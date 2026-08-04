@@ -181,15 +181,25 @@ export function useTurnstile(theme: "light" | "dark" | "auto" = "light"): Turnst
   }, []);
 
   return {
-    // The Turnstile "normal" widget is a FIXED 300x65px iframe. At a 375px
-    // viewport the form card is only ~261px wide inside its padding (measured
-    // on both the home and hero cards), so the widget overflows by ~39px and is
-    // silently clipped by the section's `overflow-hidden` — the right edge of
-    // the checkbox, including part of the Cloudflare branding, is cut off on
-    // phones. Scaling it to fit is the least disruptive fix and applies to every
-    // form at once now that the captcha is centralized here.
-    // 261/300 = 0.87, so 0.86 leaves a small safety margin.
-    captcha: <div ref={containerRef} className="origin-top-left scale-[0.86] sm:scale-100" />,
+    // The Turnstile "normal" widget is a FIXED 300x65px iframe in a 71px-tall
+    // wrapper, and it can't be made smaller through the API (the only other
+    // sizes are "compact", which is TALLER at 150x140, and "flexible", which
+    // still floors at 300px wide). Two problems it caused, both fixed by one
+    // scale:
+    //
+    //   - Desktop: it added ~87px to the hero form card, which Rodolfo flagged
+    //     as visibly out of proportion with the hero copy column.
+    //   - Mobile: at a 375px viewport the form card is only ~261px wide inside
+    //     its padding, so a 300px widget overflowed by ~39px and was silently
+    //     clipped by the section's `overflow-hidden`.
+    //
+    // 0.7 renders it at 210x45 — comfortably inside the 261px mobile card, so
+    // one scale covers every breakpoint (no `sm:` variant needed) — and the
+    // negative margin reclaims the 21px of layout box the transform leaves
+    // behind, since `transform` doesn't affect layout height. Using a margin
+    // rather than a fixed height means an expanded interactive challenge can
+    // still grow without overlapping the submit button.
+    captcha: <div ref={containerRef} className="origin-top-left scale-[0.7] -mb-[21px]" />,
     getToken: () => tokenRef.current,
     isMounted: () => containerRef.current !== null,
     reset,

@@ -115,16 +115,16 @@ export function LeadGenerationForm({
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-2">
                   <label htmlFor="lg-name" className="text-xs font-semibold text-gray-500 uppercase tracking-wider">Name</label>
-                  <input type="text" id="lg-name" name="name" value={form.name} onChange={handleChange} required className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:ring-2 focus:ring-kaptas-green/20 focus:border-kaptas-green transition-all" placeholder="John Doe" />
+                  <input type="text" id="lg-name" name="name" value={form.name} onChange={handleChange} required className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:ring-2 focus:ring-kaptas-green/20 focus:border-kaptas-green transition-all" placeholder="First and Last name" />
                 </div>
                 <div className="space-y-2">
                   <label htmlFor="lg-company" className="text-xs font-semibold text-gray-500 uppercase tracking-wider">Company Name</label>
-                  <input type="text" id="lg-company" name="company" value={form.company} onChange={handleChange} className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:ring-2 focus:ring-kaptas-green/20 focus:border-kaptas-green transition-all" placeholder="Acme Corp" />
+                  <input type="text" id="lg-company" name="company" value={form.company} onChange={handleChange} className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:ring-2 focus:ring-kaptas-green/20 focus:border-kaptas-green transition-all" placeholder="Your company name" />
                 </div>
               </div>
               <div className="space-y-2">
                 <label htmlFor="lg-email" className="text-xs font-semibold text-gray-500 uppercase tracking-wider">Work Email</label>
-                <input type="email" id="lg-email" name="email" value={form.email} onChange={handleChange} required className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:ring-2 focus:ring-kaptas-green/20 focus:border-kaptas-green transition-all" placeholder="john@acmecorp.com" />
+                <input type="email" id="lg-email" name="email" value={form.email} onChange={handleChange} required className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:ring-2 focus:ring-kaptas-green/20 focus:border-kaptas-green transition-all" placeholder="Your work email" />
               </div>
               <div className="space-y-2">
                 <label htmlFor="lg-message" className="text-xs font-semibold text-gray-500 uppercase tracking-wider">How can we help?</label>

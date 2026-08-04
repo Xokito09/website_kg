@@ -204,7 +204,7 @@ export default function ExecutiveMapping() {
                           onChange={handleHeroChange}
                           required
                           className="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-2.5 text-sm text-white focus:outline-none focus:ring-1 focus:ring-kaptas-green focus:border-kaptas-green transition-all placeholder:text-gray-400 mt-1"
-                          placeholder="John Doe"
+                          placeholder="First and Last name"
                         />
                       </div>
                       <div>
@@ -216,7 +216,7 @@ export default function ExecutiveMapping() {
                           value={heroForm.company}
                           onChange={handleHeroChange}
                           className="w-full bg-white/10 border border-white/20 rounded-lg pr-4 pl-[17px] py-2.5 text-sm text-white focus:outline-none focus:ring-1 focus:ring-kaptas-green focus:border-kaptas-green transition-all placeholder:text-gray-400 mt-1"
-                          placeholder="Acme Corp"
+                          placeholder="Your company name"
                         />
                       </div>
                     </div>
@@ -231,7 +231,7 @@ export default function ExecutiveMapping() {
                         onChange={handleHeroChange}
                         required
                         className="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-2.5 text-sm text-white focus:outline-none focus:ring-1 focus:ring-kaptas-green focus:border-kaptas-green transition-all placeholder:text-gray-400 mt-1"
-                        placeholder="john@acmecorp.com"
+                        placeholder="Your work email"
                       />
                     </div>
 

@@ -282,7 +282,7 @@ export default function Ebook() {
                     name="name"
                     value={form.name}
                     onChange={handleChange}
-                    placeholder="Full name"
+                    placeholder="First and Last name"
                     autoComplete="name"
                     required
                     className="bg-white/5 border border-white/10 rounded-lg px-4 py-2.5 text-sm text-white placeholder:text-gray-500 focus:outline-none focus:border-kaptas-green focus:bg-white/10 transition"
@@ -292,7 +292,7 @@ export default function Ebook() {
                     name="email"
                     value={form.email}
                     onChange={handleChange}
-                    placeholder="Work email"
+                    placeholder="Your work email"
                     autoComplete="email"
                     required
                     className="bg-white/5 border border-white/10 rounded-lg px-4 py-2.5 text-sm text-white placeholder:text-gray-500 focus:outline-none focus:border-kaptas-green focus:bg-white/10 transition"
@@ -302,7 +302,7 @@ export default function Ebook() {
                     name="company"
                     value={form.company}
                     onChange={handleChange}
-                    placeholder="Company"
+                    placeholder="Your company name"
                     autoComplete="organization"
                     required
                     className="bg-white/5 border border-white/10 rounded-lg px-4 py-2.5 text-sm text-white placeholder:text-gray-500 focus:outline-none focus:border-kaptas-green focus:bg-white/10 transition"
