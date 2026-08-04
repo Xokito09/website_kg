@@ -203,7 +203,7 @@ export default function GetStarted() {
                           name="message"
                           value={form.message}
                           onChange={handleChange}
-                          rows={3}
+                          rows={2}
                           className="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-2.5 text-sm text-white focus:outline-none focus:ring-1 focus:ring-kaptas-green focus:border-kaptas-green transition-all resize-none placeholder:text-gray-400 mt-1"
                           placeholder="Tell us about your hiring needs..."
                         ></textarea>
