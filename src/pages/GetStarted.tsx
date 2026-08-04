@@ -108,9 +108,12 @@ export default function GetStarted() {
             </motion.div>
 
             {/* Right: Lead Generation Form — same dark card + green glow as the service hero.
-                The card's lg:-mt-[80px] matches the copy column's -mt-[80px] on purpose: it
-                used to be -mt-[30px], which started the card 50px lower and pushed the same
-                50px out the bottom, reading as the card overhanging the hero. */}
+                lg:-mt-[80px] matches the copy column's -mt-[80px] so the two columns start
+                level. NOTE: this class list previously read `lg:mt-0 lg:-mt-[30px]` — both
+                set margin-top at the same breakpoint and specificity, and Tailwind emits
+                `mt-0` AFTER the arbitrary negative value, so `mt-0` silently won and the
+                -mt-[30px] never applied at all. Verified with getComputedStyle on
+                production (marginTop was "0px"). Don't reintroduce lg:mt-0 here. */}
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0, y: [0, -10, 0] }}
@@ -119,7 +122,7 @@ export default function GetStarted() {
                 x: { duration: 0.8, delay: 0.4, ease: "easeOut" },
                 y: { duration: 6, repeat: Infinity, ease: "easeInOut" },
               }}
-              className="relative w-full max-w-[500px] mx-auto mt-12 lg:mt-0 lg:-mt-[80px]"
+              className="relative w-full max-w-[500px] mx-auto mt-12 lg:-mt-[80px]"
             >
               <div className="relative group">
                 {/* Glow Effect Layer */}
