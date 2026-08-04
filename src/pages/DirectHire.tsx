@@ -35,7 +35,7 @@ const staggerItem = {
 
 export default function DirectHire() {
   const [openFaq, setOpenFaq] = useState<number | null>(0);
-  const { form: heroForm, handleChange: handleHeroChange, handleSubmit: handleHeroSubmit, isSubmitting: heroSubmitting, showModal: heroModal, setShowModal: setHeroModal, error: heroError } = useContactForm("Direct Hire — Hero");
+  const { form: heroForm, handleChange: handleHeroChange, handleSubmit: handleHeroSubmit, isSubmitting: heroSubmitting, showModal: heroModal, setShowModal: setHeroModal, error: heroError, captcha: heroCaptcha } = useContactForm("Direct Hire — Hero", "dark");
 
   const faqs = [
     {
@@ -261,6 +261,7 @@ export default function DirectHire() {
                     </div>
 
                     {heroError && <p className="text-red-400 text-sm">{heroError}</p>}
+                    {heroCaptcha}
                     <button
                       type="submit"
                       disabled={heroSubmitting}

@@ -1,22 +1,45 @@
-import { useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef } from "react";
 
 /**
- * Cloudflare Turnstile spam protection for the Web3Forms lead forms.
+ * Cloudflare Turnstile spam protection for the lead forms.
  *
- * Replaces hCaptcha (which showed image puzzles + rendered in the visitor's
- * locale). Turnstile "Managed" mode is a fast checkmark or fully invisible for
- * almost every real visitor — no puzzles — so it stops the direct-API spam/
- * phishing POST without adding friction to scarce, high-value US leads.
+ * Turnstile "Managed" mode is a fast checkmark or fully invisible for almost
+ * every real visitor — no puzzles — so it stops the direct-API spam/phishing
+ * POST without adding friction to scarce, high-value US leads.
  *
- * Same enforcement model as before: the widget is only the CLIENT half. The
- * SERVER half is the Web3Forms dashboard (Settings -> Security -> Captcha
- * Protection = Turnstile + the Secret Key). Web3Forms then rejects any
- * submission whose `cf-turnstile-response` token is missing or invalid; a bot
- * can't mint a valid token without solving the challenge in a real browser.
+ * The widget is only the CLIENT half. The SERVER half is api/contact.ts, which
+ * verifies `cf-turnstile-response` against TURNSTILE_SECRET before forwarding
+ * anything to Web3Forms. A bot can't mint a valid token without solving the
+ * challenge in a real browser.
  *
- * Sitekey is public (it ships in the bundle by design). The Secret lives only
- * in the Web3Forms dashboard, never here. The script is blocked during the
- * Puppeteer prerender (scripts/prerender.mjs) so it never bakes into static HTML.
+ * Sitekey is public (it ships in the bundle by design). The Secret lives only in
+ * the Vercel env, never here. The script is blocked during the Puppeteer
+ * prerender (scripts/prerender.mjs) so it never bakes into static HTML.
+ *
+ * ---------------------------------------------------------------------------
+ * WHY THIS IS A HOOK AND NOT A FREE-STANDING COMPONENT (rewritten 2026-08-04)
+ * ---------------------------------------------------------------------------
+ * The previous version kept the token in MODULE scope (`let currentToken`) and
+ * exposed a `<TurnstileWidget />` that any page could forget to render. That
+ * produced two production failures:
+ *
+ *   1. A form whose page never rendered the widget was permanently
+ *      unsubmittable, and said "Please complete the verification below." with
+ *      no widget on screen to complete. /get-started shipped that way on
+ *      2026-06-23 and stayed broken for 6 weeks — silently, because the
+ *      lead_form_submit event only fires AFTER a successful POST.
+ *   2. Because the token was global, a form could quietly SUCCEED on a token
+ *      minted by a different form elsewhere on the page (the service pages'
+ *      hero forms did exactly this, borrowing from <LeadGenerationForm />).
+ *      "Works" and "correct" were not the same thing, and a reset in one form
+ *      wiped the other's token.
+ *
+ * Now: one widget per form instance, token in a ref scoped to that instance,
+ * and the container element is handed back as `captcha` so a consumer cannot
+ * obtain a token pipeline without also being given the node to render. The
+ * remaining gap — rendering the hook but not its `captcha` node — is caught by
+ * scripts/captcha-coverage.test.mjs at build time and reported as a
+ * `form_blocked` dataLayer event at runtime (see useContactForm).
  */
 const TURNSTILE_SITEKEY = "0x4AAAAAADp1rVQq3dUPyoMH";
 const TURNSTILE_SCRIPT = "https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit";
@@ -24,34 +47,12 @@ const TURNSTILE_SCRIPT = "https://challenges.cloudflare.com/turnstile/v0/api.js?
 type TurnstileApi = {
   render: (el: HTMLElement, opts: Record<string, unknown>) => string;
   reset: (id?: string) => void;
+  remove: (id?: string) => void;
 };
 
 declare global {
   interface Window {
     turnstile?: TurnstileApi;
-  }
-}
-
-// Module-scoped: one widget per page. The render callback writes the token here;
-// the submit handler reads it via getCaptchaToken().
-let currentToken = "";
-let currentWidgetId: string | null = null;
-
-/** Read the current token at submit time. Empty until the challenge resolves. */
-export function getCaptchaToken(): string {
-  return currentToken || "";
-}
-
-/** Tokens are single-use — reset after every submit attempt so a retry gets a
- *  fresh one. */
-export function resetCaptcha(): void {
-  currentToken = "";
-  try {
-    if (typeof window !== "undefined" && window.turnstile && currentWidgetId) {
-      window.turnstile.reset(currentWidgetId);
-    }
-  } catch {
-    /* widget not rendered yet — nothing to reset */
   }
 }
 
@@ -103,36 +104,87 @@ function loadTurnstile(): Promise<void> {
   return scriptPromise;
 }
 
-export function TurnstileWidget({ theme = "light" }: { theme?: "light" | "dark" | "auto" }) {
-  const ref = useRef<HTMLDivElement>(null);
-  const rendered = useRef(false);
+export type Turnstile = {
+  /** Render this inside the <form>. Without it there is no widget and no token. */
+  captcha: React.ReactNode;
+  /** Current token for THIS form. Empty until the challenge resolves. */
+  getToken: () => string;
+  /**
+   * Whether `captcha` is actually mounted in the DOM. False means the consumer
+   * never rendered it — a wiring bug, not a visitor who hasn't solved it yet.
+   * Lets the caller tell those two cases apart instead of blaming the visitor.
+   */
+  isMounted: () => boolean;
+  /** Tokens are single-use — reset after every submit attempt. */
+  reset: () => void;
+};
+
+export function useTurnstile(theme: "light" | "dark" | "auto" = "light"): Turnstile {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const tokenRef = useRef("");
+  const widgetIdRef = useRef<string | null>(null);
 
   useEffect(() => {
     let cancelled = false;
     loadTurnstile().then(() => {
-      if (cancelled || rendered.current) return;
-      const el = ref.current;
+      if (cancelled) return;
+      const el = containerRef.current;
       // childElementCount guard avoids a double-render under React StrictMode.
       if (!el || !window.turnstile || el.childElementCount > 0) return;
-      rendered.current = true;
-      currentWidgetId = window.turnstile.render(el, {
+      widgetIdRef.current = window.turnstile.render(el, {
         sitekey: TURNSTILE_SITEKEY,
         theme,
         callback: (token: string) => {
-          currentToken = token;
+          tokenRef.current = token;
         },
         "expired-callback": () => {
-          currentToken = "";
+          tokenRef.current = "";
         },
         "error-callback": () => {
-          currentToken = "";
+          tokenRef.current = "";
         },
       });
     });
     return () => {
       cancelled = true;
+      // Explicitly de-register on unmount. Without this an SPA route change
+      // leaves Turnstile holding a widget whose container is detached, which is
+      // the source of the "[Cloudflare Turnstile] Cannot find Widget ...,
+      // consider using turnstile.remove() to clean up a widget" console warning.
+      const id = widgetIdRef.current;
+      widgetIdRef.current = null;
+      tokenRef.current = "";
+      try {
+        if (id && window.turnstile?.remove) window.turnstile.remove(id);
+      } catch {
+        /* already gone — nothing to clean up */
+      }
     };
   }, [theme]);
 
-  return <div ref={ref} />;
+  const reset = useCallback(() => {
+    tokenRef.current = "";
+    try {
+      if (window.turnstile && widgetIdRef.current) {
+        window.turnstile.reset(widgetIdRef.current);
+      }
+    } catch {
+      /* widget not rendered yet — nothing to reset */
+    }
+  }, []);
+
+  return {
+    // The Turnstile "normal" widget is a FIXED 300x65px iframe. At a 375px
+    // viewport the form card is only ~261px wide inside its padding (measured
+    // on both the home and hero cards), so the widget overflows by ~39px and is
+    // silently clipped by the section's `overflow-hidden` — the right edge of
+    // the checkbox, including part of the Cloudflare branding, is cut off on
+    // phones. Scaling it to fit is the least disruptive fix and applies to every
+    // form at once now that the captcha is centralized here.
+    // 261/300 = 0.87, so 0.86 leaves a small safety margin.
+    captcha: <div ref={containerRef} className="origin-top-left scale-[0.86] sm:scale-100" />,
+    getToken: () => tokenRef.current,
+    isMounted: () => containerRef.current !== null,
+    reset,
+  };
 }

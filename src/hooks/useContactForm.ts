@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { getCaptchaToken, resetCaptcha } from "../components/TurnstileWidget";
+import { useTurnstile } from "../components/TurnstileWidget";
 
 interface FormData {
   name: string;
@@ -25,7 +25,11 @@ function currentFormSource(): string {
   return path === "/" ? "home" : (path.split("/").filter(Boolean)[0] || "home");
 }
 
-export function useContactForm(source: string) {
+export function useContactForm(source: string, captchaTheme: "light" | "dark" | "auto" = "light") {
+  // The captcha is OWNED by this hook, not bolted on by the page. Callers get a
+  // `captcha` node back and must render it inside the form — see the header of
+  // components/TurnstileWidget.tsx for the /get-started outage that motivated it.
+  const turnstile = useTurnstile(captchaTheme);
   const [form, setForm] = useState<FormData>({ name: "", company: "", email: "", message: "" });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showModal, setShowModal] = useState(false);
@@ -94,9 +98,41 @@ export function useContactForm(source: string) {
       setError("Please fill in your name and email.");
       return;
     }
-    const captchaToken = getCaptchaToken();
+    const captchaToken = turnstile.getToken();
     if (!captchaToken) {
-      setError("Please complete the verification below.");
+      // Two very different situations, and conflating them is what let the
+      // /get-started outage hide for 6 weeks:
+      //
+      //   captcha_missing  — the page never rendered `captcha`. A wiring bug on
+      //                      our side. The visitor CANNOT fix it, so don't tell
+      //                      them to "complete the verification" that isn't on
+      //                      screen — give them a way to reach us instead.
+      //   captcha_unsolved — the widget is there and simply hasn't resolved yet
+      //                      (slow network, expired token, visitor hasn't
+      //                      clicked). Asking them to complete it is correct.
+      //
+      // Either way, emit form_blocked so a dead form is VISIBLE in GA4 on day
+      // one. lead_form_submit only fires after a successful POST, so without
+      // this a form that can never submit produces no signal at all.
+      const missing = !turnstile.isMounted();
+      pushDataLayer({
+        event: "form_blocked",
+        reason: missing ? "captcha_missing" : "captcha_unsolved",
+        form_source: currentFormSource(),
+        form_type: "contact",
+      });
+      if (missing) {
+        if (import.meta.env.DEV) {
+          console.error(
+            "[useContactForm] This form never rendered the `captcha` node returned by " +
+              "useContactForm(), so no Turnstile token can exist and the form can never " +
+              "be submitted. Render {captcha} inside the <form>.",
+          );
+        }
+        setError("Something went wrong on our side. Please email rodolfo@kaptasglobal.io and we'll pick it up right away.");
+      } else {
+        setError("Please complete the verification below.");
+      }
       return;
     }
     setIsSubmitting(true);
@@ -140,9 +176,19 @@ export function useContactForm(source: string) {
       setError("Network error. Please check your connection and try again.");
     } finally {
       setIsSubmitting(false);
-      resetCaptcha();
+      turnstile.reset();
     }
   }
 
-  return { form, handleChange, handleSubmit, isSubmitting, showModal, setShowModal, error };
+  return {
+    form,
+    handleChange,
+    handleSubmit,
+    isSubmitting,
+    showModal,
+    setShowModal,
+    error,
+    /** MUST be rendered inside the <form>. Without it the form cannot submit. */
+    captcha: turnstile.captcha,
+  };
 }

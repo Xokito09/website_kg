@@ -6,7 +6,7 @@ import { SEO } from "../components/SEO";
 import { AEOContent } from "../components/AEOContent";
 import { organizationSchema, buildBreadcrumbSchema, SITE_URL, ORG_ID } from "../data/seoSchemas";
 import { AEO_PARAGRAPHS } from "../data/aeoContent";
-import { TurnstileWidget, getCaptchaToken, resetCaptcha } from "../components/TurnstileWidget";
+import { useTurnstile } from "../components/TurnstileWidget";
 
 /**
  * The ebook is hosted on Gamma (not a downloadable PDF). After a successful
@@ -63,6 +63,9 @@ interface FormState {
 const INITIAL_FORM: FormState = { name: "", email: "", company: "", role: "" };
 
 export default function Ebook() {
+  // Per-instance captcha; `captcha` MUST be rendered inside the <form> below or
+  // this form can never submit. See components/TurnstileWidget.tsx.
+  const turnstile = useTurnstile("dark");
   const [form, setForm] = useState<FormState>(INITIAL_FORM);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [downloaded, setDownloaded] = useState(false);
@@ -79,9 +82,27 @@ export default function Ebook() {
       setError("Please fill in all fields so we can deliver the guide.");
       return;
     }
-    const captchaToken = getCaptchaToken();
+    const captchaToken = turnstile.getToken();
     if (!captchaToken) {
-      setError("Please complete the verification below.");
+      // Same split as useContactForm: a missing widget is OUR bug and the
+      // visitor can't fix it, so give them a route to us and make it visible
+      // in GA4 instead of failing silently.
+      const missing = !turnstile.isMounted();
+      if (typeof window !== "undefined") {
+        const w = window as unknown as { dataLayer?: Array<Record<string, unknown>> };
+        w.dataLayer = w.dataLayer || [];
+        w.dataLayer.push({
+          event: "form_blocked",
+          reason: missing ? "captcha_missing" : "captcha_unsolved",
+          form_source: "ebook",
+          form_type: "ebook",
+        });
+      }
+      setError(
+        missing
+          ? "Something went wrong on our side. Please email support@kaptasglobal.io and we will send the guide."
+          : "Please complete the verification below.",
+      );
       return;
     }
     setIsSubmitting(true);
@@ -131,7 +152,7 @@ export default function Ebook() {
       setError("Network error. Please check your connection and try again, or email support@kaptasglobal.io.");
     } finally {
       setIsSubmitting(false);
-      resetCaptcha();
+      turnstile.reset();
     }
   }
 
@@ -303,7 +324,7 @@ export default function Ebook() {
                 )}
 
                 <div className="mt-1">
-                  <TurnstileWidget theme="dark" />
+                  {turnstile.captcha}
                 </div>
 
                 <button

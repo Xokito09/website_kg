@@ -1,7 +1,6 @@
 import { SEO } from "../components/SEO";
 import { useContactForm } from "../hooks/useContactForm";
 import { ThankYouModal } from "../components/ThankYouModal";
-import { TurnstileWidget } from "../components/TurnstileWidget";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { motion } from "motion/react";
 import { HowItWorks } from "../components/home/HowItWorks";
@@ -31,7 +30,8 @@ export default function GetStarted() {
     showModal,
     setShowModal,
     error,
-  } = useContactForm("Get Started — Hero");
+    captcha,
+  } = useContactForm("Get Started — Hero", "dark");
 
   return (
     <>
@@ -207,12 +207,11 @@ export default function GetStarted() {
                       </div>
 
                       {error && <p className="text-red-400 text-sm">{error}</p>}
-                      {/* Required: useContactForm refuses to submit without a
-                          Turnstile token (getCaptchaToken() -> ""). Omitting this
-                          widget is what made this form permanently unsubmittable
-                          from 2026-06-23 to 2026-08-03. `theme="dark"` matches the
-                          #111111 card, same as the Ebook form. */}
-                      <TurnstileWidget theme="dark" />
+                      {/* Required: the form cannot submit without a Turnstile
+                          token, and this node is what produces it. Omitting it is
+                          what made this form permanently unsubmittable from
+                          2026-06-23 to 2026-08-03. */}
+                      {captcha}
                       <button
                         type="submit"
                         disabled={isSubmitting}
