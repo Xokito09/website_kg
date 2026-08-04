@@ -351,8 +351,8 @@ export default function PrivacyPolicy() {
             </p>
             <p>
               <strong>HR Technology LLC</strong> (d/b/a Kaptas Global)<br />
-              7345 W Sand Lake Rd, Ste 210, Office 460<br />
-              Orlando, FL 32819, United States<br />
+              801 Brickell Ave, 8th Floor<br />
+              Miami, FL 33131, United States<br />
               Email: <a href="mailto:support@kaptasglobal.io">support@kaptasglobal.io</a><br />
               Phone: <a href="tel:+16892939252">+1 (689) 293-9252</a>
             </p>

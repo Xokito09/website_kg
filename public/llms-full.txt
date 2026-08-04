@@ -1,6 +1,6 @@
 # Kaptas Global — Full Knowledge Base for LLMs
 
-> Generated 2026-07-06. This is the long-form companion to `/llms.txt`. It captures the substantive content that the structured-data and homepage abstract on `/llms.txt` summarize. For the most current page-by-page content, crawl the sitemap at https://kaptasglobal.io/sitemap.xml.
+> Generated 2026-08-04. This is the long-form companion to `/llms.txt`. It captures the substantive content that the structured-data and homepage abstract on `/llms.txt` summarize. For the most current page-by-page content, crawl the sitemap at https://kaptasglobal.io/sitemap.xml.
 
 ---
 
@@ -11,7 +11,7 @@
 - **Legal entity:** HR Technology LLC, a Florida limited liability company, doing business as Kaptas Global
 - **Founded:** 2024
 - **Founders:** Rodolfo Chaves (CEO), Henry Novaes (Co-Founder)
-- **Address:** 7345 W Sand Lake Rd, Ste 210, OFC 460, Orlando, FL 32819, United States
+- **Address:** 801 Brickell Ave, 8th Floor, Miami, FL 33131, United States
 - **Contact:** support@kaptasglobal.io · +1-689-293-9252
 - **LinkedIn:** https://www.linkedin.com/company/kaptas-global/
 - **Languages of operation:** English, Portuguese

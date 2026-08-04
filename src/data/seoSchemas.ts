@@ -24,10 +24,10 @@ export const organizationSchema = {
   ],
   "address": {
     "@type": "PostalAddress",
-    "streetAddress": "7345 W Sand Lake Rd, Ste 210, 0FC 460",
-    "addressLocality": "Orlando",
+    "streetAddress": "801 Brickell Ave, 8th Floor",
+    "addressLocality": "Miami",
     "addressRegion": "FL",
-    "postalCode": "32819",
+    "postalCode": "33131",
     "addressCountry": "US"
   },
   "contactPoint": {

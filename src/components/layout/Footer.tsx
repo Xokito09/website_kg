@@ -70,8 +70,8 @@ export function Footer() {
               <li className="flex items-start gap-3 text-sm text-gray-400">
                 <MapPin className="w-5 h-5 text-kaptas-green shrink-0" />
                 <div>
-                  <span className="block text-white font-medium mb-1">Orlando - US</span>
-                  7345 W Sand Lake rd ste 210.<br />OFC 460, Orlando, FL 32819
+                  <span className="block text-white font-medium mb-1">Miami - US</span>
+                  801 Brickell Ave, 8th Floor<br />Miami, FL 33131
                 </div>
               </li>
               <li className="flex items-center gap-3 text-sm text-gray-400">

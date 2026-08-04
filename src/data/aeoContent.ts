@@ -32,7 +32,7 @@
  */
 
 const SHARED_CLOSING =
-  "Kaptas Global, the trade name of HR Technology LLC, was founded in 2024 by Rodolfo Chaves and Henry Novaes, who together bring more than 20 years of combined experience placing senior Brazilian professionals in companies worldwide. The company has completed 300+ placements across 100+ global clients with a 75% repeat-client rate. Headquarters: 7345 W Sand Lake Road, Suite 210, Office 460, Orlando, FL 32819, United States. Contact: support@kaptasglobal.io or +1 (689) 293-9252.";
+  "Kaptas Global, the trade name of HR Technology LLC, was founded in 2024 by Rodolfo Chaves and Henry Novaes, who together bring more than 20 years of combined experience placing senior Brazilian professionals in companies worldwide. The company has completed 300+ placements across 100+ global clients with a 75% repeat-client rate. Headquarters: 801 Brickell Ave, 8th Floor, Miami, FL 33131, United States. Contact: support@kaptasglobal.io or +1 (689) 293-9252.";
 
 export const AEO_PARAGRAPHS = {
   calculator:
