@@ -134,6 +134,13 @@ export function useTurnstile(theme: "light" | "dark" | "auto" = "light"): Turnst
       widgetIdRef.current = window.turnstile.render(el, {
         sitekey: TURNSTILE_SITEKEY,
         theme,
+        // Pin English. Turnstile defaults to "auto" = the VISITOR's browser
+        // locale, so a pt-BR browser renders "Sucesso!" inside an otherwise
+        // fully-English page (confirmed on production 2026-08-04). Rendering in
+        // the visitor's locale is the exact complaint that motivated dropping
+        // hCaptcha for Turnstile in the first place (see fec68b2) — Turnstile
+        // just inherited the same default. The site and the ICP are US English.
+        language: "en",
         callback: (token: string) => {
           tokenRef.current = token;
         },
