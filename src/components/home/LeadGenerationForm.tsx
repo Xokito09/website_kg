@@ -114,7 +114,7 @@ export function LeadGenerationForm({
                 <form className="space-y-6" onSubmit={handleSubmit}>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-2">
-                  <label htmlFor="lg-name" className="text-xs font-semibold text-gray-500 uppercase tracking-wider">Name</label>
+                  <label htmlFor="lg-name" className="text-xs font-semibold text-gray-500 uppercase tracking-wider">Name <span aria-hidden="true" className="text-kaptas-green">*</span></label>
                   <input type="text" id="lg-name" name="name" value={form.name} onChange={handleChange} required className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:ring-2 focus:ring-kaptas-green/20 focus:border-kaptas-green transition-all" placeholder="First and Last name" />
                 </div>
                 <div className="space-y-2">
@@ -123,7 +123,7 @@ export function LeadGenerationForm({
                 </div>
               </div>
               <div className="space-y-2">
-                <label htmlFor="lg-email" className="text-xs font-semibold text-gray-500 uppercase tracking-wider">Work Email</label>
+                <label htmlFor="lg-email" className="text-xs font-semibold text-gray-500 uppercase tracking-wider">Work Email <span aria-hidden="true" className="text-kaptas-green">*</span></label>
                 <input type="email" id="lg-email" name="email" value={form.email} onChange={handleChange} required className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:ring-2 focus:ring-kaptas-green/20 focus:border-kaptas-green transition-all" placeholder="Your work email" />
               </div>
               <div className="space-y-2">

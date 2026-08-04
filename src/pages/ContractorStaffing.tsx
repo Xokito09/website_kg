@@ -202,7 +202,7 @@ export default function ContractorStaffing() {
                   <form className="space-y-4 mt-1" onSubmit={handleHeroSubmit}>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div>
-                        <label htmlFor="hero-name" className="block text-xs font-semibold text-gray-300 uppercase tracking-wider mt-0 mb-[6px]">Name</label>
+                        <label htmlFor="hero-name" className="block text-xs font-semibold text-gray-300 uppercase tracking-wider mt-0 mb-[6px]">Name <span aria-hidden="true" className="text-kaptas-green">*</span></label>
                         <input
                           type="text"
                           id="hero-name"
@@ -229,7 +229,7 @@ export default function ContractorStaffing() {
                     </div>
 
                     <div>
-                      <label htmlFor="hero-email" className="block text-xs font-semibold text-gray-300 uppercase tracking-wider mt-0 mb-[6px]">Work Email</label>
+                      <label htmlFor="hero-email" className="block text-xs font-semibold text-gray-300 uppercase tracking-wider mt-0 mb-[6px]">Work Email <span aria-hidden="true" className="text-kaptas-green">*</span></label>
                       <input
                         type="email"
                         id="hero-email"
