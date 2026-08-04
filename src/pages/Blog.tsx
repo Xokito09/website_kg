@@ -6,8 +6,6 @@ import { AEOContent } from "../components/AEOContent";
 import { organizationSchema, buildBreadcrumbSchema, SITE_URL } from "../data/seoSchemas";
 import { AEO_PARAGRAPHS } from "../data/aeoContent";
 import blogPosts from "../data/blog-index.json";
-import { useContactForm } from "../hooks/useContactForm";
-import { ThankYouModal } from "../components/ThankYouModal";
 import { formatDateShort } from "../lib/utils";
 
 const fadeIn = {
@@ -43,11 +41,9 @@ export default function Blog() {
   const posts = [...blogPosts].sort(
     (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
   );
-  const { form: nlForm, handleChange: handleNlChange, handleSubmit: handleNlSubmit, isSubmitting: nlSubmitting, showModal: nlModal, setShowModal: setNlModal, error: nlError } = useContactForm("Blog — Newsletter");
 
   return (
     <>
-    <ThankYouModal isOpen={nlModal} onClose={() => setNlModal(false)} />
     <div className="flex flex-col gap-32 pb-24">
       <SEO
         title="Blog — Kaptas Global | Insights on Hiring in Brazil & Latin America"
@@ -151,31 +147,29 @@ export default function Blog() {
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-kaptas-green/5 rounded-full blur-[120px] pointer-events-none"></div>
         <div className="relative bg-[#0A0A0A] rounded-[2rem] p-10 md:p-16 border border-white/10 overflow-hidden flex flex-col md:flex-row items-center justify-between gap-12">
           <div className="absolute inset-0 bg-noise opacity-20 mix-blend-overlay pointer-events-none"></div>
+          {/* Was a newsletter signup. Removed 2026-08-04: there is no newsletter
+              — the form only emailed Rodolfo via Web3Forms, and "Join 2,000+
+              founders" promised a subscription nothing delivered. It was also
+              permanently unsubmittable (useContactForm requires `name`; the form
+              was email-only, so every submit died on "Please fill in your name
+              and email."). Replaced with the same end-of-post CTA already used in
+              BlogPost.tsx, which points at the working /get-started form. */}
           <div className="relative z-10 max-w-xl">
             <h2 className="text-3xl md:text-4xl font-bold mb-4 tracking-tight text-white">
-              Get hiring insights delivered to your inbox
+              Ready to hire in Brazil?
             </h2>
             <p className="text-gray-400 text-lg leading-relaxed">
-              Join 2,000+ founders and engineering leaders receiving our monthly updates on the LATAM talent market.
+              Pre-vetted shortlist in 5 days. Zero upfront cost.
             </p>
           </div>
-          <div className="relative z-10 w-full md:w-auto flex-1 max-w-md">
-            <form className="flex flex-col sm:flex-row gap-3" onSubmit={handleNlSubmit}>
-              <input
-                type="email"
-                name="email"
-                value={nlForm.email}
-                onChange={handleNlChange}
-                placeholder="Enter your email"
-                className="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-kaptas-green focus:bg-white/10 transition-all flex-1"
-                required
-              />
-              <button type="submit" disabled={nlSubmitting} className="bg-white text-black px-6 py-3 rounded-xl font-semibold hover:bg-gray-200 transition-colors whitespace-nowrap disabled:opacity-60 disabled:cursor-not-allowed">
-                {nlSubmitting ? "Subscribing..." : "Subscribe"}
-              </button>
-            </form>
-            {nlError && <p className="text-red-400 text-xs mt-2">{nlError}</p>}
-            <p className="text-xs text-gray-500 mt-4 font-mono">We respect your privacy. Unsubscribe at any time.</p>
+          <div className="relative z-10 w-full md:w-auto shrink-0">
+            <Link
+              to="/get-started"
+              className="inline-flex items-center justify-center gap-2 w-full md:w-auto bg-kaptas-green text-kaptas-black px-8 py-3.5 rounded-full font-semibold text-sm hover:brightness-90 transition-all whitespace-nowrap group"
+            >
+              Get Started
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </Link>
           </div>
         </div>
       </motion.section>
