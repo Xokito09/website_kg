@@ -138,6 +138,14 @@ export function useContactForm(source: string, captchaTheme: "light" | "dark" | 
     setIsSubmitting(true);
     setError("");
     const pageUrl = typeof window !== "undefined" ? window.location.href : source;
+    // Same page, minus the query string. `pageUrl` keeps the full href (utm
+    // params and all) for `page_url` -> gtm_inbound_leads; the subject line
+    // gets the trimmed form so a lead arriving from a campaign doesn't ship a
+    // 200-character subject that Gmail truncates before the company name.
+    const conversionUrl =
+      typeof window !== "undefined"
+        ? `${window.location.origin}${window.location.pathname}`
+        : source;
     try {
       const res = await fetch("/api/contact", {
         method: "POST",
@@ -149,7 +157,7 @@ export function useContactForm(source: string, captchaTheme: "light" | "dark" | 
           // the dashboard value is inert. Company is an optional field, so fall
           // back to the person's name; without the fallback a blank company
           // ships a subject that trails off after the colon.
-          subject: `New lead WEBSITE: ${form.company.trim() || form.name.trim()}`,
+          subject: `New lead WEBSITE: ${form.company.trim() || form.name.trim()} (${conversionUrl})`,
           from_name: "Kaptas Global Website",
           name: form.name,
           company: form.company,
