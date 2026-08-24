@@ -144,7 +144,12 @@ export function useContactForm(source: string, captchaTheme: "light" | "dark" | 
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           "cf-turnstile-response": captchaToken,
-          subject: `New inquiry from ${form.name} at ${form.company} — ${pageUrl}`,
+          // Web3Forms gives the POST payload precedence over the dashboard's
+          // "Email Subject" field, so THIS string is what lands in the inbox —
+          // the dashboard value is inert. Company is an optional field, so fall
+          // back to the person's name; without the fallback a blank company
+          // ships a subject that trails off after the colon.
+          subject: `New lead WEBSITE: ${form.company.trim() || form.name.trim()}`,
           from_name: "Kaptas Global Website",
           name: form.name,
           company: form.company,
