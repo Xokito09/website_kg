@@ -5,8 +5,18 @@ import { SEO } from "../components/SEO";
 import { AEOContent } from "../components/AEOContent";
 import { organizationSchema, buildBreadcrumbSchema, SITE_URL } from "../data/seoSchemas";
 import { AEO_PARAGRAPHS } from "../data/aeoContent";
-import blogPosts from "../data/blog-posts.json";
+import blogPostsRaw from "../data/blog-posts.json";
 import { formatDateLong } from "../lib/utils";
+import type { BlogPostData } from "../types/blog";
+import { PostKeyTakeaways } from "../components/blog/PostKeyTakeaways";
+import { PostFaq } from "../components/blog/PostFaq";
+import { PostRelated } from "../components/blog/PostRelated";
+import { PostAuthor } from "../components/blog/PostAuthor";
+
+// blog-posts.json mixes 22 old posts (no contract-v1 fields) with newer ones that
+// do carry them (see src/types/blog.ts): the new fields are OPTIONAL on the type
+// on purpose, so this cast never turns the array into a brittle union.
+const blogPosts = blogPostsRaw as BlogPostData[];
 
 const NAMED_ENTITIES: Record<string, string> = {
   amp: "&",
@@ -66,15 +76,26 @@ export default function BlogPost() {
     `${plainTitle} — a Kaptas Global blog article.${plainExcerpt ? ` ${plainExcerpt}` : ""} ` +
     AEO_PARAGRAPHS.blog;
 
+  const keyTakeaways = post.keyTakeaways ?? [];
+  const faqItems = post.faq ?? [];
+  const relatedItems = post.related ?? [];
+  const dateModified = post.dateModified || post.date;
+
+  // Person when the post carries a contract-v1 author, Organization otherwise
+  // (the 22 old posts, and any new one without an author block).
+  const authorSchema = post.author
+    ? { "@type": "Person", "name": post.author.name, "jobTitle": post.author.role, "description": post.author.bio }
+    : { "@type": "Organization", "name": "Kaptas Global", "url": "https://kaptasglobal.io" };
+
   const articleSchema = {
     "@context": "https://schema.org",
     "@type": "Article",
     "headline": plainTitle,
     "description": plainExcerpt,
     "datePublished": post.date,
-    "dateModified": post.date,
+    "dateModified": dateModified,
     "image": post.featured_image || "https://kaptasglobal.io/logo-branco.png",
-    "author": { "@type": "Organization", "name": "Kaptas Global", "url": "https://kaptasglobal.io" },
+    "author": authorSchema,
     "publisher": { "@type": "Organization", "name": "Kaptas Global", "logo": { "@type": "ImageObject", "url": "https://kaptasglobal.io/logo-branco.png" } },
     "mainEntityOfPage": { "@type": "WebPage", "@id": `${SITE_URL}/blog/${post.slug}` },
     "url": `${SITE_URL}/blog/${post.slug}`,
@@ -85,6 +106,35 @@ export default function BlogPost() {
     { name: "Blog", url: `${SITE_URL}/blog` },
     { name: plainTitle, url: `${SITE_URL}/blog/${post.slug}` },
   ]);
+
+  const faqSchema = faqItems.length > 0
+    ? {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": faqItems.map((item) => ({
+          "@type": "Question",
+          "name": item.q,
+          "acceptedAnswer": { "@type": "Answer", "text": item.a },
+        })),
+      }
+    : null;
+
+  const itemListItems = post.listItems ?? [];
+  const itemListSchema = itemListItems.length > 0
+    ? {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        "itemListElement": itemListItems.map((name, index) => ({
+          "@type": "ListItem",
+          "position": index + 1,
+          "name": name,
+        })),
+      }
+    : null;
+
+  const schemas = [organizationSchema, articleSchema, breadcrumbSchema, faqSchema, itemListSchema].filter(
+    (schema): schema is NonNullable<typeof schema> => schema !== null
+  );
 
   return (
     <div className="flex flex-col pb-24">
@@ -97,17 +147,17 @@ export default function BlogPost() {
         ogSubtitle={metaDescription.slice(0, 140)}
         ogType="article"
         preloadImage={post.featured_image || undefined}
-        schemas={[organizationSchema, articleSchema, breadcrumbSchema]}
+        schemas={schemas}
       />
 
       <AEOContent paragraph={aeoParagraph} label="Kaptas Global blog article overview" />
 
-      {/* Hero */}
+      {/* Hero — single ~820px column, same side borders as content and CTA below */}
       <motion.section
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7 }}
-        className="pt-36 px-6 md:px-12 max-w-4xl mx-auto w-full"
+        className="pt-36 px-6 md:px-12 max-w-[820px] mx-auto w-full"
       >
         <Link
           to="/blog"
@@ -130,6 +180,8 @@ export default function BlogPost() {
           dangerouslySetInnerHTML={{ __html: post.title }}
         />
 
+        <PostKeyTakeaways items={keyTakeaways} />
+
         {post.featured_image && (
           <img
             src={post.featured_image}
@@ -143,45 +195,52 @@ export default function BlogPost() {
             fetchPriority="high"
             loading="eager"
             decoding="async"
-            className="w-full rounded-2xl object-cover max-h-[480px] mb-12 border border-white/10"
+            className="w-full rounded-2xl object-cover max-h-[480px] mt-10 mb-12 border border-white/10"
           />
         )}
       </motion.section>
 
-      {/* Content */}
+      {/* Content — 18px body, justified + hyphenated from md up, tables scroll inside their own box */}
       <motion.section
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.7, delay: 0.2 }}
-        className="px-6 md:px-12 max-w-4xl mx-auto w-full"
+        className="px-6 md:px-12 max-w-[820px] mx-auto w-full"
       >
         <article
           className="prose prose-invert prose-lg max-w-none
             prose-headings:font-bold prose-headings:tracking-tight
-            prose-h2:text-2xl prose-h2:mt-12 prose-h2:mb-4
-            prose-h3:text-xl prose-h3:mt-8 prose-h3:mb-3
-            prose-p:text-gray-300 prose-p:leading-relaxed prose-p:mb-6
+            prose-h2:text-[26px] prose-h2:mt-[68px] prose-h2:mb-[22px]
+            prose-h3:text-xl prose-h3:mt-9 prose-h3:mb-[14px]
+            prose-p:text-[18px] prose-p:text-gray-300 prose-p:leading-relaxed prose-p:mb-6
+            md:prose-p:text-justify md:prose-p:[hyphens:auto]
             prose-a:text-kaptas-green prose-a:no-underline hover:prose-a:underline
             prose-strong:text-white
-            prose-ul:text-gray-300 prose-ol:text-gray-300
+            prose-ul:text-gray-300 prose-ol:text-gray-300 prose-li:text-[18px]
             prose-li:mb-2
             prose-img:rounded-xl prose-img:border prose-img:border-white/10
             prose-blockquote:border-l-kaptas-green prose-blockquote:text-gray-400
             prose-code:text-kaptas-green prose-code:bg-white/5 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded
-            prose-pre:bg-[#0A0A0A] prose-pre:border prose-pre:border-white/10 prose-pre:rounded-xl"
+            prose-pre:bg-[#0A0A0A] prose-pre:border prose-pre:border-white/10 prose-pre:rounded-xl
+            prose-table:block prose-table:overflow-x-auto prose-table:border prose-table:border-white/10 prose-table:rounded-xl"
           dangerouslySetInnerHTML={{ __html: post.content }}
         />
+
+        <PostFaq items={faqItems} />
+        <PostAuthor author={post.author as NonNullable<typeof post.author>} />
       </motion.section>
 
-      {/* Bottom CTA */}
+      {/* Related reading + bottom CTA — same ~820px column, no source table, no competitor links */}
       <motion.section
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
-        className="px-6 md:px-12 max-w-4xl mx-auto w-full mt-20"
+        className="px-6 md:px-12 max-w-[820px] mx-auto w-full mt-20"
       >
-        <div className="bg-[#0A0A0A] border border-white/10 rounded-2xl p-10 flex flex-col md:flex-row items-center justify-between gap-8">
+        <PostRelated items={relatedItems} />
+
+        <div className="bg-[#0A0A0A] border border-white/10 rounded-2xl p-10 flex flex-col md:flex-row items-center justify-between gap-8 mt-10">
           <div>
             <h3 className="text-xl font-bold text-white mb-2">Ready to hire in Brazil?</h3>
             <p className="text-gray-400 text-sm">Pre-vetted shortlist in 5 days. Zero upfront cost.</p>
