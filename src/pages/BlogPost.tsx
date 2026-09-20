@@ -157,7 +157,7 @@ export default function BlogPost() {
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7 }}
-        className="pt-36 px-6 md:px-12 max-w-[820px] mx-auto w-full"
+        className="pt-36 px-6 md:px-12 max-w-[916px] mx-auto w-full"
       >
         <Link
           to="/blog"
@@ -205,7 +205,7 @@ export default function BlogPost() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.7, delay: 0.2 }}
-        className="px-6 md:px-12 max-w-[820px] mx-auto w-full"
+        className="px-6 md:px-12 max-w-[916px] mx-auto w-full"
       >
         <article
           className="prose prose-invert prose-lg max-w-none
@@ -236,7 +236,7 @@ export default function BlogPost() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
-        className="px-6 md:px-12 max-w-[820px] mx-auto w-full mt-20"
+        className="px-6 md:px-12 max-w-[916px] mx-auto w-full mt-20"
       >
         <PostRelated items={relatedItems} />
 
