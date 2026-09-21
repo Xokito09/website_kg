@@ -5,8 +5,16 @@ import { SEO } from "../components/SEO";
 import { AEOContent } from "../components/AEOContent";
 import { organizationSchema, buildBreadcrumbSchema, SITE_URL } from "../data/seoSchemas";
 import { AEO_PARAGRAPHS } from "../data/aeoContent";
-import blogPosts from "../data/blog-index.json";
+import blogPostsRaw from "../data/blog-index.json";
 import { formatDateShort } from "../lib/utils";
+import type { BlogPostData } from "../types/blog";
+import { PostCover } from "../components/blog/PostCover";
+
+// blog-index.json is blog-posts.json minus `content` (see
+// scripts/build-blog-index.mjs) and the same mix of 22 old posts (no
+// contract-v1 fields) and newer ones that carry them — see BlogPost.tsx for
+// why this cast goes through `unknown` (content is missing on purpose here).
+const blogPosts = blogPostsRaw as unknown as Omit<BlogPostData, "content">[];
 
 const fadeIn = {
   initial: { opacity: 0, y: 20 },
@@ -98,6 +106,10 @@ export default function Blog() {
               .replace(/<[^>]+>/g, "")
               .replace(/\[&hellip;\]|\[&#8230;\]/g, "…")
               .trim();
+            // PostCover renders this as plain text (no dangerouslySetInnerHTML),
+            // unlike the <h2> below — strip tags so the fallback cover never
+            // shows raw markup.
+            const plainTitle = post.title.replace(/<[^>]+>/g, "").trim();
             const dateFormatted = formatDateShort(post.date);
 
             return (
@@ -106,7 +118,11 @@ export default function Blog() {
                 variants={staggerItem}
                 className="group relative bg-[#0A0A0A] border border-white/10 hover:border-white/30 rounded-[2rem] overflow-hidden flex flex-col transition-all duration-500"
               >
-                {post.featured_image && (
+                {post.cover ? (
+                  // WP-B3b: same illustrated cover as the post page, compact
+                  // card variant — decision 2 + 5.
+                  <PostCover cover={post.cover} fallbackTitle={plainTitle} fallbackEyebrow={category} variant="card" />
+                ) : post.featured_image ? (
                   <div className="w-full h-48 overflow-hidden">
                     <img
                       src={post.featured_image}
@@ -114,6 +130,8 @@ export default function Blog() {
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                     />
                   </div>
+                ) : (
+                  <PostCover cover={null} fallbackTitle={plainTitle} fallbackEyebrow={category} variant="card" />
                 )}
                 <div className="p-8 flex flex-col flex-1">
                   <div className="flex items-center justify-between mb-6">

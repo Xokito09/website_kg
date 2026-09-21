@@ -1,6 +1,4 @@
-import { useState } from "react";
-import { motion, AnimatePresence } from "motion/react";
-import { Plus, Minus } from "lucide-react";
+import { FaqAccordion } from "../shared/FaqAccordion";
 
 const faqs = [
   {
@@ -46,8 +44,6 @@ const faqs = [
 ];
 
 export function PricingFAQ() {
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
-
   return (
     <section className="bg-[#111111] py-24 px-6 md:px-12 relative z-10">
       <div className="max-w-3xl mx-auto w-full">
@@ -55,44 +51,8 @@ export function PricingFAQ() {
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white tracking-tight">Frequently Asked Questions</h2>
           <p className="text-gray-400 text-lg">Everything you need to know about our pricing and models.</p>
         </div>
-        
-        <div className="space-y-4">
-          {faqs.map((faq, index) => {
-            const isOpen = openIndex === index;
-            return (
-              <div 
-                key={index} 
-                className="bg-white/[0.02] border border-white/5 rounded-2xl overflow-hidden transition-colors hover:bg-white/[0.04]"
-              >
-                <button
-                  onClick={() => setOpenIndex(isOpen ? null : index)}
-                  className="w-full flex items-center justify-between p-6 text-left focus:outline-none group"
-                >
-                  <span className="text-lg font-medium text-white group-hover:text-kaptas-green transition-colors pr-8">
-                    {faq.q}
-                  </span>
-                  <span className="flex-shrink-0 w-8 h-8 rounded-full bg-white/5 flex items-center justify-center text-gray-400 group-hover:text-kaptas-green group-hover:bg-kaptas-green/10 transition-all">
-                    {isOpen ? <Minus className="w-4 h-4" /> : <Plus className="w-4 h-4" />}
-                  </span>
-                </button>
-                <AnimatePresence>
-                  {isOpen && (
-                    <motion.div
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: "auto", opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.3, ease: "easeInOut" }}
-                    >
-                      <div className="px-6 pb-6 pt-2 text-gray-400 leading-relaxed text-base" data-speakable="true">
-                        {faq.a}
-                      </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </div>
-            );
-          })}
-        </div>
+
+        <FaqAccordion items={faqs} />
       </div>
     </section>
   );
