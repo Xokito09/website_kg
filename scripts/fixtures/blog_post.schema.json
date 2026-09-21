@@ -145,7 +145,15 @@
           "type": "string"
         },
         "motif": {
-          "type": "string"
+          "type": "string",
+          "enum": [
+            "comparison",
+            "list",
+            "cost",
+            "guide",
+            "map",
+            "news"
+          ]
         }
       }
     },
