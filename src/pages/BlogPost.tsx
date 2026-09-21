@@ -12,6 +12,7 @@ import { PostKeyTakeaways } from "../components/blog/PostKeyTakeaways";
 import { PostFaq } from "../components/blog/PostFaq";
 import { PostRelated } from "../components/blog/PostRelated";
 import { PostAuthor } from "../components/blog/PostAuthor";
+import { PostCover } from "../components/blog/PostCover";
 
 // blog-posts.json mixes 22 old posts (no contract-v1 fields) with newer ones that
 // do carry them (see src/types/blog.ts): the new fields are OPTIONAL on the type
@@ -182,7 +183,11 @@ export default function BlogPost() {
 
         <PostKeyTakeaways items={keyTakeaways} />
 
-        {post.featured_image && (
+        {post.cover ? (
+          // WP-B3b: illustrated automatic cover (spec 13 §9) — takes priority
+          // over featured_image per decision 2.
+          <PostCover cover={post.cover} fallbackTitle={plainTitle} fallbackEyebrow={category} />
+        ) : post.featured_image ? (
           <img
             src={post.featured_image}
             alt={post.title}
@@ -197,6 +202,10 @@ export default function BlogPost() {
             decoding="async"
             className="w-full rounded-2xl object-cover max-h-[480px] mt-10 mb-12 border border-white/10"
           />
+        ) : (
+          // Neither cover nor featured_image: automatic cover from the title
+          // and the default motif (spec 13 §9 risk 3).
+          <PostCover cover={null} fallbackTitle={plainTitle} fallbackEyebrow={category} />
         )}
       </motion.section>
 

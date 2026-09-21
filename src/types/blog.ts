@@ -25,10 +25,12 @@ export interface BlogAuthor {
   bio: string;
 }
 
+import type { CoverMotif } from "../lib/coverMotifs";
+
 export interface BlogCover {
   eyebrow: string;
   title_short: string;
-  motif: string;
+  motif: CoverMotif;
 }
 
 export interface BlogPostData {

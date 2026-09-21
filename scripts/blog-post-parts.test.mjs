@@ -72,6 +72,39 @@ test("mergeParts carries the golden fixture parts onto a base post", () => {
   assert.equal(merged.contractVersion, 1);
 });
 
+test("readPostParts keeps a valid cover.motif as-is", () => {
+  const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), "blog-post-parts-"));
+  fs.writeFileSync(
+    path.join(tmpDir, "with-cover.post.json"),
+    JSON.stringify({ contract_version: 1, cover: { eyebrow: "E", title_short: "T", motif: "map" } }),
+    "utf-8"
+  );
+  const parts = readPostParts(tmpDir, "with-cover");
+  assert.deepEqual(parts.cover, { eyebrow: "E", title_short: "T", motif: "map" });
+});
+
+test("readPostParts falls back an unknown cover.motif to guide, never throws", () => {
+  const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), "blog-post-parts-"));
+  fs.writeFileSync(
+    path.join(tmpDir, "bad-motif.post.json"),
+    JSON.stringify({ contract_version: 1, cover: { eyebrow: "E", title_short: "T", motif: "not-a-real-type" } }),
+    "utf-8"
+  );
+  const parts = readPostParts(tmpDir, "bad-motif");
+  assert.equal(parts.cover.motif, "guide");
+});
+
+test("readPostParts leaves cover null when the post has none", () => {
+  const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), "blog-post-parts-"));
+  fs.writeFileSync(
+    path.join(tmpDir, "no-cover.post.json"),
+    JSON.stringify({ contract_version: 1 }),
+    "utf-8"
+  );
+  const parts = readPostParts(tmpDir, "no-cover");
+  assert.equal(parts.cover, null);
+});
+
 test("emptyParts matches the shape mergeParts falls back to", () => {
   const merged = mergeParts({ id: 1 }, null);
   const empty = emptyParts();

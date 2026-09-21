@@ -14,6 +14,7 @@
 
 import fs from "fs";
 import path from "path";
+import { isCoverMotif, toCoverMotif } from "../src/lib/coverMotifs.ts";
 
 /** Empty shape for every new (optional) field, used when there is no .post.json. */
 export function emptyParts() {
@@ -36,6 +37,26 @@ export function emptyParts() {
  * — on purpose: a silent skip here would mean a new contract field ships to no
  * post at all with no error anywhere.
  */
+/**
+ * Normalizes a raw `cover` block (contract v1) to the closed CoverMotif list
+ * (src/lib/coverMotifs.ts). An unknown/missing motif falls back to the
+ * default ("guide") with a console warning — it NEVER throws, per WP-B3b /
+ * spec 13 §9 risk 3 ("nunca quebra o build").
+ */
+function normalizeCover(rawCover, slug) {
+  if (!rawCover) return null;
+  if (!isCoverMotif(rawCover.motif)) {
+    console.warn(
+      `⚠️  ${slug}.post.json: unknown cover.motif ${JSON.stringify(rawCover.motif)}, falling back to "guide".`
+    );
+  }
+  return {
+    eyebrow: rawCover.eyebrow ?? "",
+    title_short: rawCover.title_short ?? "",
+    motif: toCoverMotif(rawCover.motif),
+  };
+}
+
 export function readPostParts(contentDir, slug) {
   const partsPath = path.join(contentDir, `${slug}.post.json`);
   if (!fs.existsSync(partsPath)) {
@@ -57,7 +78,7 @@ export function readPostParts(contentDir, slug) {
     author: raw.author ?? null,
     keyTakeaways: Array.isArray(raw.key_takeaways) ? raw.key_takeaways : [],
     listItems: Array.isArray(raw.list_items) ? raw.list_items : [],
-    cover: raw.cover ?? null,
+    cover: normalizeCover(raw.cover, slug),
     readingTimeMin: typeof raw.reading_time_min === "number" ? raw.reading_time_min : null,
     contractVersion: raw.contract_version,
   };
