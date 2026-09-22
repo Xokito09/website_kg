@@ -8,7 +8,7 @@ import { useContactForm } from "../hooks/useContactForm";
 import { ThankYouModal } from "../components/ThankYouModal";
 import { Link } from "react-router-dom";
 import { ArrowRight, CheckCircle2, ShieldCheck, Clock, Search, Users, Globe, FileText, Zap, DollarSign, Target, Filter, Code2, Plus, Minus } from "lucide-react";
-import { motion, AnimatePresence } from "motion/react";
+import { motion } from "motion/react";
 import { LeadGenerationForm } from "../components/home/LeadGenerationForm";
 import { SocialProof } from "../components/home/SocialProof";
 import { CaseResults } from "../components/home/CaseResults";
@@ -744,20 +744,24 @@ export default function DirectHire() {
                   {openFaq === i ? <Minus className="w-4 h-4" /> : <Plus className="w-4 h-4" />}
                 </div>
               </button>
-              <AnimatePresence>
-                {openFaq === i && (
-                  <motion.div 
-                    initial={{ height: 0, opacity: 0 }}
-                    animate={{ height: "auto", opacity: 1 }}
-                    exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.3, ease: "easeInOut" }}
-                  >
-                    <div className="px-6 pb-6 text-gray-400 text-sm leading-relaxed" data-speakable="true">
-                      <FaqAnswer text={faq.a} />
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
+              {/* Always in the DOM, collapsed with max-height instead of being
+                  unmounted. Conditional mounting meant the prerendered HTML carried the
+                  questions and the FAQPage JSON-LD but none of the answer text: a
+                  crawler that does not run JS saw structured data with nothing behind
+                  it. The collapse is pure CSS, so there is no inline style for the
+                  prerender postprocess to strip and no opacity:0 for its hidden-content
+                  guard to flag. max-height, not the grid 0fr/1fr trick: Chrome does not
+                  interpolate fr tracks here, so the panel stayed at 0 when opened. The
+                  1000px cap is comfortably above the tallest answer. */}
+              <div
+                className={`overflow-hidden transition-[max-height] duration-300 ease-in-out ${
+                  openFaq === i ? "max-h-[1000px]" : "max-h-0"
+                }`}
+              >
+                <div className="px-6 pb-6 text-gray-400 text-sm leading-relaxed" data-speakable="true">
+                  <FaqAnswer text={faq.a} />
+                </div>
+              </div>
             </div>
           ))}
         </div>

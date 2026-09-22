@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { motion, AnimatePresence } from "motion/react";
 import { Plus, Minus } from "lucide-react";
 import { FaqAnswer } from "./FaqAnswer";
 
@@ -38,20 +37,24 @@ export function FaqAccordion({ items }: { items: FaqAccordionItem[] }) {
                 {isOpen ? <Minus className="w-4 h-4" /> : <Plus className="w-4 h-4" />}
               </span>
             </button>
-            <AnimatePresence>
-              {isOpen && (
-                <motion.div
-                  initial={{ height: 0, opacity: 0 }}
-                  animate={{ height: "auto", opacity: 1 }}
-                  exit={{ height: 0, opacity: 0 }}
-                  transition={{ duration: 0.3, ease: "easeInOut" }}
-                >
-                  <div className="px-6 pb-6 pt-2 text-gray-400 leading-relaxed text-base" data-speakable="true">
-                    <FaqAnswer text={faq.a} />
-                  </div>
-                </motion.div>
-              )}
-            </AnimatePresence>
+            {/* Always in the DOM, collapsed with max-height instead of being
+                unmounted. Conditional mounting meant the prerendered HTML carried the
+                questions and the FAQPage JSON-LD but none of the answer text: a
+                crawler that does not run JS saw structured data with nothing behind
+                it. The collapse is pure CSS, so there is no inline style for the
+                prerender postprocess to strip and no opacity:0 for its hidden-content
+                guard to flag. max-height, not the grid 0fr/1fr trick: Chrome does not
+                interpolate fr tracks here, so the panel stayed at 0 when opened. The
+                1000px cap is comfortably above the tallest answer. */}
+            <div
+              className={`overflow-hidden transition-[max-height] duration-300 ease-in-out ${
+                isOpen ? "max-h-[1000px]" : "max-h-0"
+              }`}
+            >
+              <div className="px-6 pb-6 pt-2 text-gray-400 leading-relaxed text-base" data-speakable="true">
+                <FaqAnswer text={faq.a} />
+              </div>
+            </div>
           </div>
         );
       })}
