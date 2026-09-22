@@ -5,7 +5,7 @@ import { Plus, Minus } from "lucide-react";
 const faqs = [
   {
     q: "What services does Kaptas Global offer?",
-    a: "Kaptas Global offers four hiring services for companies building teams with Brazilian professionals. Direct Hire places full-time employees for a one-time fee of 18% of first-year salary, with no retainer or deposit. Outsourcing & Staffing provides dedicated professionals at a flat monthly cost that covers salary, Brazilian employment charges, and Kaptas Global fees in a single invoice. Executive Mapping delivers a research-backed report with candidate profiles, compensation benchmarks, and competitor analysis within 10 to 15 business days. Hire in Brazil is a custom engagement for companies entering the Brazilian market for the first time, covering hiring-model consulting (CLT, PJ, or EOR), market intelligence, and end-to-end recruitment."
+    a: "Kaptas Global offers four hiring services for companies building teams with Brazilian professionals. Direct Hire places full-time employees for a one-time fee of 18% of first-year salary, with no retainer or deposit. Outsourcing & Staffing provides dedicated professionals at a flat monthly cost that covers the professional's compensation, Kaptas Global's management fee, and ongoing HR support in a single invoice. Executive Mapping delivers a research-backed report with candidate profiles, compensation benchmarks, and competitor analysis within 10 to 15 business days. Hire in Brazil is a custom engagement for companies entering the Brazilian market for the first time, covering hiring-model consulting (CLT, PJ, or EOR), market intelligence, and end-to-end recruitment."
   },
   {
     q: "Is there any upfront cost to work with Kaptas Global?",

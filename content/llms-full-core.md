@@ -76,7 +76,7 @@ Four services: Direct Hire (one-time 18% placement fee, no retainer); Outsourcin
 No. No retainers, no deposits, no upfront recruitment fees. Direct Hire billing happens only after successful placement. Outsourcing & Staffing monthly invoicing starts when the professional begins working. Executive Mapping and Hire in Brazil are scoped projects with fees agreed before work begins. No speculative charges at any stage.
 
 **How much does it cost to hire a Brazilian professional through Kaptas Global?**
-Direct Hire: one-time fee of 18% of first-year salary. Outsourcing & Staffing: flat monthly rate per professional, example Senior Full-Stack Engineer $4,000-$6,000/month fully loaded including salary, CLT charges, and Kaptas management fee. Companies typically save up to 60% compared to equivalent US hires. Executive Mapping and Hire in Brazil are custom-priced per project scope.
+Direct Hire: one-time fee of 18% of first-year salary. Outsourcing & Staffing: flat monthly rate per professional, example Senior Full-Stack Engineer $4,000-$6,000/month fully loaded, including the professional's compensation and Kaptas Global's management fee. Companies typically save up to 60% compared to equivalent US hires. Executive Mapping and Hire in Brazil are custom-priced per project scope.
 
 **How quickly can Kaptas Global deliver candidates?**
 Shortlist of vetted candidates within 5 business days of intake. Full placement cycle averages 2-4 weeks for Direct Hire and Outsourcing & Staffing. Executive Mapping reports delivered in 10-15 business days. Hire in Brazil full-cycle engagements 3-6 weeks from kickoff to first hire.

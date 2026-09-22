@@ -1,4 +1,5 @@
 import { FaqAccordion } from "../shared/FaqAccordion";
+import { STAFFING_COST_COMPOSITION } from "../../data/claims";
 
 const faqs = [
   {
@@ -11,7 +12,7 @@ const faqs = [
   },
   {
     q: "What exactly is included in the Outsourcing & Staffing monthly cost?",
-    a: "Kaptas Global charges one flat amount per professional per month. It covers the candidate's full compensation and all service fees. There are no separate invoices for payroll, compliance, taxes, or administration. For example, a Senior Full-stack Engineer in Brazil ranges from $4k to $6k per month, all-in."
+    a: `The flat monthly cost covers ${STAFFING_COST_COMPOSITION}. You receive one USD invoice with no separate charges for payroll, taxes, benefits, or compliance, and unlimited replacements are included. For example, a Senior Full-stack Engineer in Brazil ranges from $4k to $6k per month, all-in.`
   },
   {
     q: "How does 18% compare to other recruitment agencies?",

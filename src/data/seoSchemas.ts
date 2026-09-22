@@ -93,7 +93,7 @@ export const homeFaqSchema = {
     {
       "@type": "Question",
       "name": "How much does it cost to hire a Brazilian professional through Kaptas Global?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Direct Hire: a one-time fee of 18% of the professional's first-year salary. Outsourcing & Staffing: a flat monthly rate per professional (example: Senior Full-Stack Engineer $4,000-$6,000/month fully loaded, including salary, CLT charges, and Kaptas Global's management fee). Companies typically save up to 60% compared to equivalent US hires. Executive Mapping and Hire in Brazil are custom-priced per project scope. Full pricing details at kaptasglobal.io/pricing/." }
+      "acceptedAnswer": { "@type": "Answer", "text": "Direct Hire: a one-time fee of 18% of the professional's first-year salary. Outsourcing & Staffing: a flat monthly rate per professional (example: Senior Full-Stack Engineer $4,000-$6,000/month fully loaded, including the professional's compensation and Kaptas Global's management fee). Companies typically save up to 60% compared to equivalent US hires. Executive Mapping and Hire in Brazil are custom-priced per project scope. Full pricing details at kaptasglobal.io/pricing/." }
     },
     {
       "@type": "Question",
@@ -175,7 +175,7 @@ export const homeHowToSchema = {
       "@type": "HowToStep",
       "position": 4,
       "name": "Hire and Onboard",
-      "text": "Offer letter, contract structuring, compliance, payroll setup, and onboarding are handled end-to-end. For Outsourcing & Staffing and EOR engagements, Kaptas Global is the employer of record in Brazil and issues a single USD invoice covering salary and all mandatory Brazilian employment charges. For Direct Hire the candidate moves onto the client's payroll or PJ contract. The new hire typically starts within 2 to 4 weeks of kickoff.",
+      "text": "Offer letter, contract structuring, compliance, payroll setup, and onboarding are handled end-to-end. For Outsourcing & Staffing and EOR engagements, Kaptas Global is the employer of record in Brazil and issues a single USD invoice covering the professional's compensation and Kaptas Global's management fee. For Direct Hire the candidate moves onto the client's payroll or PJ contract. The new hire typically starts within 2 to 4 weeks of kickoff.",
       "url": "https://kaptasglobal.io/#how-it-works"
     }
   ]
@@ -195,7 +195,7 @@ export const homeServiceSchema = {
     "name": "Kaptas Global Hiring Services",
     "itemListElement": [
       { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Direct Hire", "description": "One-time placement fee of 18% of first-year salary. No retainer. 90-180 day replacement guarantee.", "url": "https://kaptasglobal.io/direct-hire" } },
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Outsourcing & Staffing", "description": "Flat monthly cost per professional including salary, CLT charges, and management fee. Unlimited replacements during contract.", "url": "https://kaptasglobal.io/contractor-staffing" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Outsourcing & Staffing", "description": "Flat monthly cost per professional including the professional's compensation and Kaptas Global's management fee, billed as a single USD invoice. Unlimited replacements during contract.", "url": "https://kaptasglobal.io/contractor-staffing" } },
       { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Executive Mapping", "description": "Market intelligence report with salary benchmarks, competitor org charts, and passive candidate shortlist. Delivery in 10-15 business days.", "url": "https://kaptasglobal.io/executive-mapping" } },
       { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Hire in Brazil", "description": "Market-entry consulting including compensation analysis, hiring-model recommendation (CLT, PJ, EOR), and first-hire support.", "url": "https://kaptasglobal.io/hire-in-brazil" } }
     ]
@@ -210,12 +210,12 @@ export const pricingFaqSchema = {
     {
       "@type": "Question",
       "name": "How much does it cost to hire a Brazilian professional through Kaptas Global?",
-      "acceptedAnswer": { "@type": "Answer", "text": "It depends on the hiring model. Direct Hire is a one-time fee of 18% of the professional's first-year salary, with no retainer or deposit required. Outsourcing & Staffing is a flat monthly cost per professional that covers salary, Kaptas Global fees, and all Brazilian employment obligations in a single invoice. There are no hidden fees in either model." }
+      "acceptedAnswer": { "@type": "Answer", "text": "It depends on the hiring model. Direct Hire is a one-time fee of 18% of the professional's first-year salary, with no retainer or deposit required. Outsourcing & Staffing is a flat monthly cost per professional that covers the professional's compensation, Kaptas Global's management fee, and ongoing HR support in a single invoice. There are no hidden fees in either model." }
     },
     {
       "@type": "Question",
       "name": "What is included in the flat monthly cost for Outsourcing & Staffing?",
-      "acceptedAnswer": { "@type": "Answer", "text": "The flat monthly cost covers the professional's salary, all mandatory Brazilian employment charges (which typically add 70-80% above gross salary for CLT contracts), Kaptas Global management fees, and ongoing HR support. You receive a single invoice with no separate charges for taxes, benefits, or compliance." }
+      "acceptedAnswer": { "@type": "Answer", "text": "The flat monthly cost covers the professional's compensation, Kaptas Global's management fee, and ongoing HR support. You receive one USD invoice with no separate charges for payroll, taxes, benefits, or compliance, and unlimited replacements are included." }
     },
     {
       "@type": "Question",
@@ -240,7 +240,7 @@ export const pricingFaqSchema = {
     {
       "@type": "Question",
       "name": "What are typical salary ranges for Brazilian tech professionals?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Through Kaptas Global's Outsourcing & Staffing model (flat monthly cost, all-in), typical ranges are: Senior Full-Stack Engineer $4,000-$6,000/month, QA Engineer $3,000-$5,000/month, Mobile Engineer $4,000-$6,000/month, and Data Engineer $4,500-$7,000/month. These figures include salary, Brazilian employment charges, and Kaptas Global fees in a single invoice." }
+      "acceptedAnswer": { "@type": "Answer", "text": "Through Kaptas Global's Outsourcing & Staffing model (flat monthly cost, all-in), typical ranges are: Senior Full-Stack Engineer $4,000-$6,000/month, QA Engineer $3,000-$5,000/month, Mobile Engineer $4,000-$6,000/month, and Data Engineer $4,500-$7,000/month. These figures include the professional's compensation and Kaptas Global's management fee in a single invoice." }
     },
     {
       "@type": "Question",
@@ -274,7 +274,7 @@ export const pricingServiceSchema = {
     "name": "Kaptas Global Hiring Services",
     "itemListElement": [
       { "@type": "Offer", "name": "Direct Hire", "description": "One-time recruitment fee of 18% of the professional's first-year salary. No retainer, no deposit. Includes a 90-180 day replacement guarantee.", "price": "18%", "priceCurrency": "USD", "url": "https://kaptasglobal.io/direct-hire" },
-      { "@type": "Offer", "name": "Outsourcing & Staffing", "description": "Flat monthly cost per professional covering salary, Brazilian employment charges, Kaptas Global fees, and HR support in a single invoice. Unlimited replacement included.", "priceSpecification": { "@type": "UnitPriceSpecification", "priceCurrency": "USD", "unitCode": "MON", "referenceQuantity": { "@type": "QuantitativeValue", "value": "1", "unitText": "professional" } }, "url": "https://kaptasglobal.io/contractor-staffing" },
+      { "@type": "Offer", "name": "Outsourcing & Staffing", "description": "Flat monthly cost per professional covering the professional's compensation, Kaptas Global's management fee, and ongoing HR support in a single invoice. Unlimited replacement included.", "priceSpecification": { "@type": "UnitPriceSpecification", "priceCurrency": "USD", "unitCode": "MON", "referenceQuantity": { "@type": "QuantitativeValue", "value": "1", "unitText": "professional" } }, "url": "https://kaptasglobal.io/contractor-staffing" },
       { "@type": "Offer", "name": "Executive Mapping", "description": "Custom project fee. Delivers candidate profiles, compensation benchmarks, and market analysis within 10-15 business days.", "url": "https://kaptasglobal.io/executive-mapping" },
       { "@type": "Offer", "name": "Hire in Brazil", "description": "Custom engagement for companies entering or expanding operations in Brazil.", "url": "https://kaptasglobal.io/hire-in-brazil" }
     ]
