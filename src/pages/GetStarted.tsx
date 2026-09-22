@@ -238,7 +238,7 @@ export default function GetStarted() {
         </motion.section>
 
         {/* 2. How it works — reuse the exact homepage "From kickoff to hire
-            in 14 days" 4-step timeline so it is visually identical. */}
+            in 2 to 4 weeks" 4-step timeline so it is visually identical. */}
         <HowItWorks />
 
         {/*

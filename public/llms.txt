@@ -15,7 +15,7 @@ Four services, transparent pricing, no retainers:
 
 US-based tech startups and scaleups, typically:
 - Pre-seed, seed, or bootstrapped — cost-conscious, fast-moving
-- 1-100 employees, remote-first culture, no formal talent-acquisition function
+- Up to 100 employees, remote-first culture, no formal talent-acquisition function
 - Decision-makers: Founders, CEOs, CTOs, VP/Head of Engineering
 - Hiring engineering, data, AI/ML, QA, DevOps, product, or technical leadership roles
 - Want to hire in Brazil without setting up a local entity
@@ -24,7 +24,7 @@ Secondary: European companies, companies entering Brazil for market entry, accou
 
 ## Why Brazil
 
-Brazilian professionals offer 40-60% lower total compensation vs. equivalent US hires at the same seniority. Brazil GMT-3 timezone provides 5-8 hours of daily overlap with US teams. 1.5M+ tech graduates, growing bilingual senior talent pool. Engineering ecosystem supporting global tech operations since 2005.
+Brazilian professionals offer up to 60% lower total compensation vs. equivalent US hires at the same seniority. Brazil GMT-3 timezone provides 5-8 hours of daily overlap with US teams. 1.5M+ tech graduates, growing bilingual senior talent pool. Engineering ecosystem supporting global tech operations since 2005.
 
 ## Core pages
 

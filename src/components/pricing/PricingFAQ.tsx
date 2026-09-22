@@ -15,7 +15,7 @@ const faqs = [
   },
   {
     q: "How does 18% compare to other recruitment agencies?",
-    a: "US-based recruitment agencies typically charge 20-30% of first-year salary for contingency placements and 25-35% for retained searches. Kaptas Global charges 18% with no retainer, a 90 to 180-day replacement guarantee, and access to Brazil's talent market where salary benchmarks are 40-60% lower than US equivalents. The total cost to hire in Brazil through Kaptas is a fraction of a comparable US search."
+    a: "US-based recruitment agencies typically charge 20-30% of first-year salary for contingency placements and 25-35% for retained searches. Kaptas Global charges 18% with no retainer, a 90 to 180-day replacement guarantee, and access to Brazil's talent market where salary benchmarks are up to 60% lower than US equivalents. The total cost to hire in Brazil through Kaptas is a fraction of a comparable US search."
   },
   {
     q: "What does the replacement guarantee cover?",

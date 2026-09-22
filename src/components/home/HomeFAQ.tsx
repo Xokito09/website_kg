@@ -13,7 +13,7 @@ const faqs = [
   },
   {
     q: "How much does it cost to hire a Brazilian professional?",
-    a: "It depends on the model. Direct Hire is 18% of the professional's first-year salary, paid once. Outsourcing & Staffing is a flat monthly cost per professional (for reference, a Senior Full-Stack Engineer typically ranges from $4,000 to $6,000/month fully loaded). Companies typically save 40-60% compared to equivalent US-based hires. Kaptas Global provides role-specific cost projections before the search begins so you can plan budgets with precision, not generic estimates."
+    a: "It depends on the model. Direct Hire is 18% of the professional's first-year salary, paid once. Outsourcing & Staffing is a flat monthly cost per professional (for reference, a Senior Full-Stack Engineer typically ranges from $4,000 to $6,000/month fully loaded). Companies typically save up to 60% compared to equivalent US-based hires. Kaptas Global provides role-specific cost projections before the search begins so you can plan budgets with precision, not generic estimates."
   },
   {
     q: "How quickly can Kaptas Global deliver candidates?",
@@ -25,7 +25,7 @@ const faqs = [
   },
   {
     q: "Why hire Brazilian professionals instead of US-based talent?",
-    a: "Three practical reasons. Cost: companies save 40-60% on total compensation while accessing senior-level talent. Time zone: Brazil overlaps 5 to 8 hours with US business hours (1 hour from EST, 4 from PST), enabling real-time collaboration without async delays. Talent depth: Brazil has over 1.5 million tech graduates, the largest IT community in Latin America, and growing bilingual proficiency. Kaptas Global vets every candidate for English fluency, technical skills, and cultural fit before presenting them to your team."
+    a: "Three practical reasons. Cost: companies save up to 60% on total compensation while accessing senior-level talent. Time zone: Brazil overlaps 5 to 8 hours with US business hours (1 hour from EST, 4 from PST), enabling real-time collaboration without async delays. Talent depth: Brazil has over 1.5 million tech graduates, the largest IT community in Latin America, and growing bilingual proficiency. Kaptas Global vets every candidate for English fluency, technical skills, and cultural fit before presenting them to your team."
   },
   {
     q: "What types of roles can Kaptas Global fill?",

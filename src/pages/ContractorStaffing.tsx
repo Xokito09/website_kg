@@ -52,11 +52,11 @@ export default function ContractorStaffing() {
     },
     {
       q: "How long does it take to hire remote professionals in Brazil or Latin America through Kaptas Global?",
-      a: "Kaptas Global typically delivers a shortlist of three pre-vetted candidates within five business days of kickoff. The average time from the first alignment call to a signed hire is 14 days. Kaptas Global achieves this speed through direct sourcing and a structured screening process that eliminates wasted interviews and low-signal candidates."
+      a: "Kaptas Global typically delivers a shortlist of three pre-vetted candidates within five business days of kickoff. Most hires close within 2 to 4 weeks of the first alignment call. Kaptas Global achieves this speed through direct sourcing and a structured screening process that eliminates wasted interviews and low-signal candidates."
     },
     {
       q: "How much does it cost to hire professionals in Brazil compared to the United States?",
-      a: "Kaptas Global charges one monthly invoice in USD that covers the professional's compensation, Brazilian taxes, and the service fee. There are no hidden charges, no setup fees, and no currency conversion on the client's side. The total loaded cost for a senior professional hired in Brazil through Kaptas Global is typically 40 to 60 percent lower than a comparable US hire at the same seniority level, without sacrificing quality or timezone overlap. A detailed salary comparison by role and seniority is available on the cost comparison section of this page."
+      a: "Kaptas Global charges one monthly invoice in USD that covers the professional's compensation, Brazilian taxes, and the service fee. There are no hidden charges, no setup fees, and no currency conversion on the client's side. The total loaded cost for a senior professional hired in Brazil through Kaptas Global is typically up to 60 percent lower than a comparable US hire at the same seniority level, without sacrificing quality or timezone overlap. A detailed salary comparison by role and seniority is available on the cost comparison section of this page."
     },
     {
       q: "Is there any upfront cost to start hiring talent in Brazil through Kaptas Global?",
@@ -86,7 +86,7 @@ export default function ContractorStaffing() {
     <div className="flex flex-col gap-32 pb-24">
       <SEO
         title="Outsourcing & Staffing in Brazil and Latin America | Hire Remote Talent | Kaptas Global"
-        description="Kaptas Global helps US companies hire senior remote professionals in Brazil and Latin America. We handle sourcing, payroll, and compliance. Zero upfront cost. 14-day average time to hire. Full IP ownership. One monthly invoice in USD."
+        description="Kaptas Global helps US companies hire senior remote professionals in Brazil and Latin America. We handle sourcing, payroll, and compliance. Zero upfront cost. 2 to 4 week average time to hire. Full IP ownership. One monthly invoice in USD."
         keywords="outsourcing staffing Brazil, hire remote talent Latin America, nearshore hiring Brazil, contractor payroll Brazil, hire engineers Brazil, Kaptas Global, nearshore staffing, remote professionals Latin America, IP ownership contractor Brazil"
         canonical="https://kaptasglobal.io/contractor-staffing"
         eyebrow="Outsourcing & Staffing"

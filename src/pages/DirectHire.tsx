@@ -2,6 +2,7 @@ import { SEO } from "../components/SEO";
 import { AEOContent } from "../components/AEOContent";
 import { organizationSchema, directHireFaqSchema, directHireServiceSchema, buildBreadcrumbSchema, SITE_URL } from "../data/seoSchemas";
 import { AEO_PARAGRAPHS } from "../data/aeoContent";
+import { TIME_TO_HIRE_WINDOW } from "../data/claims";
 import { useState } from "react";
 import { useContactForm } from "../hooks/useContactForm";
 import { ThankYouModal } from "../components/ThankYouModal";
@@ -44,7 +45,7 @@ export default function DirectHire() {
     },
     {
       q: "How long does it take to hire through Kaptas Global?",
-      a: "Most clients receive a shortlist of 3 to 5 pre-vetted candidates within 5 business days. The average time from kickoff to signed hire is 14 days. For context, the industry average to hire a senior engineer is 35 to 45 days when recruiting internally, and up to 90 days for hard-to-fill roles."
+      a: "Most clients receive a shortlist of 3 to 5 pre-vetted candidates within 5 business days. Most hires close within 2 to 4 weeks of kickoff. For context, the industry average to hire a senior engineer is 35 to 45 days when recruiting internally, and up to 90 days for hard-to-fill roles."
     },
     {
       q: "How much does direct hire cost, and when do I pay?",
@@ -474,7 +475,7 @@ export default function DirectHire() {
                   <div className="space-y-3">
                     <div className="flex justify-between items-center">
                       <span className="text-gray-400 text-sm">Time to hire</span>
-                      <span className="text-kaptas-green font-bold">14 days</span>
+                      <span className="text-kaptas-green font-bold">{TIME_TO_HIRE_WINDOW}</span>
                     </div>
                     <div className="flex justify-between items-center">
                       <span className="text-gray-400 text-sm">Candidates screened - Headhunted</span>
@@ -539,12 +540,12 @@ export default function DirectHire() {
                 <div className="flex flex-col items-end text-right">
                   <span className="text-kaptas-green font-bold text-lg">1 hire, vetted and validated</span>
                   <span className="text-white font-bold text-[14px]">Total first-year cost: $70K-$94K</span>
-                  <span className="mt-2 text-xs font-bold bg-kaptas-green/10 border border-kaptas-green/20 text-kaptas-green px-3 py-1 rounded-full uppercase tracking-wider">Up to 67% less</span>
+                  <span className="mt-2 text-xs font-bold bg-kaptas-green/10 border border-kaptas-green/20 text-kaptas-green px-3 py-1 rounded-full uppercase tracking-wider">Up to 60% less</span>
                 </div>
               </div>
             </div>
             <div className="mt-4 text-xs text-gray-500 text-center px-4">
-              * That is up to 67% lower than hiring the same seniority in the US, with zero risk if the hire does not work out.
+              * That is up to 60% lower than hiring the same seniority in the US, with zero risk if the hire does not work out.
             </div>
           </motion.div>
         </motion.div>

@@ -93,7 +93,7 @@ export const homeFaqSchema = {
     {
       "@type": "Question",
       "name": "How much does it cost to hire a Brazilian professional through Kaptas Global?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Direct Hire: a one-time fee of 18% of the professional's first-year salary. Outsourcing & Staffing: a flat monthly rate per professional (example: Senior Full-Stack Engineer $4,000-$6,000/month fully loaded, including salary, CLT charges, and Kaptas Global's management fee). Companies typically save 40-60% compared to equivalent US hires. Executive Mapping and Hire in Brazil are custom-priced per project scope. Full pricing details at kaptasglobal.io/pricing/." }
+      "acceptedAnswer": { "@type": "Answer", "text": "Direct Hire: a one-time fee of 18% of the professional's first-year salary. Outsourcing & Staffing: a flat monthly rate per professional (example: Senior Full-Stack Engineer $4,000-$6,000/month fully loaded, including salary, CLT charges, and Kaptas Global's management fee). Companies typically save up to 60% compared to equivalent US hires. Executive Mapping and Hire in Brazil are custom-priced per project scope. Full pricing details at kaptasglobal.io/pricing/." }
     },
     {
       "@type": "Question",
@@ -108,7 +108,7 @@ export const homeFaqSchema = {
     {
       "@type": "Question",
       "name": "Why should US companies hire Brazilian professionals?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Brazilian professionals offer 40-60% lower total compensation compared to US equivalents at the same seniority level. Brazil's timezone (GMT-3) provides 5-8 hours of daily overlap with US teams. The country has over 1.5 million tech graduates and a growing bilingual talent pool. Brazil's engineering ecosystem has supported global tech operations since 2005." }
+      "acceptedAnswer": { "@type": "Answer", "text": "Brazilian professionals offer up to 60% lower total compensation compared to US equivalents at the same seniority level. Brazil's timezone (GMT-3) provides 5-8 hours of daily overlap with US teams. The country has over 1.5 million tech graduates and a growing bilingual talent pool. Brazil's engineering ecosystem has supported global tech operations since 2005." }
     },
     {
       "@type": "Question",
@@ -146,8 +146,8 @@ export const homeHowToSchema = {
   "@context": "https://schema.org",
   "@type": "HowTo",
   "name": "How to hire senior Brazilian engineers through Kaptas Global",
-  "description": "Kaptas Global's hiring process delivers a pre-vetted candidate from kickoff to signed offer in approximately 14 business days. The client interviews three finalists; Kaptas Global handles sourcing, screening, English and remote-readiness validation, compliance, and onboarding.",
-  "totalTime": "P14D",
+  "description": "Kaptas Global's hiring process delivers a pre-vetted candidate from kickoff to signed offer in 2 to 4 weeks. The client interviews three finalists; Kaptas Global handles sourcing, screening, English and remote-readiness validation, compliance, and onboarding.",
+  "totalTime": "P4W",
   "inLanguage": "en-US",
   "step": [
     {
@@ -175,7 +175,7 @@ export const homeHowToSchema = {
       "@type": "HowToStep",
       "position": 4,
       "name": "Hire and Onboard",
-      "text": "Offer letter, contract structuring, compliance, payroll setup, and onboarding are handled end-to-end. For Outsourcing & Staffing and EOR engagements, Kaptas Global is the employer of record in Brazil and issues a single USD invoice covering salary and all mandatory Brazilian employment charges. For Direct Hire the candidate moves onto the client's payroll or PJ contract. The new hire begins shipping by day 14 in most engagements.",
+      "text": "Offer letter, contract structuring, compliance, payroll setup, and onboarding are handled end-to-end. For Outsourcing & Staffing and EOR engagements, Kaptas Global is the employer of record in Brazil and issues a single USD invoice covering salary and all mandatory Brazilian employment charges. For Direct Hire the candidate moves onto the client's payroll or PJ contract. The new hire typically starts within 2 to 4 weeks of kickoff.",
       "url": "https://kaptasglobal.io/#how-it-works"
     }
   ]
@@ -235,7 +235,7 @@ export const pricingFaqSchema = {
     {
       "@type": "Question",
       "name": "How much can I save by hiring Brazilian professionals instead of US-based talent?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Companies typically save 40-60% compared to equivalent US-based hires, depending on the role and seniority. For example, a Senior Full-Stack Engineer in Brazil costs between $4,000 and $6,000 per month through Outsourcing & Staffing, fully loaded. The same profile in the US often exceeds $10,000-$12,000 per month when you include salary, benefits, and employer taxes." }
+      "acceptedAnswer": { "@type": "Answer", "text": "Companies typically save up to 60% compared to equivalent US-based hires, depending on the role and seniority. For example, a Senior Full-Stack Engineer in Brazil costs between $4,000 and $6,000 per month through Outsourcing & Staffing, fully loaded. The same profile in the US often exceeds $10,000-$12,000 per month when you include salary, benefits, and employer taxes." }
     },
     {
       "@type": "Question",
@@ -304,12 +304,12 @@ export const outsourcingFaqSchema = {
     {
       "@type": "Question",
       "name": "How long does it take to hire remote professionals in Brazil through Kaptas Global?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Kaptas Global typically delivers a shortlist of three pre-vetted candidates within five business days of kickoff. The average time from the first alignment call to a signed hire is 14 days. Kaptas Global achieves this speed through direct sourcing and a structured screening process that eliminates wasted interviews and low-signal candidates." }
+      "acceptedAnswer": { "@type": "Answer", "text": "Kaptas Global typically delivers a shortlist of three pre-vetted candidates within five business days of kickoff. Most hires close within 2 to 4 weeks of the first alignment call. Kaptas Global achieves this speed through direct sourcing and a structured screening process that eliminates wasted interviews and low-signal candidates." }
     },
     {
       "@type": "Question",
       "name": "How much does it cost to hire professionals in Brazil compared to the United States?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Kaptas Global charges one monthly invoice in USD that covers the professional's compensation, Brazilian taxes, and the service fee. The total loaded cost for a senior professional hired in Brazil through Kaptas Global is typically 40 to 60 percent lower than a comparable US hire at the same seniority level, without sacrificing quality or timezone overlap." }
+      "acceptedAnswer": { "@type": "Answer", "text": "Kaptas Global charges one monthly invoice in USD that covers the professional's compensation, Brazilian taxes, and the service fee. The total loaded cost for a senior professional hired in Brazil through Kaptas Global is typically up to 60 percent lower than a comparable US hire at the same seniority level, without sacrificing quality or timezone overlap." }
     },
     {
       "@type": "Question",

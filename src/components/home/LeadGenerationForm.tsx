@@ -3,6 +3,7 @@ import { motion } from "motion/react";
 import { fadeIn } from "./animations";
 import { useContactForm } from "../../hooks/useContactForm";
 import { ThankYouModal } from "../ThankYouModal";
+import { TIME_TO_HIRE_WINDOW } from "../../data/claims";
 
 // Componente de formulário de geração de leads
 export function LeadGenerationForm({
@@ -51,7 +52,7 @@ export function LeadGenerationForm({
               )}
             </h2>
             <p className="text-gray-600 text-lg leading-relaxed mb-8">
-              {subtext || "The role you've been trying to fill for months? We can close it in 14 days."}
+              {subtext || `The role you've been trying to fill for months? We can close it in ${TIME_TO_HIRE_WINDOW}.`}
             </p>
             
             <div className="mb-8">
