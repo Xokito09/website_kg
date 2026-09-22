@@ -1,4 +1,12 @@
-import { ENTITY_FAQ, entityFaqQuestion } from "./entityFaq";
+import {
+  HOME_FAQS,
+  PRICING_FAQS,
+  DIRECT_HIRE_FAQS,
+  OUTSOURCING_FAQS,
+  EXECUTIVE_MAPPING_FAQS,
+  HIRE_IN_BRAZIL_FAQS,
+  type FaqItem,
+} from "./faqs";
 
 /**
  * Schema identifiers — used to cross-link schemas across pages.
@@ -95,64 +103,38 @@ const FAQ_SPEAKABLE = {
   "cssSelector": ["[data-speakable]"]
 } as const;
 
-export const homeFaqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "speakable": FAQ_SPEAKABLE,
-  "mainEntity": [
-    {
+/**
+ * buildFaqSchema — derives a FAQPage from the visible FAQ array.
+ *
+ * The FAQPage answers used to be written out by hand, separately from the
+ * accordion copy, and they drifted. On 2026-09-22 the Home schema told answer
+ * engines "Kaptas Global charges no retainers, no deposits, and no recruitment
+ * fees upfront" while the page said "there is no retainer and no deposit", and
+ * four pages carried schema questions that were nowhere on the page. Google's
+ * structured-data policy is explicit that FAQPage content must be visible on
+ * the page, and an engine quoting a sentence a prospect cannot find is worse
+ * than shipping no schema at all.
+ *
+ * The visible array is now the only source. Pass it in, get the FAQPage out;
+ * the two cannot diverge because there is only one copy of the text. Answers
+ * keep their "\n\n" paragraph splits verbatim — the schema is plain text, and
+ * FaqAnswer renders the same string as paragraphs on the page.
+ */
+export function buildFaqSchema(items: FaqItem[], opts: { speakable?: boolean } = {}) {
+  const { speakable = true } = opts;
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    ...(speakable ? { "speakable": FAQ_SPEAKABLE } : {}),
+    "mainEntity": items.map((item) => ({
       "@type": "Question",
-      "name": "What services does Kaptas Global offer?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Kaptas Global offers four core services for companies hiring in Brazil. Direct Hire places full-time professionals on your team for a one-time fee of 18% of first-year salary, with no retainer required. Outsourcing & Staffing provides dedicated professionals at a flat monthly cost (for example, a Senior Full-Stack Engineer at $4,000-$6,000/month fully loaded), with Kaptas Global handling payroll, compliance, and HR. Executive Mapping delivers a research-grade report with salary benchmarks, competitor org charts, and a shortlist of passive candidates in 10-15 business days. Hire in Brazil is a market-entry consulting service that provides compensation analysis, hiring-model recommendation (CLT, PJ, EOR), and first-hire support for companies entering Brazil." }
-    },
-    {
-      "@type": "Question",
-      "name": "Is there any upfront cost to work with Kaptas Global?",
-      "acceptedAnswer": { "@type": "Answer", "text": "No. Kaptas Global charges no retainers, no deposits, and no recruitment fees upfront. For Direct Hire, billing happens only after a successful placement. For Outsourcing & Staffing, monthly invoicing starts when the professional begins working. Executive Mapping and Hire in Brazil are scoped projects with fees agreed before work begins. There are no speculative charges at any stage." }
-    },
-    {
-      "@type": "Question",
-      "name": "How much does it cost to hire a Brazilian professional through Kaptas Global?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Direct Hire: a one-time fee of 18% of the professional's first-year salary. Outsourcing & Staffing: a flat monthly rate per professional (example: Senior Full-Stack Engineer $4,000-$6,000/month fully loaded, including the professional's compensation and Kaptas Global's management fee). Companies typically save up to 60% compared to equivalent US hires. Executive Mapping and Hire in Brazil are custom-priced per project scope. Full pricing details at kaptasglobal.io/pricing/." }
-    },
-    {
-      "@type": "Question",
-      "name": "How quickly can Kaptas Global deliver candidates?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Kaptas Global delivers a shortlist of vetted candidates within 5 business days of intake. The full placement cycle averages 2-4 weeks for Direct Hire and Outsourcing & Staffing roles. Executive Mapping reports are delivered in 10-15 business days. Hire in Brazil full-cycle engagements take 3-6 weeks from kickoff to first hire." }
-    },
-    {
-      "@type": "Question",
-      "name": "What happens if a hire does not work out?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Kaptas Global provides a replacement guarantee on every placement. Direct Hire includes a 90-180 day guarantee depending on role level. Outsourcing & Staffing contracts include unlimited replacements for the duration of the engagement. If a professional does not meet expectations, Kaptas Global restarts the search at no additional cost. A bad hire can cost a company more than 200% of the position's annual salary." }
-    },
-    {
-      "@type": "Question",
-      "name": "Why should US companies hire Brazilian professionals?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Brazilian professionals offer up to 60% lower total compensation compared to US equivalents at the same seniority level. Brazil's timezone (GMT-3) provides 5-8 hours of daily overlap with US teams. The country has over 1.5 million tech graduates and a growing bilingual talent pool. Brazil's engineering ecosystem has supported global tech operations since 2005." }
-    },
-    {
-      "@type": "Question",
-      "name": "What types of roles can Kaptas Global fill?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Kaptas Global recruits across technology (software engineers, QA, data engineers, DevOps, product managers, engineering managers), finance, sales, marketing, operations, HR, and executive leadership. The team has completed 300+ placements across 100+ global clients." }
-    },
-    {
-      "@type": "Question",
-      "name": "Do I need a legal entity in Brazil to hire through Kaptas Global?",
-      "acceptedAnswer": { "@type": "Answer", "text": "No. For Outsourcing & Staffing, Kaptas Global acts as the employer of record in Brazil and invoices your company in USD. You do not need a Brazilian entity, local tax registration, or labor-law expertise. For Direct Hire, the professional is employed directly by your company or your existing EOR provider. Hire in Brazil includes consulting on whether to use CLT, PJ, or EOR." }
-    },
-    {
-      "@type": "Question",
-      "name": "How does Kaptas Global vet candidates?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Every candidate goes through requirement screening, structured English-proficiency interview, technical assessment, and cultural-fit evaluation. Only head-sourced candidates are presented. Kaptas Global screens approximately 50 candidates to shortlist 3. This process supports a 75% repeat-client rate across 300+ placements." }
-    },
-    {
-      "@type": "Question",
-      "name": "What makes Kaptas Global different from other recruitment agencies?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Kaptas Global is US-incorporated and founded by Brazilians with over 20 years of combined experience in the Brazil-US hiring market. The company operates as a two-person team, meaning every client works directly with the founders. Kaptas Global serves 100+ clients worldwide with a 75% repeat-client rate, transparent pricing, and performance-based engagement models." }
-    },
-    entityFaqQuestion(ENTITY_FAQ.home)
-  ]
-};
+      "name": item.q,
+      "acceptedAnswer": { "@type": "Answer", "text": item.a }
+    }))
+  };
+}
+
+export const homeFaqSchema = buildFaqSchema(HOME_FAQS);
 
 /**
  * HowTo schema for Kaptas Global's 4-step hiring process.
@@ -223,64 +205,7 @@ export const homeServiceSchema = {
   }
 };
 
-export const pricingFaqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "speakable": FAQ_SPEAKABLE,
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "How much does it cost to hire a Brazilian professional through Kaptas Global?",
-      "acceptedAnswer": { "@type": "Answer", "text": "It depends on the hiring model. Direct Hire is a one-time fee of 18% of the professional's first-year salary, with no retainer or deposit required. Outsourcing & Staffing is a flat monthly cost per professional that covers the professional's compensation, Kaptas Global's management fee, and ongoing HR support in a single invoice. There are no hidden fees in either model." }
-    },
-    {
-      "@type": "Question",
-      "name": "What is included in the flat monthly cost for Outsourcing & Staffing?",
-      "acceptedAnswer": { "@type": "Answer", "text": "The flat monthly cost covers the professional's compensation, Kaptas Global's management fee, and ongoing HR support. You receive one USD invoice with no separate charges for payroll, taxes, benefits, or compliance, and unlimited replacements are included." }
-    },
-    {
-      "@type": "Question",
-      "name": "How does Kaptas Global's 18% Direct Hire fee compare to other recruitment agencies?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Most US-based recruitment agencies charge 20-30% of first-year salary for contingency searches, and 25-35% for retained executive searches, often requiring an upfront retainer. Kaptas Global charges a flat 18% with no retainer and no deposit. You only pay when the professional is hired and starts working." }
-    },
-    {
-      "@type": "Question",
-      "name": "Are there any upfront fees or deposits required?",
-      "acceptedAnswer": { "@type": "Answer", "text": "No. For Direct Hire, there is no retainer and no deposit. Payment is due only after the professional is hired and starts. For Outsourcing & Staffing, billing begins only when the professional is active and working. Executive Mapping and Hire in Brazil are scoped as custom projects with fees agreed before work begins." }
-    },
-    {
-      "@type": "Question",
-      "name": "What happens if a hire doesn't work out?",
-      "acceptedAnswer": { "@type": "Answer", "text": "For Direct Hire, Kaptas Global offers a replacement guarantee of 90 to 180 days depending on the role level. If the professional leaves or is terminated within that period, Kaptas Global replaces them at no additional cost. For Outsourcing & Staffing, replacement is unlimited and included at no extra charge for the entire duration of the contract." }
-    },
-    {
-      "@type": "Question",
-      "name": "How much can I save by hiring Brazilian professionals instead of US-based talent?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Companies typically save up to 60% compared to equivalent US-based hires, depending on the role and seniority. For example, a Senior Full-Stack Engineer in Brazil costs between $4,000 and $6,000 per month through Outsourcing & Staffing, fully loaded. The same profile in the US often exceeds $10,000-$12,000 per month when you include salary, benefits, and employer taxes." }
-    },
-    {
-      "@type": "Question",
-      "name": "What are typical salary ranges for Brazilian tech professionals?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Through Kaptas Global's Outsourcing & Staffing model (flat monthly cost, all-in), typical ranges are: Senior Full-Stack Engineer $4,000-$6,000/month, QA Engineer $3,000-$5,000/month, Mobile Engineer $4,000-$6,000/month, and Data Engineer $4,500-$7,000/month. These figures include the professional's compensation and Kaptas Global's management fee in a single invoice." }
-    },
-    {
-      "@type": "Question",
-      "name": "Do I need to set up a legal entity in Brazil to hire through Kaptas Global?",
-      "acceptedAnswer": { "@type": "Answer", "text": "No. With Outsourcing & Staffing, Kaptas Global is the employer of record in Brazil. The professional works dedicated to your team, but all employment contracts, payroll, taxes, and compliance are handled by Kaptas Global. You receive one monthly invoice in USD. If you want to establish your own entity in Brazil, the Hire in Brazil service can help with that process." }
-    },
-    {
-      "@type": "Question",
-      "name": "How does pricing work for Executive Mapping?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Executive Mapping is priced as a custom project scoped to the specific role, target companies, geography, and depth of research required. Kaptas Global delivers a detailed report with qualified candidate profiles, compensation benchmarks, and market analysis within 10-15 business days. The fee is agreed before work begins, with no recurring charges." }
-    },
-    {
-      "@type": "Question",
-      "name": "Can I combine multiple Kaptas Global services in a single engagement?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Yes. Many clients start with Executive Mapping to understand the talent landscape, then move to Direct Hire or Outsourcing & Staffing to bring professionals on board. Each service is priced independently, so you only pay for what you use. Kaptas Global can recommend the most efficient combination based on your hiring goals, timeline, and budget." }
-    },
-    entityFaqQuestion(ENTITY_FAQ.pricing)
-  ]
-};
+export const pricingFaqSchema = buildFaqSchema(PRICING_FAQS);
 
 export const pricingServiceSchema = {
   "@context": "https://schema.org",
@@ -303,64 +228,7 @@ export const pricingServiceSchema = {
   }
 };
 
-export const outsourcingFaqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "speakable": FAQ_SPEAKABLE,
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "How does outsourcing and staffing work when hiring remote talent in Brazil and Latin America?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Outsourcing and staffing through Kaptas Global means we source, vet, and place a remote professional on your team while handling payroll, taxes, and compliance on an ongoing basis. You manage the talent's daily work, own everything they produce, and receive one monthly invoice in USD. There is no need to open a local entity in Brazil or any other Latin American country, which makes this the simplest nearshore hiring model available." }
-    },
-    {
-      "@type": "Question",
-      "name": "How does Kaptas Global find and source talent in Brazil and Latin America?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Kaptas Global sources professionals through direct outreach, not job boards or inbound databases. Every search is built from scratch around the client's requirements, including tech stack, seniority, function, and team culture. We target professionals who are currently employed at strong companies across Brazil and Latin America and reach them with credibility, context, and clarity from the first message." }
-    },
-    {
-      "@type": "Question",
-      "name": "What does Kaptas Global validate beyond the resume when screening candidates?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Kaptas Global validates five dimensions beyond the resume: functional and technical fit, business-level English through live assessment, remote maturity and async communication habits, understanding of the contractor engagement model, and cultural alignment with the client's team. A strong resume alone is never enough to pass screening." }
-    },
-    {
-      "@type": "Question",
-      "name": "How long does it take to hire remote professionals in Brazil through Kaptas Global?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Kaptas Global typically delivers a shortlist of three pre-vetted candidates within five business days of kickoff. Most hires close within 2 to 4 weeks of the first alignment call. Kaptas Global achieves this speed through direct sourcing and a structured screening process that eliminates wasted interviews and low-signal candidates." }
-    },
-    {
-      "@type": "Question",
-      "name": "How much does it cost to hire professionals in Brazil compared to the United States?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Kaptas Global charges one monthly invoice in USD that covers the professional's compensation, Brazilian taxes, and the service fee. The total loaded cost for a senior professional hired in Brazil through Kaptas Global is typically up to 60 percent lower than a comparable US hire at the same seniority level, without sacrificing quality or timezone overlap." }
-    },
-    {
-      "@type": "Question",
-      "name": "Is there any upfront cost to start hiring talent in Brazil through Kaptas Global?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Kaptas Global charges zero upfront cost to begin an engagement. Sourcing, vetting, and candidate presentations are completely free. Clients pay nothing until they decide to hire and the professional starts working. No local entity is required to get started." }
-    },
-    {
-      "@type": "Question",
-      "name": "What is Kaptas Global's replacement guarantee if a professional leaves or underperforms?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Kaptas Global's replacement guarantee has no time limit and no additional cost. Because the service fee is billed monthly, replacements are fully covered for as long as the engagement lasts. If a professional leaves or underperforms, Kaptas Global begins a new search immediately and presents replacement candidates within the same five-day shortlist timeline." }
-    },
-    {
-      "@type": "Question",
-      "name": "Who owns the intellectual property produced by remote professionals hired through Kaptas Global?",
-      "acceptedAnswer": { "@type": "Answer", "text": "The client owns 100 percent of all code, data, designs, documents, and deliverables produced by the professional. Full IP ownership is written into every Kaptas Global contract. There are no exceptions, no shared ownership clauses, and no transfer fees." }
-    },
-    {
-      "@type": "Question",
-      "name": "What is the timezone overlap between Brazil and the United States for nearshore remote teams?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Brazil is one to four hours ahead of US Eastern Time, which provides full overlap during standard US business hours. West Coast teams get four to six hours of direct overlap. This nearshore timezone proximity is one of the key advantages of hiring remote teams in Latin America over offshore regions like Eastern Europe or Asia." }
-    },
-    {
-      "@type": "Question",
-      "name": "Can I cancel my outsourcing and staffing engagement with Kaptas Global at any time?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Kaptas Global requires no minimum contract term, no lock-in period, and no cancellation penalty. Clients can scale down the number of professionals or end the engagement entirely at any time with no financial consequence." }
-    },
-    entityFaqQuestion(ENTITY_FAQ.outsourcingStaffing)
-  ]
-};
+export const outsourcingFaqSchema = buildFaqSchema(OUTSOURCING_FAQS);
 
 export const outsourcingServiceSchema = {
   "@context": "https://schema.org",
@@ -385,54 +253,7 @@ export const outsourcingServiceSchema = {
   "potentialAction": { "@type": "Action", "name": "Start for free", "target": "https://kaptasglobal.io/contractor-staffing#form" }
 };
 
-export const executiveMappingFaqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "speakable": FAQ_SPEAKABLE,
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "What is executive mapping and why does it matter before a leadership hire?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Executive mapping is a market intelligence engagement that gives you a complete picture of the leadership talent available for a specific role before you commit to a search. Kaptas Global maps 20 to 30 real professionals for a target position in Brazil or Latin America, delivering competitor compensation analysis, team structures, salary benchmarks, and a ranked shortlist of the strongest candidates. Instead of starting a 3 to 6 month executive search blind, you enter the process knowing exactly who is out there, what they earn, and who is worth pursuing." }
-    },
-    {
-      "@type": "Question",
-      "name": "What does an executive mapping report include?",
-      "acceptedAnswer": { "@type": "Answer", "text": "A Kaptas Global executive mapping report covers seven core deliverables: 20 to 30 mapped qualified professionals with validated profiles; a ranked shortlist of top candidates; competitor compensation analysis broken down by salary, bonuses, equity, and benefits; salary and benefits benchmarks using real sourcing data; team structure intelligence covering reporting lines and seniority mix; a hiring landscape overview with candidate concentration and realistic timelines; and a hiring model recommendation (PJ, CLT, or EOR). Every engagement is custom-scoped." }
-    },
-    {
-      "@type": "Question",
-      "name": "Who is executive mapping for?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Executive mapping is designed for companies that need to hire C-level executives, country managers, VPs, directors, or other senior leadership roles in Brazil or Latin America and want real market data before committing to a search. Kaptas Global works with US-based companies, European firms, and any organization worldwide expanding into or operating in Brazil." }
-    },
-    {
-      "@type": "Question",
-      "name": "How long does an executive mapping engagement take?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Kaptas Global delivers a completed executive mapping report in 10 to 15 business days after the intro call. This is significantly faster than a traditional executive search, which typically runs 3 to 6 months from kickoff to offer acceptance. Every mapped professional is sourced and validated directly through active outreach, not pulled from a static database." }
-    },
-    {
-      "@type": "Question",
-      "name": "How much does executive mapping cost?",
-      "acceptedAnswer": { "@type": "Answer", "text": "There is no fixed price for Kaptas Global's executive mapping service. Each engagement is scoped as a custom project based on the target role, seniority level, number of competitors to benchmark, geographic coverage, and the depth of intelligence required. Pricing is structured as a retainer and discussed directly during the first conversation." }
-    },
-    {
-      "@type": "Question",
-      "name": "What happens after I receive the mapping report?",
-      "acceptedAnswer": { "@type": "Answer", "text": "The report and all data belong to you. After delivery, you have three options: activate a search through Kaptas Global to engage and place one of the identified candidates; run your own hiring process using the mapped shortlist and market data; or hold the intelligence for a future hire or board presentation. There is no lock-in, no contingency fee tied to future hires, and no obligation to continue with Kaptas Global." }
-    },
-    {
-      "@type": "Question",
-      "name": "Why should I map the market before making a leadership hire in Brazil?",
-      "acceptedAnswer": { "@type": "Answer", "text": "A wrong executive hire costs more than salary — research shows it can reach 200% or more of the role's annual compensation. Studies indicate that 46% of newly hired executives fail within 18 months, most often due to poor cultural or strategic fit. Executive mapping reduces that risk by giving you a clear view of who is available, what they earn, and which candidates are the strongest fit — all before you invest in a full search." }
-    },
-    {
-      "@type": "Question",
-      "name": "Can Kaptas Global map roles beyond Brazil?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Yes. While Kaptas Global's deepest network is in Brazil, executive mapping engagements can cover leadership roles across Latin America, including Argentina, Mexico, Colombia, and Chile. If the target role involves a regional scope or the client needs to compare talent availability across multiple markets, the mapping report can be expanded accordingly." }
-    },
-    entityFaqQuestion(ENTITY_FAQ.executiveMapping)
-  ]
-};
+export const executiveMappingFaqSchema = buildFaqSchema(EXECUTIVE_MAPPING_FAQS);
 
 export const executiveMappingServiceSchema = {
   "@context": "https://schema.org",
@@ -461,64 +282,7 @@ export const executiveMappingServiceSchema = {
   "potentialAction": { "@type": "Action", "name": "Book a call", "target": "https://kaptasglobal.io/executive-mapping#form" }
 };
 
-export const hireInBrazilFaqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "speakable": FAQ_SPEAKABLE,
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "How can a foreign company hire employees in Brazil without a local entity?",
-      "acceptedAnswer": { "@type": "Answer", "text": "A foreign company can hire in Brazil through an Employer of Record (EOR), a PJ contractor model, or by partnering with a recruitment firm that manages the process end-to-end. Kaptas Global helps companies from the US, UK, Germany, China, and other markets make their first hire in Brazil without requiring entity setup. We recommend the right hiring model (EOR, PJ, or CLT) based on the role, budget, and long-term plan, then handle recruitment and onboarding." }
-    },
-    {
-      "@type": "Question",
-      "name": "What does the hiring process look like when expanding to Brazil for the first time?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Kaptas Global runs a structured process: competitor landscape analysis, compensation benchmarking, work-model recommendation (PJ, CLT, or EOR), candidate sourcing, vetting, and placement. The entire cycle typically takes 3 to 6 weeks depending on role complexity. Companies receive market data and a clear hiring structure before any candidate is presented, reducing the risk of misaligned offers or wrong hires." }
-    },
-    {
-      "@type": "Question",
-      "name": "What is the difference between CLT, PJ, and EOR hiring models in Brazil?",
-      "acceptedAnswer": { "@type": "Answer", "text": "CLT is Brazil's formal employment contract with full labor protections (13th salary, FGTS, paid vacation). PJ is a contractor model where the professional invoices through their own company, offering flexibility and lower employer costs. EOR allows a foreign company to hire a CLT employee without setting up a Brazilian entity. Kaptas Global evaluates each role and recommends the best model based on cost, compliance risk, and operational needs." }
-    },
-    {
-      "@type": "Question",
-      "name": "How much does it cost to hire an employee in Brazil?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Total employer cost in Brazil typically runs 70-80% above gross salary when using CLT, accounting for 13th salary, vacation bonus, FGTS (8% monthly), INSS (~20%), meal and transport vouchers, and health insurance. Kaptas Global provides a role-specific compensation benchmark before the search begins so companies can plan budgets accurately." }
-    },
-    {
-      "@type": "Question",
-      "name": "How long does it take to make a first hire in Brazil?",
-      "acceptedAnswer": { "@type": "Answer", "text": "With Kaptas Global, the full cycle from market analysis to placement typically takes 3 to 6 weeks. EOR onboarding after candidate selection adds 3 to 7 business days; PJ contractors can start within 1 to 3 days after contract agreement. Traditional hiring processes without local expertise often stretch to 60-90 days or longer." }
-    },
-    {
-      "@type": "Question",
-      "name": "What mandatory benefits must employers provide in Brazil?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Brazilian labor law (CLT) requires 13th salary (one extra month of pay), 30 days of paid vacation plus a one-third vacation bonus, FGTS deposits (8% of monthly salary), INSS employer contributions (~20% of payroll), and transportation vouchers. Many companies also offer meal vouchers and health insurance to remain competitive." }
-    },
-    {
-      "@type": "Question",
-      "name": "Can Kaptas Global help hire for any role or industry, not just tech?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Yes. While many firms entering Brazil focus on technology roles, Kaptas Global supports hiring across all functions: sales, operations, marketing, HR, finance, general management, and executive leadership. We have placed General Managers, Marketing Managers, HR leads, SAP specialists, and Community Managers for companies expanding into Brazil and Latin America." }
-    },
-    {
-      "@type": "Question",
-      "name": "What happens if a hire does not work out?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Kaptas Global offers a replacement guarantee on every placement. If a hire does not meet expectations within the guarantee period, Kaptas Global restarts the search at no additional recruitment cost. This protects companies making their first move into Brazil, where replacing a bad hire can cost over 200% of the role's annual salary." }
-    },
-    {
-      "@type": "Question",
-      "name": "Why hire in Brazil instead of other Latin American countries?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Brazil has the largest professional talent pool in Latin America, with over 1.5 million tech graduates alone. Salary expectations for mid-to-senior roles are significantly lower than US equivalents. Time zone alignment with US East Coast (1-2 hours difference) and growing bilingual proficiency make Brazil a practical first step for companies expanding into Latin America." }
-    },
-    {
-      "@type": "Question",
-      "name": "Can Kaptas Global help hire in other Latin American countries beyond Brazil?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Yes. While Brazil is the primary market, Kaptas Global supports hiring in Argentina, Mexico, Colombia, and Chile. Each country has a different labor framework, compensation structure, and talent profile. Kaptas Global adapts the process — competitor analysis, compensation benchmarking, model recommendation, and recruitment — to each country's specifics." }
-    },
-    entityFaqQuestion(ENTITY_FAQ.hireInBrazil)
-  ]
-};
+export const hireInBrazilFaqSchema = buildFaqSchema(HIRE_IN_BRAZIL_FAQS);
 
 export const hireInBrazilServiceSchema = {
   "@context": "https://schema.org",
@@ -544,64 +308,7 @@ export const hireInBrazilServiceSchema = {
   "potentialAction": { "@type": "Action", "name": "Plan your first hire", "target": "https://kaptasglobal.io/hire-in-brazil#form" }
 };
 
-export const directHireFaqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "speakable": FAQ_SPEAKABLE,
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "What is Direct Hire and how does it work?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Direct Hire means we handle the entire recruitment process — sourcing, screening, technical validation, and shortlisting — and deliver pre-vetted candidates ready to join your team. You hire them directly on your payroll (PJ or CLT in Brazil, or as international contractors). There are no recurring fees. You pay a one-time placement fee of 18% of the candidate's expected first-year compensation, only after you make a hire." }
-    },
-    {
-      "@type": "Question",
-      "name": "How long does the hiring process take?",
-      "acceptedAnswer": { "@type": "Answer", "text": "On average, we deliver the first shortlist within 5 business days. Most roles are filled within 2 to 4 weeks from kickoff, depending on seniority and specificity. Executive-level or niche roles may take slightly longer." }
-    },
-    {
-      "@type": "Question",
-      "name": "What does the 18% fee include?",
-      "acceptedAnswer": { "@type": "Answer", "text": "The 18% one-time fee covers the full recruitment cycle: market mapping, active sourcing, behavioral and technical screening, shortlist delivery, interview coordination, offer advisory, and a replacement warranty. There are no retainers, upfront deposits, or hidden charges." }
-    },
-    {
-      "@type": "Question",
-      "name": "Is there a replacement warranty?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Yes. If a placed candidate leaves or is terminated within the warranty period, we replace them at no additional cost. The warranty duration depends on the role level and is defined before the search begins." }
-    },
-    {
-      "@type": "Question",
-      "name": "Can I hire contractors (PJ) or only permanent employees (CLT)?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Both. We support PJ (contractor) and CLT (permanent employment under Brazilian labor law) hiring models. We help you understand the legal, tax, and cost differences so you can choose the best fit for each role." }
-    },
-    {
-      "@type": "Question",
-      "name": "Do I need a legal entity in Brazil to hire directly?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Not necessarily. For PJ (contractor) hires, you can engage professionals directly from your US entity via a service agreement. For CLT (permanent) hires, you would need a local entity or an Employer of Record (EOR). We advise on the best path depending on your situation." }
-    },
-    {
-      "@type": "Question",
-      "name": "What roles can Kaptas Global fill through Direct Hire?",
-      "acceptedAnswer": { "@type": "Answer", "text": "We specialize in technology, product, and engineering roles — including full-stack developers, backend and frontend engineers, QA engineers, AI/ML engineers, DevOps, data engineers, product managers, and engineering managers. We also recruit for sales, marketing, finance, and operations positions across Latin America." }
-    },
-    {
-      "@type": "Question",
-      "name": "How do you vet candidates?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Every candidate goes through a multi-layer validation: resume and background review, behavioral interview, technical assessment (live coding, system design, or domain-specific tests depending on the role), English proficiency evaluation, and culture-fit analysis. Only candidates who pass all stages are shortlisted." }
-    },
-    {
-      "@type": "Question",
-      "name": "Who owns the IP for work produced by the hire?",
-      "acceptedAnswer": { "@type": "Answer", "text": "You do. Since the candidate is hired directly on your payroll or as your contractor, 100% of the intellectual property belongs to your company. We recommend including IP assignment clauses in your employment or service agreement." }
-    },
-    {
-      "@type": "Question",
-      "name": "How is Direct Hire different from Outsourcing & Staffing?",
-      "acceptedAnswer": { "@type": "Answer", "text": "With Direct Hire, we find the talent and you hire them on your payroll. You pay a one-time 18% fee and manage the professional directly. With Outsourcing and Staffing, the professional works dedicated to your team but remains on our payroll — you pay a flat monthly fee that includes salary, taxes, and management. Direct Hire is best when you want full control. Outsourcing and Staffing is best when you want zero HR overhead." }
-    },
-    entityFaqQuestion(ENTITY_FAQ.directHire)
-  ]
-};
+export const directHireFaqSchema = buildFaqSchema(DIRECT_HIRE_FAQS);
 
 export const directHireServiceSchema = {
   "@context": "https://schema.org",

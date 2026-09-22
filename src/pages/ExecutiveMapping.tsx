@@ -1,5 +1,4 @@
 import { SEO } from "../components/SEO";
-import { ENTITY_FAQ } from "../data/entityFaq";
 import { FaqAnswer } from "../components/shared/FaqAnswer";
 import { organizationSchema, executiveMappingFaqSchema, executiveMappingServiceSchema, buildBreadcrumbSchema, SITE_URL } from "../data/seoSchemas";
 import { useState } from "react";
@@ -11,6 +10,7 @@ import { motion } from "motion/react";
 import { LeadGenerationForm } from "../components/home/LeadGenerationForm";
 import { SocialProof } from "../components/home/SocialProof";
 import { CaseResults } from "../components/home/CaseResults";
+import { EXECUTIVE_MAPPING_FAQS } from "../data/faqs";
 
 const fadeIn = {
   initial: { opacity: 0, y: 20 },
@@ -36,44 +36,7 @@ export default function ExecutiveMapping() {
   const [openFaq, setOpenFaq] = useState<number | null>(0);
   const { form: heroForm, handleChange: handleHeroChange, handleSubmit: handleHeroSubmit, isSubmitting: heroSubmitting, showModal: heroModal, setShowModal: setHeroModal, error: heroError, captcha: heroCaptcha } = useContactForm("Executive Mapping — Hero", "dark");
 
-  const faqs = [
-    { 
-      q: "What is executive mapping and why does it matter before a leadership hire?", 
-      a: "Executive mapping is a market intelligence engagement that gives you a complete picture of the leadership talent available for a specific role before you commit to a search. Kaptas Global maps 20 to 30 real professionals for a target position in Brazil or Latin America, delivering competitor compensation analysis, team structures, salary benchmarks, and a ranked shortlist of the strongest candidates. It matters because at the leadership level, hiring without data leads to misaligned offers, missed candidates, and costly wrong hires. Instead of starting a 3 to 6 month executive search blind, you enter the process knowing exactly who is out there, what they earn, and who is worth pursuing. The mapping report is a standalone product. You receive the full intelligence, own everything, and decide what to do next." 
-    },
-    { 
-      q: "What does an executive mapping report include?", 
-      a: "A Kaptas Global executive mapping report covers seven core deliverables, each tailored to the client's specific role, industry, and competitive landscape. First, we map 20 to 30 qualified professionals currently holding the target role or an adjacent one in Brazil or Latin America, with validated profiles including company, seniority, experience, and estimated compensation. Second, we identify the top candidates and rank them based on experience depth, leadership scope, cultural fit, and availability. The report also includes competitor compensation analysis broken down by salary, bonuses, equity, and benefits across company sizes and stages; salary and benefits benchmarks for the specific role using real sourcing data, not surveys; team structure intelligence covering reporting lines, team size, and seniority mix at comparable organizations; a hiring landscape overview with candidate concentration by city, industry competitiveness, and realistic hiring timelines; and a hiring model recommendation, whether PJ contractor, CLT permanent, or EOR, based on the client's structure and goals. Every engagement is custom-scoped. There are no template reports." 
-    },
-    { 
-      q: "Who is executive mapping for?", 
-      a: "Executive mapping is designed for companies that need to hire C-level executives, country managers, VPs, directors, or other senior leadership roles in Brazil or Latin America and want real market data before committing to a search. Kaptas Global works with US-based companies, European firms, and any organization worldwide that is expanding into or operating in Brazil and needs to understand the leadership talent landscape. Typical clients include companies opening a Brazil operation for the first time, boards evaluating compensation for an incoming executive, and leadership teams benchmarking their structure against competitors. If the role carries strategic weight and the cost of a wrong hire is measured in quarters rather than weeks, executive mapping is the right starting point." 
-    },
-    { 
-      q: "How long does an executive mapping engagement take?", 
-      a: "Kaptas Global delivers a completed executive mapping report in 10 to 15 business days after the intro call. This is significantly faster than a traditional executive search, which typically runs 3 to 6 months from kickoff to offer acceptance. The timeline reflects the depth of the work: every mapped professional is sourced and validated directly through active outreach, not pulled from a static database. Kaptas Global analyses competitor structures, verifies compensation data, and ranks candidates before delivering the final report. The intro call typically covers the target role, seniority level, key competitors to benchmark, and any specific intelligence questions the client needs answered." 
-    },
-    { 
-      q: "How much does executive mapping cost?", 
-      a: "There is no fixed price for Kaptas Global's executive mapping service. Each engagement is scoped as a custom project based on the target role, seniority level, number of competitors to benchmark, geographic coverage, and the depth of intelligence required. After the intro call, Kaptas Global builds a tailored proposal that reflects exactly what the client needs, with no unnecessary steps or inflated scope. Pricing is structured as a retainer and discussed directly during the first conversation." 
-    },
-    { 
-      q: "What happens after I receive the mapping report?", 
-      a: "The report and all data belong to you. Kaptas Global transfers full ownership of the candidate profiles, compensation benchmarks, team structure analysis, and strategic recommendations. After delivery, you have three options: activate a search through Kaptas Global to engage and place one of the identified candidates; run your own hiring process using the mapped shortlist and market data; or hold the intelligence for a future hire, internal benchmarking, or board presentation. There is no lock-in, no contingency fee tied to future hires, and no obligation to continue with Kaptas Global beyond the mapping engagement." 
-    },
-    { 
-      q: "Why should I map the market before making a leadership hire in Brazil?", 
-      a: "A wrong executive hire costs more than salary. Research shows it can reach 200% or more of the role's annual compensation when factoring in lost productivity, team disruption, strategic delays, and the cost of restarting the search. Studies also indicate that 46% of newly hired executives fail within 18 months, most often due to poor cultural or strategic fit rather than lack of technical ability. Executive mapping reduces that risk by giving you a clear view of who is available, what they earn, how competitor teams are structured, and which candidates are the strongest fit for your specific context, all before you invest in a full search. Kaptas Global's mapping provides competitive intelligence delivered as a standalone product in 10 to 15 business days." 
-    },
-    { 
-      q: "Can Kaptas Global map roles beyond Brazil?", 
-      a: "Yes. While Kaptas Global's deepest network and sourcing capability is in Brazil, executive mapping engagements can cover leadership roles across Latin America, including Argentina, Mexico, Colombia, and Chile. If the target role involves a regional scope or the client needs to compare talent availability across multiple markets, the mapping report can be expanded accordingly. The scope, timeline, and pricing are adjusted during the intro call based on the number of markets and the complexity of the role." 
-    },
-    {
-      q: ENTITY_FAQ.executiveMapping.q,
-      a: ENTITY_FAQ.executiveMapping.a,
-    }
-  ];
+  const faqs = EXECUTIVE_MAPPING_FAQS;
 
   return (
     <>

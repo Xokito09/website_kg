@@ -80,12 +80,3 @@ export const ENTITY_FAQ = {
       "The full cycle from market analysis to placement typically takes 3 to 6 weeks, with a 90 to 180 day replacement guarantee on every placement. The service also extends to Argentina, Mexico, Colombia, and Chile.",
   },
 } as const satisfies Record<string, EntityFaqItem>;
-
-/** The same item shaped as a schema.org Question, for FAQPage mainEntity. */
-export function entityFaqQuestion(item: EntityFaqItem) {
-  return {
-    "@type": "Question",
-    "name": item.q,
-    "acceptedAnswer": { "@type": "Answer", "text": item.a },
-  };
-}

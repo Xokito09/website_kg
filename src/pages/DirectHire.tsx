@@ -1,7 +1,6 @@
 import { SEO } from "../components/SEO";
 import { organizationSchema, directHireFaqSchema, directHireServiceSchema, buildBreadcrumbSchema, SITE_URL } from "../data/seoSchemas";
 import { TIME_TO_HIRE_WINDOW } from "../data/claims";
-import { ENTITY_FAQ } from "../data/entityFaq";
 import { FaqAnswer } from "../components/shared/FaqAnswer";
 import { useState } from "react";
 import { useContactForm } from "../hooks/useContactForm";
@@ -13,6 +12,7 @@ import { LeadGenerationForm } from "../components/home/LeadGenerationForm";
 import { SocialProof } from "../components/home/SocialProof";
 import { CaseResults } from "../components/home/CaseResults";
 import { TechMapBackground } from "../components/TechMapBackground";
+import { DIRECT_HIRE_FAQS } from "../data/faqs";
 
 const fadeIn = {
   initial: { opacity: 0, y: 20 },
@@ -38,52 +38,7 @@ export default function DirectHire() {
   const [openFaq, setOpenFaq] = useState<number | null>(0);
   const { form: heroForm, handleChange: handleHeroChange, handleSubmit: handleHeroSubmit, isSubmitting: heroSubmitting, showModal: heroModal, setShowModal: setHeroModal, error: heroError, captcha: heroCaptcha } = useContactForm("Direct Hire — Hero", "dark");
 
-  const faqs = [
-    {
-      q: "How does direct hire work when hiring remote talent in Brazil?",
-      a: "Kaptas Global sources, screens, and presents a shortlist of pre-vetted candidates for your open role. You interview the finalists, choose who to hire, and bring them onto your own team. We charge a one-time finder's fee paid only after the professional starts. After placement, there are no ongoing fees, no middleman, and no dependency on Kaptas Global. You run the payroll, you manage the person, you own the relationship."
-    },
-    {
-      q: "How long does it take to hire through Kaptas Global?",
-      a: "Most clients receive a shortlist of 3 to 5 pre-vetted candidates within 5 business days. Most hires close within 2 to 4 weeks of kickoff. For context, the industry average to hire a senior engineer is 35 to 45 days when recruiting internally, and up to 90 days for hard-to-fill roles."
-    },
-    {
-      q: "How much does direct hire cost, and when do I pay?",
-      a: "Kaptas Global charges a one-time finder's fee of 18% of the candidate's annual salary. There is no upfront payment. You pay nothing until the professional starts working. If you interview our candidates and decide not to hire, the cost is zero."
-    },
-    {
-      q: "What happens if the hire does not work out?",
-      a: "Every placement through Kaptas Global includes a 90 to 180-day replacement warranty at no additional cost. If the professional leaves or underperforms during the warranty period, we restart the search and present new candidates within the same 5-day shortlist timeline. The U.S. Department of Labor estimates a bad hire costs roughly 30% of annual salary. Our warranty exists to eliminate that risk."
-    },
-    {
-      q: "Can I hire as a contractor or for a permanent role?",
-      a: "Both. Kaptas Global supports contractor (PJ) and permanent (CLT) placements in Brazil. Most US companies hire Brazilian professionals as independent contractors, which avoids the need for a local entity. We help you choose the right structure based on your needs and walk you through the differences."
-    },
-    {
-      q: "Do I need to open a company in Brazil to hire directly?",
-      a: "No. Most clients hire Brazilian professionals as independent contractors without a local entity. The professional invoices your company directly, and you pay in USD or BRL depending on your preference. If you prefer a formal employment relationship, an Employer of Record (EOR) can handle local compliance on your behalf. Kaptas Global advises on the best path but does not act as an EOR."
-    },
-    {
-      q: "How does Kaptas Global vet candidates before I interview them?",
-      a: "We evaluate every candidate across five dimensions: technical and functional fit for your stack, business-level English through a live assessment, remote work maturity, understanding of the contractor model, and cultural alignment with your team. Only candidates who pass all five are presented. You interview finalists, not raw applicants."
-    },
-    {
-      q: "Who owns the intellectual property after a direct hire placement?",
-      a: "You do. Since the professional joins your team directly, all code, data, designs, and deliverables belong to your company. Kaptas Global recommends including IP assignment clauses in your contract with the hire, and we can share templates that our clients use."
-    },
-    {
-      q: "What is the timezone overlap between Brazil and the United States?",
-      a: "Brazil is 1 to 4 hours ahead of US Eastern Time, depending on the region. Teams on the East Coast get near-full overlap. West Coast teams typically share 4 to 6 hours of synchronous working time, which is enough for daily standups, code reviews, and real-time collaboration without overnight handoffs."
-    },
-    {
-      q: "What makes Kaptas Global different from other recruitment firms hiring in Brazil?",
-      a: "Kaptas Global is a US-incorporated company founded by Brazilians with direct access to the Brazilian talent market. We headhunt employed professionals from top-tier companies rather than pulling from job boards or recycled databases. Every search is built around your specific stack, seniority level, and team culture. With over 300 placements, a 2 to 4 week average time to hire, and a replacement warranty on every placement, we operate as a strategic hiring partner, not a resume vendor."
-    },
-    {
-      q: ENTITY_FAQ.directHire.q,
-      a: ENTITY_FAQ.directHire.a,
-    }
-  ];
+  const faqs = DIRECT_HIRE_FAQS;
 
   return (
     <>
@@ -695,8 +650,6 @@ export default function DirectHire() {
           </a>
         </div>
       </motion.section>
-
-
 
 
 

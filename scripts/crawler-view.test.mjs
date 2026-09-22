@@ -158,3 +158,86 @@ test("no retired claim or removed surface ships in any dist HTML", SKIP, () => {
   }
   assert.deepEqual(offenders, [], `forbidden strings found in built HTML:\n${offenders.join("\n")}`);
 });
+
+// ---------------------------------------------------------------------------
+// 4. The FAQPage schema says exactly what the page says
+// ---------------------------------------------------------------------------
+/**
+ * Before 2026-09-22 the FAQPage answers were written out by hand, separately
+ * from the accordion copy, and they drifted: Home's schema told answer engines
+ * "Kaptas Global charges no retainers, no deposits, and no recruitment fees
+ * upfront" while the page said "there is no retainer and no deposit", and four
+ * pages carried schema questions that appeared nowhere on the page. The schema
+ * is now derived from the visible array by buildFaqSchema(); this asserts the
+ * derivation actually holds in the shipped HTML, question by question.
+ */
+function stripTags(html) {
+  return decodeEntities(html.replace(/<[^>]+>/g, " "))
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+/** The visible answers, in DOM order, from the data-speakable panels. */
+function visibleAnswers(html) {
+  return [...html.matchAll(/<div[^>]*data-speakable="true"[^>]*>([\s\S]*?)<\/div>\s*<\/div>/g)].map((m) =>
+    stripTags(m[1])
+  );
+}
+
+/** The visible questions, in DOM order — both accordion markups. */
+function visibleQuestions(html) {
+  const big = /<span class="text-lg font-medium text-white[^"]*">([\s\S]*?)<\/span>/g;
+  const page = /<span class="font-medium transition-colors[^"]*">([\s\S]*?)<\/span>/g;
+  const hits = [...html.matchAll(big), ...html.matchAll(page)];
+  return hits.map((m) => stripTags(m[1]));
+}
+
+function faqPageSchema(html) {
+  for (const m of html.matchAll(/<script type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/g)) {
+    let parsed;
+    try {
+      parsed = JSON.parse(m[1]);
+    } catch {
+      continue;
+    }
+    if (parsed["@type"] === "FAQPage") return parsed;
+  }
+  return null;
+}
+
+for (const route of Object.keys(ENTITY_ANSWER_OPENERS)) {
+  const file = route === "/" ? "index.html" : path.join(route.slice(1), "index.html");
+
+  test(`${route}: FAQPage schema matches the visible FAQ exactly`, SKIP, () => {
+    const html = readDist(file);
+    const schema = faqPageSchema(html);
+    assert.ok(schema, `${route}: no FAQPage JSON-LD found`);
+
+    const schemaQs = schema.mainEntity.map((q) => q.name.replace(/\s+/g, " ").trim());
+    const schemaAs = schema.mainEntity.map((q) =>
+      q.acceptedAnswer.text.replace(/\s+/g, " ").trim()
+    );
+    const pageQs = visibleQuestions(html);
+    const pageAs = visibleAnswers(html);
+
+    assert.equal(
+      schemaQs.length,
+      pageQs.length,
+      `${route}: schema has ${schemaQs.length} questions, the page shows ${pageQs.length}`
+    );
+    assert.deepEqual(schemaQs, pageQs, `${route}: schema questions differ from the visible questions`);
+
+    assert.equal(
+      schemaAs.length,
+      pageAs.length,
+      `${route}: schema has ${schemaAs.length} answers, the page shows ${pageAs.length}`
+    );
+    for (let i = 0; i < schemaAs.length; i++) {
+      assert.equal(
+        schemaAs[i],
+        pageAs[i],
+        `${route}: answer ${i + 1} ("${schemaQs[i]}") differs between schema and page`
+      );
+    }
+  });
+}

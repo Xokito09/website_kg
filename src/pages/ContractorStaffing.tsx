@@ -1,5 +1,4 @@
 import { SEO } from "../components/SEO";
-import { ENTITY_FAQ } from "../data/entityFaq";
 import { FaqAnswer } from "../components/shared/FaqAnswer";
 import { organizationSchema, outsourcingFaqSchema, outsourcingServiceSchema, buildBreadcrumbSchema, SITE_URL } from "../data/seoSchemas";
 import { useState } from "react";
@@ -12,6 +11,7 @@ import { LeadGenerationForm } from "../components/home/LeadGenerationForm";
 import { SocialProof } from "../components/home/SocialProof";
 import { CaseResults } from "../components/home/CaseResults";
 import { TechMapBackground } from "../components/TechMapBackground";
+import { OUTSOURCING_FAQS } from "../data/faqs";
 
 const fadeIn = {
   initial: { opacity: 0, y: 20 },
@@ -37,52 +37,7 @@ export default function ContractorStaffing() {
   const [openFaq, setOpenFaq] = useState<number | null>(0);
   const { form: heroForm, handleChange: handleHeroChange, handleSubmit: handleHeroSubmit, isSubmitting: heroSubmitting, showModal: heroModal, setShowModal: setHeroModal, error: heroError, captcha: heroCaptcha } = useContactForm("Outsourcing & Staffing — Hero", "dark");
 
-  const faqs = [
-    {
-      q: "How does outsourcing and staffing work when hiring remote talent in Brazil and Latin America?",
-      a: "Outsourcing and staffing through Kaptas Global means we source, vet, and place a remote professional on your team while handling payroll, taxes, and compliance on an ongoing basis. You manage the talent's daily work, own everything they produce, and receive one monthly invoice in USD. There is no need to open a local entity in Brazil or any other Latin American country, which makes this the simplest nearshore hiring model available. This model works for engineering, finance, operations, design, and any other function where remote collaboration is viable."
-    },
-    {
-      q: "How does Kaptas Global find and source talent in Brazil and Latin America?",
-      a: "Kaptas Global sources professionals through direct outreach, not job boards or inbound databases. Every search is built from scratch around the client's requirements, including tech stack, seniority, function, and team culture. We target professionals who are currently employed at strong companies across Brazil and Latin America and reach them with credibility, context, and clarity from the first message. No profiles are recycled between searches. Being a US company founded by Brazilians gives Kaptas Global native access to local networks, cultural nuance, and market intelligence that foreign agencies cannot replicate."
-    },
-    {
-      q: "What does Kaptas Global validate beyond the resume when screening candidates from Brazil and Latin America?",
-      a: "Kaptas Global validates five dimensions beyond the resume before presenting any candidate: functional and technical fit for the client's specific needs, business-level English through live assessment, remote maturity and async communication habits, understanding of the contractor engagement model, and cultural alignment with the client's team. A strong resume alone is never enough to pass screening. Kaptas Global only presents candidates who have been validated across all five dimensions, regardless of whether the role is in engineering, finance, design, or operations."
-    },
-    {
-      q: "How long does it take to hire remote professionals in Brazil or Latin America through Kaptas Global?",
-      a: "Kaptas Global typically delivers a shortlist of three pre-vetted candidates within five business days of kickoff. Most hires close within 2 to 4 weeks of the first alignment call. Kaptas Global achieves this speed through direct sourcing and a structured screening process that eliminates wasted interviews and low-signal candidates."
-    },
-    {
-      q: "How much does it cost to hire professionals in Brazil compared to the United States?",
-      a: "Kaptas Global charges one monthly invoice in USD that covers the professional's compensation, Brazilian taxes, and the service fee. There are no hidden charges, no setup fees, and no currency conversion on the client's side. The total loaded cost for a senior professional hired in Brazil through Kaptas Global is typically up to 60 percent lower than a comparable US hire at the same seniority level, without sacrificing quality or timezone overlap. A detailed salary comparison by role and seniority is available on the cost comparison section of this page."
-    },
-    {
-      q: "Is there any upfront cost to start hiring talent in Brazil through Kaptas Global?",
-      a: "Kaptas Global charges zero upfront cost to begin an engagement. Sourcing, vetting, and candidate presentations are completely free. Clients pay nothing until they decide to hire and the professional starts working. This zero-risk model applies to every engagement regardless of the number of roles or the function being hired, and no local entity is required to get started."
-    },
-    {
-      q: "What is Kaptas Global's replacement guarantee if a professional leaves or underperforms?",
-      a: "Kaptas Global's replacement guarantee has no time limit and no additional cost. Because the service fee is billed monthly, replacements are fully covered for as long as the engagement lasts. If a professional leaves or underperforms, Kaptas Global begins a new search immediately and presents replacement candidates within the same five-day shortlist timeline. There is no additional placement fee and no gap in coverage."
-    },
-    {
-      q: "Who owns the intellectual property and code produced by remote professionals hired through Kaptas Global?",
-      a: "The client owns 100 percent of all code, data, designs, documents, and deliverables produced by the professional hired through Kaptas Global. Full IP ownership and code ownership are written into every Kaptas Global contract. There are no exceptions, no shared ownership clauses, and no transfer fees. The talent works under the client's direction, and everything they build belongs to the client from day one."
-    },
-    {
-      q: "What is the timezone overlap between Brazil, Latin America, and the United States for nearshore remote teams?",
-      a: "Brazil is one to four hours ahead of US Eastern Time, which provides full overlap during standard US business hours. Professionals hired through Kaptas Global in Brazil and across Latin America join standups, sprint reviews, syncs, and collaborative sessions on the client's regular schedule. West Coast teams get four to six hours of direct overlap, which is enough for full synchronous collaboration without overnight handoffs. This nearshore timezone proximity is one of the key advantages of hiring remote teams in Latin America over offshore regions like Eastern Europe or Asia."
-    },
-    {
-      q: "Can I cancel my outsourcing and staffing engagement with Kaptas Global at any time?",
-      a: "Kaptas Global requires no minimum contract term, no lock-in period, and no cancellation penalty. Clients can scale down the number of professionals or end the engagement entirely at any time with no financial consequence. There is no long-term commitment required to work with Kaptas Global."
-    },
-    {
-      q: ENTITY_FAQ.outsourcingStaffing.q,
-      a: ENTITY_FAQ.outsourcingStaffing.a,
-    }
-  ];
+  const faqs = OUTSOURCING_FAQS;
 
   return (
     <>
@@ -681,8 +636,6 @@ export default function ContractorStaffing() {
           </a>
         </div>
       </motion.section>
-
-
 
 
 
