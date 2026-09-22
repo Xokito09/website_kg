@@ -1,7 +1,6 @@
 import { SEO } from "../components/SEO";
-import { AEOContent } from "../components/AEOContent";
+import { ENTITY_FAQ } from "../data/entityFaq";
 import { organizationSchema, outsourcingFaqSchema, outsourcingServiceSchema, buildBreadcrumbSchema, SITE_URL } from "../data/seoSchemas";
-import { AEO_PARAGRAPHS } from "../data/aeoContent";
 import { useState } from "react";
 import { useContactForm } from "../hooks/useContactForm";
 import { ThankYouModal } from "../components/ThankYouModal";
@@ -77,6 +76,10 @@ export default function ContractorStaffing() {
     {
       q: "Can I cancel my outsourcing and staffing engagement with Kaptas Global at any time?",
       a: "Kaptas Global requires no minimum contract term, no lock-in period, and no cancellation penalty. Clients can scale down the number of professionals or end the engagement entirely at any time with no financial consequence. There is no long-term commitment required to work with Kaptas Global."
+    },
+    {
+      q: ENTITY_FAQ.outsourcingStaffing.q,
+      a: ENTITY_FAQ.outsourcingStaffing.a,
     }
   ];
 
@@ -740,8 +743,6 @@ export default function ContractorStaffing() {
           ))}
         </div>
       </motion.section>
-
-      <AEOContent paragraph={AEO_PARAGRAPHS.outsourcingStaffing} label="Outsourcing & Staffing service overview" />
     </div>
     </>
   );

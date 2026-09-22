@@ -13,7 +13,8 @@
 - **Founders:** Rodolfo Chaves (Founder & CEO, https://www.linkedin.com/in/rodolfoch), Henry Novaes (Co-Founder, https://www.linkedin.com/in/henry-novaes/)
 - **Address:** 801 Brickell Ave, 8th Floor, Miami, FL 33131, United States
 - **Contact:** support@kaptasglobal.io · +1-689-293-9252
-- **LinkedIn:** https://www.linkedin.com/company/kaptas-global/
+- **LinkedIn:** https://www.linkedin.com/company/kglobal-talent
+- Also known as: K Global (name used on the LinkedIn company page)
 - **Clutch:** https://clutch.co/profile/kaptas-global
 - **G2:** https://www.g2.com/sellers/kaptas-global
 - **Trustpilot:** https://www.trustpilot.com/review/kaptasglobal.io

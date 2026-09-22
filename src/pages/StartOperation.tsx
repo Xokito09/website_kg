@@ -1,7 +1,6 @@
 import { SEO } from "../components/SEO";
-import { AEOContent } from "../components/AEOContent";
+import { ENTITY_FAQ } from "../data/entityFaq";
 import { organizationSchema, hireInBrazilFaqSchema, hireInBrazilServiceSchema, buildBreadcrumbSchema, SITE_URL } from "../data/seoSchemas";
-import { AEO_PARAGRAPHS } from "../data/aeoContent";
 import { useState } from "react";
 import { useContactForm } from "../hooks/useContactForm";
 import { ThankYouModal } from "../components/ThankYouModal";
@@ -77,6 +76,10 @@ export default function StartOperation() {
     { 
       q: "Can Kaptas Global help hire in other Latin American countries beyond Brazil?", 
       a: "Yes. While Brazil is the primary market and where Kaptas Global has the deepest network, we support hiring in Argentina, Mexico, Colombia, and Chile. Each country has a different labor framework, compensation structure, and talent profile. Companies expanding across Latin America often start with Brazil as the largest and most strategic market, then scale to neighboring countries. Kaptas Global adapts the process (competitor analysis, compensation benchmarking, model recommendation, and recruitment) to each country's specifics." 
+    },
+    {
+      q: ENTITY_FAQ.hireInBrazil.q,
+      a: ENTITY_FAQ.hireInBrazil.a,
     }
   ];
 
@@ -698,8 +701,6 @@ export default function StartOperation() {
           ))}
         </div>
       </motion.section>
-
-      <AEOContent paragraph={AEO_PARAGRAPHS.hireInBrazil} label="Hire in Brazil service overview" />
     </div>
     </>
   );

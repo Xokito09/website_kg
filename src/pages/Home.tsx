@@ -1,7 +1,5 @@
 import { SEO } from "../components/SEO";
-import { AEOContent } from "../components/AEOContent";
 import { organizationSchema, homeFaqSchema, homeServiceSchema, homeHowToSchema, websiteSchema } from "../data/seoSchemas";
-import { AEO_PARAGRAPHS } from "../data/aeoContent";
 import { Hero } from "../components/home/Hero";
 import { SocialProof } from "../components/home/SocialProof";
 import { WhyBrazil } from "../components/home/WhyBrazil";
@@ -70,8 +68,6 @@ export default function Home() {
 
       <BlogInsights />
       <HomeFAQ />
-
-      <AEOContent paragraph={AEO_PARAGRAPHS.home} label="Kaptas Global overview" />
     </div>
   );
 }

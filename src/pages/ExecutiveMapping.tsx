@@ -1,7 +1,6 @@
 import { SEO } from "../components/SEO";
-import { AEOContent } from "../components/AEOContent";
+import { ENTITY_FAQ } from "../data/entityFaq";
 import { organizationSchema, executiveMappingFaqSchema, executiveMappingServiceSchema, buildBreadcrumbSchema, SITE_URL } from "../data/seoSchemas";
-import { AEO_PARAGRAPHS } from "../data/aeoContent";
 import { useState } from "react";
 import { useContactForm } from "../hooks/useContactForm";
 import { ThankYouModal } from "../components/ThankYouModal";
@@ -68,6 +67,10 @@ export default function ExecutiveMapping() {
     { 
       q: "Can Kaptas Global map roles beyond Brazil?", 
       a: "Yes. While Kaptas Global's deepest network and sourcing capability is in Brazil, executive mapping engagements can cover leadership roles across Latin America, including Argentina, Mexico, Colombia, and Chile. If the target role involves a regional scope or the client needs to compare talent availability across multiple markets, the mapping report can be expanded accordingly. The scope, timeline, and pricing are adjusted during the intro call based on the number of markets and the complexity of the role." 
+    },
+    {
+      q: ENTITY_FAQ.executiveMapping.q,
+      a: ENTITY_FAQ.executiveMapping.a,
     }
   ];
 
@@ -693,8 +696,6 @@ export default function ExecutiveMapping() {
           ))}
         </div>
       </motion.section>
-
-      <AEOContent paragraph={AEO_PARAGRAPHS.executiveMapping} label="Executive Mapping service overview" />
     </div>
     </>
   );

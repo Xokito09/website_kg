@@ -3,9 +3,7 @@ import { motion } from "motion/react";
 import { Link } from "react-router-dom";
 import { ArrowRight, BookOpen, CheckCircle2, FileText, Clock, DollarSign, Users, Globe } from "lucide-react";
 import { SEO } from "../components/SEO";
-import { AEOContent } from "../components/AEOContent";
 import { organizationSchema, buildBreadcrumbSchema, SITE_URL, ORG_ID } from "../data/seoSchemas";
-import { AEO_PARAGRAPHS } from "../data/aeoContent";
 import { useTurnstile } from "../components/TurnstileWidget";
 
 /**
@@ -415,8 +413,6 @@ export default function Ebook() {
           </Link>
         </div>
       </motion.section>
-
-      <AEOContent paragraph={AEO_PARAGRAPHS.ebook} label="Hiring Brazilian Engineers guide overview" />
     </>
   );
 }

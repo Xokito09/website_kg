@@ -1,5 +1,6 @@
 import { FaqAccordion } from "../shared/FaqAccordion";
 import { STAFFING_COST_COMPOSITION } from "../../data/claims";
+import { ENTITY_FAQ } from "../../data/entityFaq";
 
 const faqs = [
   {
@@ -41,6 +42,10 @@ const faqs = [
   {
     q: "Is there a minimum number of hires required?",
     a: "No. Kaptas Global works with companies hiring a single professional or building a full team. There is no minimum volume, no long-term contract, and no commitment beyond the specific engagement. Over 75% of clients return to hire again after their first placement."
+  },
+  {
+    q: ENTITY_FAQ.pricing.q,
+    a: ENTITY_FAQ.pricing.a,
   }
 ];
 

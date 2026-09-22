@@ -34,7 +34,7 @@ export function Footer() {
               Kaptas Global is a US-incorporated hiring partner founded by Brazilians that sources senior talent in Brazil and Latin America. We handle sourcing, payroll, compliance, and vetting. 300+ placements. Zero upfront cost.
             </p>
             <div className="flex items-center gap-4">
-              <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-gray-400 hover:bg-kaptas-green hover:text-kaptas-black transition-all">
+              <a href="https://www.linkedin.com/company/kglobal-talent" aria-label="Kaptas Global on LinkedIn" target="_blank" rel="noreferrer" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-gray-400 hover:bg-kaptas-green hover:text-kaptas-black transition-all">
                 <Linkedin className="w-4 h-4" />
               </a>
             </div>

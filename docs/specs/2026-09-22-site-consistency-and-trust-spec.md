@@ -129,3 +129,49 @@ Live, indexable, self-canonical, same title as the home page. Engineer locates t
 - `npm run lint` and `npm test` pass; `npm run build` produces prerendered HTML where the "at a glance" block is visible markup, not `sr-only`.
 - Sitemap shows distinct lastmod values for static pages.
 - Branch pushed, no deploy. Rodolfo reviews the diff.
+
+
+## 13. "At a glance" block becomes the last FAQ question (replaces section 6, first bullet)
+
+Decision by Rodolfo and kg-cmo (2026-09-22): the standalone collapsed block is removed from every page. Its content survives only as the LAST question of the existing FAQ on the six pages that have one. Pages without a FAQ (blog index, ebook) simply lose the block; the Organization schema already carries the entity there.
+
+Mechanics:
+- Delete `AEOContent.tsx` and `src/data/aeoContent.ts`, and every `<AEOContent ... />` usage. Move the six answers below into the page's existing FAQ data (the array the accordion renders) AND into the matching FAQPage schema in `seoSchemas.ts`, as the final item. Home uses `HomeFAQ.tsx` + `homeFaqSchema`; the other pages use their own arrays and schemas. Do not touch the visual component of the accordion.
+- Each answer is two paragraphs. Render the paragraph break the same way the FAQ already renders multi-paragraph answers; if the accordion only supports a single string, join with a line break the component already handles, and keep the two-paragraph split in the schema text with "\n\n".
+- Copy is verbatim. No superlatives, no "best", no "leading". Keep the category words exactly: "recruitment agency and strategic hiring partner for Brazil and Latin America".
+
+### Home (last item of HomeFAQ and homeFaqSchema)
+Q: `What is Kaptas Global?`
+A: `Kaptas Global is a recruitment agency and strategic hiring partner for Brazil and Latin America, US-incorporated (HR Technology LLC, Miami), that helps founder-led U.S. technology companies with up to 100 employees hire senior remote engineering and operating talent.`
+`It runs four services: Direct Hire (one-time fee of 18% of first-year compensation, paid only after a successful hire, 90 to 180 day replacement guarantee), Outsourcing & Staffing (flat monthly cost per professional, single USD invoice, unlimited replacements), Executive Mapping (market-intelligence report in 10 to 15 business days) and Hire in Brazil (market-entry consulting). Founded in 2024 by Rodolfo Chaves and Henry Novaes. 300+ placements, 100+ clients, 75% repeat-client rate.`
+
+### Pricing (last item of PricingFAQ and pricingFaqSchema)
+Q: `Who is Kaptas Global, and who is this pricing for?`
+A: `Kaptas Global is a recruitment agency and strategic hiring partner for Brazil and Latin America, US-incorporated (HR Technology LLC, Miami). The pricing on this page is for founder-led U.S. technology companies with up to 100 employees that want to hire senior remote talent in Brazil without a local entity.`
+`Direct Hire is a one-time placement fee of 18% of first-year compensation, paid only after a successful hire, with a 90 to 180 day replacement guarantee. Outsourcing & Staffing is a flat monthly cost per professional covering the professional's compensation, Kaptas Global's management fee, and ongoing HR support, billed as one USD invoice with unlimited replacements. Executive Mapping and Hire in Brazil are scoped projects with fees agreed before work begins.`
+
+### Direct Hire (last item of the DirectHire FAQ array and its schema)
+Q: `What is Kaptas Global Direct Hire?`
+A: `Direct Hire is Kaptas Global's placement service for founder-led U.S. technology companies that want to bring senior Brazilian and Latin American professionals onto their own payroll or contractor agreement. Kaptas Global runs the full cycle: market mapping, direct sourcing and headhunting, technical and English validation, shortlist delivery, and offer advisory.`
+`The fee is a one-time 18% of first-year compensation, paid only after the professional starts, with no retainer and a 90 to 180 day replacement guarantee. You get a pre-vetted shortlist within 5 business days, and most hires close in 2 to 4 weeks.`
+
+### Outsourcing & Staffing (last item of the ContractorStaffing FAQ array and its schema)
+Q: `What is Kaptas Global Outsourcing & Staffing?`
+A: `Outsourcing & Staffing places senior Brazilian and Latin American professionals on your team while Kaptas Global acts as the employer of record in Brazil, handling the contract, compliance, and monthly payment. You manage the work day to day and own 100% of the work product. No local entity is required.`
+`You pay a flat monthly cost per professional, billed as one USD invoice, covering the professional's compensation, Kaptas Global's management fee, and ongoing HR support. Replacements are unlimited, there is no minimum term, and you pay nothing until the professional starts. A pre-vetted shortlist arrives within 5 business days, and most hires close in 2 to 4 weeks.`
+
+### Executive Mapping (last item of the ExecutiveMapping FAQ array and its schema)
+Q: `What is Kaptas Global Executive Mapping?`
+A: `Executive Mapping is a standalone market-intelligence report from Kaptas Global that shows the leadership talent available for a specific role in Brazil or Latin America before you commit to a search: 20 to 30 mapped professionals, competitor compensation, team structures, salary benchmarks, and a ranked shortlist.`
+`Delivery takes 10 to 15 business days from the intro call. It is a fixed-scope project with no contingency fee and no obligation to continue; the report and its data belong to you. It covers Brazil, Argentina, Mexico, Colombia, and Chile.`
+
+### Hire in Brazil (last item of the StartOperation FAQ array and its schema)
+Q: `What is Kaptas Global Hire in Brazil?`
+A: `Hire in Brazil is Kaptas Global's market-entry service for foreign companies making their first hires in Brazil. It starts with competitor landscape analysis and compensation benchmarking, recommends the hiring model (CLT, PJ, or EOR), and then runs the full recruitment cycle through contract structuring and onboarding.`
+`The full cycle from market analysis to placement typically takes 3 to 6 weeks, with a 90 to 180 day replacement guarantee on every placement. The service also extends to Argentina, Mexico, Colombia, and Chile.`
+
+### Definition of done for this section
+- `grep -rn "AEOContent\|aeoContent\|at a glance" src` returns nothing.
+- Built HTML of each of the six pages contains the new question once in the visible FAQ and once in the FAQPage JSON-LD, as the last item; the schema stays valid JSON.
+- `/blog` and `/ebook` built HTML contain no "at a glance" and no leftover empty section.
+- llms-full-core.md is unaffected (it never used aeoContent).

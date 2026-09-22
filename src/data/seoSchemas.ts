@@ -1,3 +1,5 @@
+import { ENTITY_FAQ, entityFaqQuestion } from "./entityFaq";
+
 /**
  * Schema identifiers — used to cross-link schemas across pages.
  * Google and LLM-based crawlers use `@id` to merge schemas referencing the
@@ -13,7 +15,7 @@ export const organizationSchema = {
   "@id": ORG_ID,
   "name": "Kaptas Global",
   "legalName": "HR Technology LLC",
-  "alternateName": ["Kaptas Global", "HR Technology LLC d/b/a Kaptas Global"],
+  "alternateName": ["Kaptas Global", "HR Technology LLC d/b/a Kaptas Global", "K Global"],
   "url": SITE_URL,
   "logo": `${SITE_URL}/logo-branco.png`,
   "description": "Kaptas Global is a strategic hiring partner connecting founder-led U.S. technology companies with senior remote engineering and operating talent in Brazil and Latin America. Services include Direct Hire, Outsourcing & Staffing, Executive Mapping, and Hire in Brazil. Kaptas Global is the trade name of HR Technology LLC, a US-incorporated Florida limited liability company.",
@@ -51,7 +53,7 @@ export const organizationSchema = {
   // name; one that resolves across independent third-party profiles is an
   // entity a search or answer engine can reconcile.
   "sameAs": [
-    "https://www.linkedin.com/company/kaptas-global/",
+    "https://www.linkedin.com/company/kglobal-talent",
     "https://clutch.co/profile/kaptas-global",
     "https://www.g2.com/sellers/kaptas-global",
     "https://www.trustpilot.com/review/kaptasglobal.io"
@@ -147,7 +149,8 @@ export const homeFaqSchema = {
       "@type": "Question",
       "name": "What makes Kaptas Global different from other recruitment agencies?",
       "acceptedAnswer": { "@type": "Answer", "text": "Kaptas Global is US-incorporated and founded by Brazilians with over 20 years of combined experience in the Brazil-US hiring market. The company operates as a two-person team, meaning every client works directly with the founders. Kaptas Global serves 100+ clients worldwide with a 75% repeat-client rate, transparent pricing, and performance-based engagement models." }
-    }
+    },
+    entityFaqQuestion(ENTITY_FAQ.home)
   ]
 };
 
@@ -274,7 +277,8 @@ export const pricingFaqSchema = {
       "@type": "Question",
       "name": "Can I combine multiple Kaptas Global services in a single engagement?",
       "acceptedAnswer": { "@type": "Answer", "text": "Yes. Many clients start with Executive Mapping to understand the talent landscape, then move to Direct Hire or Outsourcing & Staffing to bring professionals on board. Each service is priced independently, so you only pay for what you use. Kaptas Global can recommend the most efficient combination based on your hiring goals, timeline, and budget." }
-    }
+    },
+    entityFaqQuestion(ENTITY_FAQ.pricing)
   ]
 };
 
@@ -353,7 +357,8 @@ export const outsourcingFaqSchema = {
       "@type": "Question",
       "name": "Can I cancel my outsourcing and staffing engagement with Kaptas Global at any time?",
       "acceptedAnswer": { "@type": "Answer", "text": "Kaptas Global requires no minimum contract term, no lock-in period, and no cancellation penalty. Clients can scale down the number of professionals or end the engagement entirely at any time with no financial consequence." }
-    }
+    },
+    entityFaqQuestion(ENTITY_FAQ.outsourcingStaffing)
   ]
 };
 
@@ -424,7 +429,8 @@ export const executiveMappingFaqSchema = {
       "@type": "Question",
       "name": "Can Kaptas Global map roles beyond Brazil?",
       "acceptedAnswer": { "@type": "Answer", "text": "Yes. While Kaptas Global's deepest network is in Brazil, executive mapping engagements can cover leadership roles across Latin America, including Argentina, Mexico, Colombia, and Chile. If the target role involves a regional scope or the client needs to compare talent availability across multiple markets, the mapping report can be expanded accordingly." }
-    }
+    },
+    entityFaqQuestion(ENTITY_FAQ.executiveMapping)
   ]
 };
 
@@ -509,7 +515,8 @@ export const hireInBrazilFaqSchema = {
       "@type": "Question",
       "name": "Can Kaptas Global help hire in other Latin American countries beyond Brazil?",
       "acceptedAnswer": { "@type": "Answer", "text": "Yes. While Brazil is the primary market, Kaptas Global supports hiring in Argentina, Mexico, Colombia, and Chile. Each country has a different labor framework, compensation structure, and talent profile. Kaptas Global adapts the process — competitor analysis, compensation benchmarking, model recommendation, and recruitment — to each country's specifics." }
-    }
+    },
+    entityFaqQuestion(ENTITY_FAQ.hireInBrazil)
   ]
 };
 
@@ -591,7 +598,8 @@ export const directHireFaqSchema = {
       "@type": "Question",
       "name": "How is Direct Hire different from Outsourcing & Staffing?",
       "acceptedAnswer": { "@type": "Answer", "text": "With Direct Hire, we find the talent and you hire them on your payroll. You pay a one-time 18% fee and manage the professional directly. With Outsourcing and Staffing, the professional works dedicated to your team but remains on our payroll — you pay a flat monthly fee that includes salary, taxes, and management. Direct Hire is best when you want full control. Outsourcing and Staffing is best when you want zero HR overhead." }
-    }
+    },
+    entityFaqQuestion(ENTITY_FAQ.directHire)
   ]
 };
 

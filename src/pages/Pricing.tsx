@@ -1,7 +1,5 @@
 import { SEO } from "../components/SEO";
-import { AEOContent } from "../components/AEOContent";
 import { organizationSchema, pricingFaqSchema, pricingServiceSchema, buildBreadcrumbSchema, SITE_URL } from "../data/seoSchemas";
-import { AEO_PARAGRAPHS } from "../data/aeoContent";
 import { Link } from "react-router-dom";
 import { ArrowRight, CheckCircle2, ChevronRight } from "lucide-react";
 import { motion } from "motion/react";
@@ -297,8 +295,6 @@ export default function Pricing() {
 
       {/* 7. FAQ */}
       <PricingFAQ />
-
-      <AEOContent paragraph={AEO_PARAGRAPHS.pricing} label="Pricing overview" />
     </div>
   );
 }

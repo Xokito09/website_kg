@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { Plus, Minus } from "lucide-react";
+import { ENTITY_FAQ } from "../../data/entityFaq";
 
 const faqs = [
   {
@@ -42,6 +43,10 @@ const faqs = [
   {
     q: "What makes Kaptas Global different from other recruitment agencies?",
     a: "Kaptas Global is a US-incorporated company founded by Brazilians with over 20 years of combined experience in Brazil's tech and professional market. The team of two means every engagement is handled directly by the founders, with no account managers or layers in between. Kaptas Global serves 100+ clients across the US, UK, Germany, China, and other markets. The operational model is built around quality, efficiency, and cost reduction: transparent pricing, no hidden fees, replacement guarantees on every placement, and a 75% repeat-client rate that reflects consistent delivery."
+  },
+  {
+    q: ENTITY_FAQ.home.q,
+    a: ENTITY_FAQ.home.a,
   }
 ];
 
