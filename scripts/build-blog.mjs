@@ -16,6 +16,12 @@ const CONTENT_DIR = path.join(__dirname, "../content/blog");
 const OUT_FILE = path.join(__dirname, "../src/data/blog-posts.json");
 const today = () => new Date().toISOString().slice(0, 10);
 
+// Frontmatter `date: 2026-09-22` sem aspas chega aqui como Date (o YAML resolve
+// a data sozinho); `String(...).slice(0, 10)` virava "Tue Sep 22" e o post ficava
+// sem data valida, caindo para o fim da lista, que ordena por data (22/09/2026).
+export const isoDate = (value) =>
+  value instanceof Date ? value.toISOString().slice(0, 10) : String(value).slice(0, 10);
+
 // Load existing migrated posts (from WordPress)
 let existing = [];
 if (fs.existsSync(OUT_FILE)) {
@@ -58,7 +64,7 @@ for (const file of files) {
         ...existing[idx],
         title: data.title || existing[idx].title,
         excerpt: data.excerpt || existing[idx].excerpt,
-        date: data.date ? String(data.date).slice(0, 10) : existing[idx].date,
+        date: data.date ? isoDate(data.date) : existing[idx].date,
         categories: data.categories ? (Array.isArray(data.categories) ? data.categories : [data.categories]) : existing[idx].categories,
         featured_image: data.featured_image || existing[idx].featured_image,
         content: newContent,
@@ -73,7 +79,7 @@ for (const file of files) {
     console.log(`✏️  Updated: ${slug}`);
   } else {
     // New post
-    const postDate = data.date ? String(data.date).slice(0, 10) : today();
+    const postDate = data.date ? isoDate(data.date) : today();
     newPosts.push(
       mergeParts(
         {
