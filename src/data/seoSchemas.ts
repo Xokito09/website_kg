@@ -32,7 +32,7 @@ export const organizationSchema = {
     {
       "@type": "Person",
       "name": "Rodolfo Chaves",
-      "jobTitle": "Founder & CEO",
+      "jobTitle": "Co-Founder",
       "sameAs": ["https://www.linkedin.com/in/rodolfoch"]
     },
     {

@@ -10,7 +10,7 @@
 
 - **Legal entity:** HR Technology LLC, a Florida limited liability company, doing business as Kaptas Global
 - **Founded:** 2024
-- **Founders:** Rodolfo Chaves (Founder & CEO, https://www.linkedin.com/in/rodolfoch), Henry Novaes (Co-Founder, https://www.linkedin.com/in/henry-novaes/)
+- **Founders:** Rodolfo Chaves (Co-Founder, https://www.linkedin.com/in/rodolfoch), Henry Novaes (Co-Founder, https://www.linkedin.com/in/henry-novaes/)
 - **Address:** 801 Brickell Ave, 8th Floor, Miami, FL 33131, United States
 - **Contact:** support@kaptasglobal.io · +1-689-293-9252
 - **LinkedIn:** https://www.linkedin.com/company/kglobal-talent

@@ -79,7 +79,7 @@ Site-wide figure stays `70 to 80% above gross salary`. `src/data/blog-posts.json
 - Post `brazil-hiring-costs-2025-total-cost-guide`: title becomes `Brazil hiring costs in 2026: the complete total cost guide for US teams` (H1 follows title). Slug stays. Add `dateModified: "2026-09-22"`. Support `dateModified` in `build-sitemap.mjs` (use it as lastmod when present) and in the Article schema (already reads it).
 - Post `salaries-in-brazil-for-us-remote-teams-2026`: add `dateModified: "2026-09-22"` only if the engineer touches its content (utm cleanup does not count). Otherwise leave.
 - "Cost comparison in one view" section of the costs post: convert the two-model prose into a 3-column HTML table (Model | Annual cost | When it fits) using only the numbers already in the text.
-- Author: add to all 22 posts `author: { name: "Rodolfo Chaves", role: "Founder & CEO, Kaptas Global", bio: <existing PostAuthor bio if any, else the one-liner below>, sameAs: "https://www.linkedin.com/in/rodolfoch" }`. Article schema Person gets `sameAs` and `url`. PostAuthor stays at the end of the post (current placement). Bio one-liner: `Founder & CEO of Kaptas Global. Has placed senior Brazilian professionals with U.S. companies since 2024 and writes about how to hire in Brazil without the guesswork.`
+- Author: add to all 22 posts `author: { name: "Rodolfo Chaves", role: "Co-Founder, Kaptas Global", bio: <existing PostAuthor bio if any, else the one-liner below>, sameAs: "https://www.linkedin.com/in/rodolfoch" }`. Article schema Person gets `sameAs` and `url`. PostAuthor stays at the end of the post (current placement). Bio one-liner: `Founder & CEO of Kaptas Global. Has placed senior Brazilian professionals with U.S. companies since 2024 and writes about how to hire in Brazil without the guesswork.`
 - Typo: in post `how-brazilian-professionals-save-up-to-70-in-taxes-...` replace `Internacional` with `International`. Nothing else in the three candidate-facing posts changes.
 - Home AEO paragraph: `a Series G startup` is accurate. Do not change it.
 
@@ -98,7 +98,7 @@ https://www.trustpilot.com/review/kaptasglobal.io
 ```
 Founders:
 ```
-{ "@type": "Person", "name": "Rodolfo Chaves", "jobTitle": "Founder & CEO", "sameAs": ["https://www.linkedin.com/in/rodolfoch"] }
+{ "@type": "Person", "name": "Rodolfo Chaves", "jobTitle": "Co-Founder", "sameAs": ["https://www.linkedin.com/in/rodolfoch"] }
 { "@type": "Person", "name": "Henry Novaes", "jobTitle": "Co-Founder", "sameAs": ["https://www.linkedin.com/in/henry-novaes/"] }
 ```
 Add the same URLs to the `## Contact` block of `public/llms.txt` and the Company block of `content/llms-full-core.md`.
