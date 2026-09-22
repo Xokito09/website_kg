@@ -231,7 +231,8 @@ export default function BlogPost() {
             prose-blockquote:border-l-kaptas-green prose-blockquote:text-gray-400
             prose-code:text-kaptas-green prose-code:bg-white/5 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded
             prose-pre:bg-[#0A0A0A] prose-pre:border prose-pre:border-white/10 prose-pre:rounded-xl
-            prose-table:block prose-table:overflow-x-auto prose-table:border prose-table:border-white/10 prose-table:rounded-xl"
+            prose-table:block prose-table:overflow-x-auto prose-table:border prose-table:border-white/10 prose-table:rounded-xl
+            prose-th:px-4 prose-td:px-4"
           dangerouslySetInnerHTML={{ __html: post.content }}
         />
 

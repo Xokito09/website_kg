@@ -9,7 +9,7 @@ export function PostFaq({ items }: { items: FaqAccordionItem[] }) {
   if (!items || items.length === 0) return null;
 
   return (
-    <section className="mt-20">
+    <section className="mt-32">
       <h2 className="text-3xl md:text-4xl font-bold text-white tracking-tight text-center mb-10">
         Frequently Asked Questions
       </h2>
