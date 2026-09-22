@@ -143,13 +143,17 @@ export default function Blog() {
                   <p className="text-gray-400 mb-8 flex-1 leading-relaxed text-sm line-clamp-3">
                     {plainExcerpt}
                   </p>
-                  <Link
-                    to={`/blog/${post.slug}`}
-                    className="flex items-center text-sm font-medium text-white group-hover:text-kaptas-green transition-colors mt-auto"
-                  >
+                  <span className="flex items-center text-sm font-medium text-white group-hover:text-kaptas-green transition-colors mt-auto">
                     Read article <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-                  </Link>
+                  </span>
                 </div>
+                {/* 22/09/2026 (Rodolfo): o cartao inteiro abre o post, nao so' o
+                    "Read article" -- o hover ja' dizia que o cartao era clicavel. */}
+                <Link
+                  to={`/blog/${post.slug}`}
+                  aria-label={plainTitle}
+                  className="absolute inset-0 z-10 rounded-[2rem] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-kaptas-green"
+                />
               </motion.article>
             );
           })}
