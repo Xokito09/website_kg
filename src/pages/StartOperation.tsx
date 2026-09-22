@@ -1,5 +1,6 @@
 import { SEO } from "../components/SEO";
 import { ENTITY_FAQ } from "../data/entityFaq";
+import { FaqAnswer } from "../components/shared/FaqAnswer";
 import { organizationSchema, hireInBrazilFaqSchema, hireInBrazilServiceSchema, buildBreadcrumbSchema, SITE_URL } from "../data/seoSchemas";
 import { useState } from "react";
 import { useContactForm } from "../hooks/useContactForm";
@@ -692,7 +693,7 @@ export default function StartOperation() {
                     transition={{ duration: 0.3, ease: "easeInOut" }}
                   >
                     <div className="px-6 pb-6 text-gray-400 text-sm leading-relaxed" data-speakable="true">
-                      {faq.a}
+                      <FaqAnswer text={faq.a} />
                     </div>
                   </motion.div>
                 )}

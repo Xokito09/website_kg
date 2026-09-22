@@ -2,6 +2,7 @@ import { SEO } from "../components/SEO";
 import { organizationSchema, directHireFaqSchema, directHireServiceSchema, buildBreadcrumbSchema, SITE_URL } from "../data/seoSchemas";
 import { TIME_TO_HIRE_WINDOW } from "../data/claims";
 import { ENTITY_FAQ } from "../data/entityFaq";
+import { FaqAnswer } from "../components/shared/FaqAnswer";
 import { useState } from "react";
 import { useContactForm } from "../hooks/useContactForm";
 import { ThankYouModal } from "../components/ThankYouModal";
@@ -752,7 +753,7 @@ export default function DirectHire() {
                     transition={{ duration: 0.3, ease: "easeInOut" }}
                   >
                     <div className="px-6 pb-6 text-gray-400 text-sm leading-relaxed" data-speakable="true">
-                      {faq.a}
+                      <FaqAnswer text={faq.a} />
                     </div>
                   </motion.div>
                 )}

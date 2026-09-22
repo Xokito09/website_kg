@@ -2,6 +2,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { Plus, Minus } from "lucide-react";
 import { ENTITY_FAQ } from "../../data/entityFaq";
+import { FaqAnswer } from "../shared/FaqAnswer";
 
 const faqs = [
   {
@@ -89,7 +90,7 @@ export function HomeFAQ() {
                       transition={{ duration: 0.3, ease: "easeInOut" }}
                     >
                       <div className="px-6 pb-6 pt-2 text-gray-400 leading-relaxed text-base" data-speakable="true">
-                        {faq.a}
+                        <FaqAnswer text={faq.a} />
                       </div>
                     </motion.div>
                   )}
