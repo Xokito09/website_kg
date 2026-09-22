@@ -52,7 +52,7 @@ It offers tailored recruitment solutions covering mainly staff augmentation and 
 
 Other options may suit you better if you want to browse a database yourself, or if you need volume hiring across several countries at once.
 
-Pricing is public. [Contractor staffing](https://kaptasglobal.io/contractor-staffing), its main model, is one flat monthly invoice, with compliance and payroll covered when needed. [Direct Hire](https://kaptasglobal.io/direct-hire) is 18% of first-year pay, charged after the hire starts, with a 90 to 180 day [replacement guarantee](https://kaptasglobal.io/pricing). It is the lowest cost of the five.
+Kaptas Global is also the only one of the five that puts its pricing on the page. [Contractor staffing](https://kaptasglobal.io/contractor-staffing), the main model, comes as one flat monthly invoice, with compliance and payroll handled when you need it. [Direct Hire](https://kaptasglobal.io/direct-hire) runs 18% of first-year pay, billed only after the person starts, and comes with a 90 to 180 day [replacement guarantee](https://kaptasglobal.io/pricing). Put those two together and it is the lowest cost of the five.
 
 ## 3. Howdy
 
