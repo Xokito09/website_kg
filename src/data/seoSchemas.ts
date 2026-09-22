@@ -19,8 +19,18 @@ export const organizationSchema = {
   "description": "Kaptas Global is a strategic hiring partner connecting founder-led U.S. technology companies with senior remote engineering and operating talent in Brazil and Latin America. Services include Direct Hire, Outsourcing & Staffing, Executive Mapping, and Hire in Brazil. Kaptas Global is the trade name of HR Technology LLC, a US-incorporated Florida limited liability company.",
   "foundingDate": "2024",
   "founder": [
-    { "@type": "Person", "name": "Rodolfo Chaves" },
-    { "@type": "Person", "name": "Henry Novaes" }
+    {
+      "@type": "Person",
+      "name": "Rodolfo Chaves",
+      "jobTitle": "Founder & CEO",
+      "sameAs": ["https://www.linkedin.com/in/rodolfoch"]
+    },
+    {
+      "@type": "Person",
+      "name": "Henry Novaes",
+      "jobTitle": "Co-Founder",
+      "sameAs": ["https://www.linkedin.com/in/henry-novaes/"]
+    }
   ],
   "address": {
     "@type": "PostalAddress",
@@ -37,7 +47,15 @@ export const organizationSchema = {
     "contactType": "sales",
     "availableLanguage": ["English", "Portuguese"]
   },
-  "sameAs": ["https://www.linkedin.com/company/kaptas-global/"],
+  // Entity-verification anchors. An Organization with a single sameAs is a
+  // name; one that resolves across independent third-party profiles is an
+  // entity a search or answer engine can reconcile.
+  "sameAs": [
+    "https://www.linkedin.com/company/kaptas-global/",
+    "https://clutch.co/profile/kaptas-global",
+    "https://www.g2.com/sellers/kaptas-global",
+    "https://www.trustpilot.com/review/kaptasglobal.io"
+  ],
   "areaServed": [
     { "@type": "Country", "name": "United States" },
     { "@type": "Place", "name": "Worldwide" }
