@@ -48,7 +48,6 @@ export default function PrivacyPolicy() {
       <SEO
         title="Privacy Policy — Kaptas Global"
         description="How Kaptas Global collects, uses, shares, and protects personal information. Includes data subject rights under LGPD (Brazil), GDPR (EEA/UK), and CCPA/CPRA (California)."
-        keywords="kaptas global privacy policy, data protection, LGPD, GDPR, CCPA, personal data, data subject rights"
         canonical="https://kaptasglobal.io/privacy-policy"
         schemas={[
           organizationSchema,

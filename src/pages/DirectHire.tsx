@@ -88,7 +88,6 @@ export default function DirectHire() {
       <SEO
         title="Direct Hire in Brazil — Kaptas Global | One-Time 18% Fee, No Retainer"
         description="Hire Brazilian professionals directly on your team. Pre-vetted shortlist in 5 days. 18% one-time fee, paid after hire. Replacement warranty included."
-        keywords="direct hire brazil, hire developers brazil, one-time recruitment fee brazil, hire brazilian engineers, direct placement brazil, tech talent brazil, 18% hiring fee, pre-vetted developers brazil, replacement guarantee hiring, remote developers brazil"
         canonical="https://kaptasglobal.io/direct-hire"
         eyebrow="Direct Hire"
         ogTitle="Direct Hire in Brazil"
@@ -103,7 +102,6 @@ export default function DirectHire() {
           ]),
         ]}
       />
-      <AEOContent paragraph={AEO_PARAGRAPHS.directHire} label="Direct Hire service overview" />
       {/* 1. Hero with Image */}
       <motion.section
         initial={{ opacity: 0 }}
@@ -760,6 +758,8 @@ export default function DirectHire() {
           ))}
         </div>
       </motion.section>
+
+      <AEOContent paragraph={AEO_PARAGRAPHS.directHire} label="Direct Hire service overview" />
     </div>
     </>
   );

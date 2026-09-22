@@ -47,7 +47,6 @@ export default function TermsOfService() {
       <SEO
         title="Terms of Service — Kaptas Global"
         description="The terms that govern your use of Kaptas Global's website and recruitment, staffing, and market-entry services. Includes eligibility, fees, intellectual property, warranties, liability, and dispute resolution."
-        keywords="kaptas global terms of service, recruitment service agreement, staffing terms, hiring terms and conditions"
         canonical="https://kaptasglobal.io/terms-of-service"
         schemas={[
           organizationSchema,

@@ -1,20 +1,27 @@
+import { Plus } from "lucide-react";
+
 /**
- * AEOContent — visually hidden, semantically present.
+ * AEOContent — visible, collapsed, at the bottom of the page.
  *
  * Renders a dense paragraph describing the page's entity, service, mechanics,
- * proof points, and contact details. The paragraph is invisible to sighted
- * users (Tailwind's `sr-only` clip) but is fully accessible to:
- *   - Screen readers (legitimate non-visual content for assistive tech)
- *   - HTML crawlers (Googlebot, Bingbot, GPTBot, ClaudeBot, PerplexityBot, etc.)
- *   - Large-language-model context windows when a page is fetched as a source
+ * proof points, and contact details, inside a <details> block the reader can
+ * open. HTML crawlers and LLM context windows get the paragraph either way,
+ * because <details> content is in the DOM whether or not it is expanded.
  *
- * Why no aria-hidden:
- * The original instruction set had `aria-hidden="true"` here, but that hides
- * the content from the accessibility tree too — leaving the div visible only
- * to crawlers. That pattern is indistinguishable from cloaking and Google has
- * flagged it as a manual-action risk. Omitting aria-hidden makes the content
- * genuine accessibility content (which is the legal cover for sr-only existing
- * in the first place) and keeps the AEO benefit fully intact.
+ * Why it is no longer `sr-only` (changed 2026-09-22):
+ * The previous version hid the paragraph with Tailwind's sr-only clip. That is
+ * defensible as accessibility content, but it is also indistinguishable from
+ * text written for crawlers and not for people — which is exactly the thing
+ * Google issues manual actions for. A collapsed <details> is honest: the same
+ * text, in the DOM, reachable by anyone who wants it, with nothing hidden from
+ * a sighted reader that a crawler can see. It costs nothing in AEO terms and
+ * removes the cloaking read entirely.
+ *
+ * Placement: last block of the page, above the footer. It is a summary of the
+ * page, so it belongs after the page, not in front of the hero.
+ *
+ * Styling reuses the FAQ accordion tokens (same border, radius, hover and text
+ * colors) so it reads as part of the existing design system, not a new one.
  *
  * Why a single paragraph:
  * LLMs extract entity context more cleanly from one dense paragraph than from
@@ -34,8 +41,16 @@ interface AEOContentProps {
 
 export function AEOContent({ paragraph, label = "Service overview" }: AEOContentProps) {
   return (
-    <section className="sr-only" aria-label={label}>
-      <p>{paragraph}</p>
+    <section aria-label={label} className="px-6 md:px-12 max-w-3xl mx-auto w-full">
+      <details className="group bg-white/[0.02] border border-white/5 rounded-2xl overflow-hidden transition-colors hover:bg-white/[0.04]">
+        <summary className="flex items-center justify-between gap-8 p-6 cursor-pointer list-none [&::-webkit-details-marker]:hidden text-lg font-medium text-white group-hover:text-kaptas-green transition-colors">
+          Kaptas Global at a glance
+          <span className="flex-shrink-0 w-8 h-8 rounded-full bg-white/5 flex items-center justify-center text-gray-400 group-hover:text-kaptas-green group-hover:bg-kaptas-green/10 transition-all">
+            <Plus className="w-4 h-4 transition-transform group-open:rotate-45" />
+          </span>
+        </summary>
+        <p className="px-6 pb-6 pt-2 text-gray-400 leading-relaxed text-base">{paragraph}</p>
+      </details>
     </section>
   );
 }
