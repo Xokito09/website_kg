@@ -77,7 +77,7 @@ export default function DirectHire() {
     },
     {
       q: "What makes Kaptas Global different from other recruitment firms hiring in Brazil?",
-      a: "Kaptas Global is a US-incorporated company founded by Brazilians with direct access to the Brazilian talent market. We headhunt employed professionals from top-tier companies rather than pulling from job boards or recycled databases. Every search is built around your specific stack, seniority level, and team culture. With over 300 placements, a 14-day average time to hire, and a replacement warranty on every placement, we operate as a strategic hiring partner, not a resume vendor."
+      a: "Kaptas Global is a US-incorporated company founded by Brazilians with direct access to the Brazilian talent market. We headhunt employed professionals from top-tier companies rather than pulling from job boards or recycled databases. Every search is built around your specific stack, seniority level, and team culture. With over 300 placements, a 2 to 4 week average time to hire, and a replacement warranty on every placement, we operate as a strategic hiring partner, not a resume vendor."
     }
   ];
 

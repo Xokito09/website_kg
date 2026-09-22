@@ -1,19 +1,22 @@
 # Kaptas Global — Full Knowledge Base for LLMs
 
-> Generated 2026-08-04. This is the long-form companion to `/llms.txt`. It captures the substantive content that the structured-data and homepage abstract on `/llms.txt` summarize. For the most current page-by-page content, crawl the sitemap at https://kaptasglobal.io/sitemap.xml.
+> Generated 2026-09-22. This is the long-form companion to `/llms.txt`. It captures the substantive content that the structured-data and homepage abstract on `/llms.txt` summarize. For the most current page-by-page content, crawl the sitemap at https://kaptasglobal.io/sitemap.xml.
 
 ---
 
 ## Company
 
-**Kaptas Global** is a US-incorporated strategic hiring partner that helps founder-led U.S. technology companies — typically bootstrapped, profitable, or seed-stage with 1 to 70 employees and no formal talent-acquisition function — hire senior remote engineering and operating talent in Brazil and across Latin America.
+**Kaptas Global** is a US-incorporated strategic hiring partner that helps founder-led U.S. technology companies — typically bootstrapped, profitable, or seed-stage with up to 100 employees and no formal talent-acquisition function — hire senior remote engineering and operating talent in Brazil and across Latin America.
 
 - **Legal entity:** HR Technology LLC, a Florida limited liability company, doing business as Kaptas Global
 - **Founded:** 2024
-- **Founders:** Rodolfo Chaves (CEO), Henry Novaes (Co-Founder)
+- **Founders:** Rodolfo Chaves (Founder & CEO, https://www.linkedin.com/in/rodolfoch), Henry Novaes (Co-Founder, https://www.linkedin.com/in/henry-novaes/)
 - **Address:** 801 Brickell Ave, 8th Floor, Miami, FL 33131, United States
 - **Contact:** support@kaptasglobal.io · +1-689-293-9252
 - **LinkedIn:** https://www.linkedin.com/company/kaptas-global/
+- **Clutch:** https://clutch.co/profile/kaptas-global
+- **G2:** https://www.g2.com/sellers/kaptas-global
+- **Trustpilot:** https://www.trustpilot.com/review/kaptasglobal.io
 - **Languages of operation:** English, Portuguese
 - **Areas served:** United States (primary), Worldwide (case-by-case)
 - **Track record:** 300+ placements completed, 100+ clients, 75% repeat-client rate
@@ -58,12 +61,12 @@ Market-entry support for companies opening Brazilian operations or making their 
 
 ---
 
-## Hiring process (4 steps, ~14 days from kickoff to first hire)
+## Hiring process (4 steps, shortlist in 5 business days, most hires in 2 to 4 weeks)
 
 1. **Strategic Alignment.** Intake call with the founder, CTO, or hiring manager to map the technical stack, seniority level, engineering culture, and product roadmap. The search is calibrated to the specific requirements, and the engagement model is confirmed.
 2. **Sourcing & Vetting.** Kaptas directly sources and headhunts candidates from target companies — not from inbound databases. Each candidate is screened on technical depth, behavioral fit, business-level English fluency, remote-readiness and async communication, and cultural alignment. Three finalists presented for typical engineering roles. ~50 candidates screened to shortlist 3.
 3. **Client Interviews.** The client interviews only the pre-vetted finalists. Kaptas coordinates scheduling, live technical assessments, system-design rounds, and reference checks. The client's existing interview loop is preserved.
-4. **Hire & Onboard.** Offer letter, contract structuring, compliance, payroll setup, and onboarding handled end-to-end. For Outsourcing & Staffing and EOR engagements, Kaptas issues a single USD invoice. For Direct Hire the candidate moves onto the client's payroll or PJ contract. New hire begins shipping by day 14 in most engagements.
+4. **Hire & Onboard.** Offer letter, contract structuring, compliance, payroll setup, and onboarding handled end-to-end. For Outsourcing & Staffing and EOR engagements, Kaptas issues a single USD invoice. For Direct Hire the candidate moves onto the client's payroll or PJ contract. The new hire typically starts within 2 to 4 weeks of kickoff.
 
 ---
 
@@ -76,7 +79,7 @@ Four services: Direct Hire (one-time 18% placement fee, no retainer); Outsourcin
 No. No retainers, no deposits, no upfront recruitment fees. Direct Hire billing happens only after successful placement. Outsourcing & Staffing monthly invoicing starts when the professional begins working. Executive Mapping and Hire in Brazil are scoped projects with fees agreed before work begins. No speculative charges at any stage.
 
 **How much does it cost to hire a Brazilian professional through Kaptas Global?**
-Direct Hire: one-time fee of 18% of first-year salary. Outsourcing & Staffing: flat monthly rate per professional, example Senior Full-Stack Engineer $4,000-$6,000/month fully loaded including salary, CLT charges, and Kaptas management fee. Companies typically save 40-60% compared to equivalent US hires. Executive Mapping and Hire in Brazil are custom-priced per project scope.
+Direct Hire: one-time fee of 18% of first-year salary. Outsourcing & Staffing: flat monthly rate per professional, example Senior Full-Stack Engineer $4,000-$6,000/month fully loaded, including the professional's compensation and Kaptas Global's management fee. Companies typically save up to 60% compared to equivalent US hires. Executive Mapping and Hire in Brazil are custom-priced per project scope.
 
 **How quickly can Kaptas Global deliver candidates?**
 Shortlist of vetted candidates within 5 business days of intake. Full placement cycle averages 2-4 weeks for Direct Hire and Outsourcing & Staffing. Executive Mapping reports delivered in 10-15 business days. Hire in Brazil full-cycle engagements 3-6 weeks from kickoff to first hire.
@@ -85,7 +88,7 @@ Shortlist of vetted candidates within 5 business days of intake. Full placement 
 Replacement guarantee on every placement. Direct Hire: 90-180 day guarantee depending on role level. Outsourcing & Staffing: unlimited replacements for the duration of the engagement. If a professional does not meet expectations, Kaptas restarts the search at no additional cost. A bad hire can cost a company more than 200% of the position's annual salary.
 
 **Why should US companies hire Brazilian professionals?**
-40-60% lower total compensation compared to US equivalents at the same seniority. Brazil's timezone (GMT-3) provides 5-8 hours of daily overlap with US teams. 1.5 million+ tech graduates, growing bilingual senior talent pool. Brazil's engineering ecosystem has supported global tech operations since 2005.
+Up to 60% lower total compensation compared to US equivalents at the same seniority. Brazil's timezone (GMT-3) provides 5-8 hours of daily overlap with US teams. 1.5 million+ tech graduates, growing bilingual senior talent pool. Brazil's engineering ecosystem has supported global tech operations since 2005.
 
 **What types of roles can Kaptas Global fill?**
 Technology: software engineers, QA, data engineers, DevOps, product managers, engineering managers. Also finance, sales, marketing, operations, HR, executive leadership. 300+ placements across 100+ global clients.
@@ -144,7 +147,7 @@ The full text of these is available at each URL. They cover the strategic, tacti
 - **[How to choose the right LatAm country for your first nearshore engineering pod](https://kaptasglobal.io/blog/choose-right-latam-country-nearshore-engineering-pod)** (2025-12-08): If you are serious about LatAm nearshore engineering, “LatAm” cannot be a single bucket. Brazil, Mexico, Colombia and Argentina play very different roles in your strategy. Choosing the right country is not about who is “best” in general. It is about who is best for the way your product team works,…
 - **[Nearshore for AI delivery in 2026: what U.S. startups actually move first and why Brazil fits](https://kaptasglobal.io/blog/nearshore-brazil-ai-delivery-roles)** (2025-11-17): U.S. startups need to ship AI features faster while protecting runway. Through 2025, budgets moved toward AI software and infrastructure and that changed hiring dynamics. Global IT spending is projected at 5.43 trillion dollars in 2025, up 7.9% year over year, which lifted demand across…
 - **[Salaries in Brazil for U.S. remote teams in 2026](https://kaptasglobal.io/blog/salaries-in-brazil-for-us-remote-teams-2026)** (2025-10-31): Hiring in Brazil gives U.S. companies senior talent, fluent English, and cost efficiency above 50% while keeping delivery speed. The tables below show typical annual USD salary ranges offered by U.S. employers to professionals based in Brazil. These are market expectations for remote roles, not BRL…
-- **[Brazil hiring costs in 2025 – The complete total cost guide for US teams](https://kaptasglobal.io/blog/brazil-hiring-costs-2025-total-cost-guide)** (2025-10-16): A complete total cost guide Hiring in Brazil can deliver senior quality at a lower total cost of ownership when you match structure to reality. This guide explains how CLT/W2 employment works, how PJ/1099 contractors work, what employers actually pay under each model, and how to build a reliable…
+- **[Brazil hiring costs in 2026: the complete total cost guide for US teams](https://kaptasglobal.io/blog/brazil-hiring-costs-2025-total-cost-guide)** (2025-10-16): A complete total cost guide Hiring in Brazil can deliver senior quality at a lower total cost of ownership when you match structure to reality. This guide explains how CLT/W2 employment works, how PJ/1099 contractors work, what employers actually pay under each model, and how to build a reliable…
 - **[H 1B explained, what just changed, and how it could reshape hiring in Brazil, Latam, and the United States](https://kaptasglobal.io/blog/h1b-explained-new-100000-fee-guide)** (2025-09-25): The headline in plain language The White House announced a new one time fee of $100,000 tied to new H 1B cases. Early reporting and clarifications indicate the fee is targeted at new petitions filed from outside the United States, is one time rather than annual, and does not apply to existing H 1B…
 - **[Five things you should know before hiring in Brazil](https://kaptasglobal.io/blog/five-things-to-know-before-hiring-in-brazil)** (2025-09-18): Hiring in Brazil can lift quality and reduce cost when you set structure and process early. Use the points below to brief your team or your recruitment agency in Brazil and to shape a reliable plan for nearshore hiring. 1. Choose the right hiring model early Brazil supports two common paths. CLT is…
 - **[The Complete Guide to Hiring Remote Brazilian Developers in 2025](https://kaptasglobal.io/blog/guide-to-hiring-remote-brazilian-developers)** (2025-09-07): Brazil has emerged as Latin America’s premier destination for sourcing world-class software engineers, and for good reason. With over 500,000 tech professionals and a rapidly growing digital economy, Brazil offers an unmatched combination of technical excellence, cultural compatibility, and cost…
@@ -160,7 +163,7 @@ The full text of these is available at each URL. They cover the strategic, tacti
 - **[How hiring models work in Brazil: PJ vs CLT](https://kaptasglobal.io/blog/hiring-models-brazil-pj-vs-clt)** (2025-07-02): When hiring remote software engineers in Latin America, understanding how local employment models work can save you time, reduce legal risk, and simplify operations. Brazil, the region’s largest tech market, offers two primary ways of engaging professionals: CLT and PJ. For international companies,…
 - **[How much does it cost to hire a Software Engineer in Brazil?](https://kaptasglobal.io/blog/cost-hire-software-engineer-brazil)** (2025-06-25): In a competitive market where top U.S. based engineers can cost between $220,000 and $250,000 annually, many startups and tech companies are exploring Latin America, especially Brazil, as a smarter and more scalable alternative. But what does hiring in Brazil actually cost? A side-by-side cost…
 - **[7 Advantages of Working as a Contractor for American Companies](https://kaptasglobal.io/blog/7-advantages-of-working-as-a-contractor-for-american-companies)** (2024-11-14): The Seventh Will Surprise You!Many say that one year working as a contractor for American companies can be equivalent to three years of experience at Brazilian companies. For Brazilian professionals, this is a unique opportunity to strengthen their careers, achieve financial growth, and expand…
-- **[How Brazilian professionals save up to 70% in taxes by working remotely for international companies](https://kaptasglobal.io/blog/how-brazilian-professionals-save-up-to-70-in-taxes-by-working-remotely-for-international-companies)** (2024-09-05): Why Brazilian Professionals Working Remotely for Internacional Companies Pay Up to 70% Less in Taxes Compared to Working for Brazilian CompaniesDid you know that Brazilian professionals working for American and European companies can save up to 70% on taxes compared to working for Brazilian…
+- **[How Brazilian professionals save up to 70% in taxes by working remotely for international companies](https://kaptasglobal.io/blog/how-brazilian-professionals-save-up-to-70-in-taxes-by-working-remotely-for-international-companies)** (2024-09-05): Why Brazilian Professionals Working Remotely for International Companies Pay Up to 70% Less in Taxes Compared to Working for Brazilian CompaniesDid you know that Brazilian professionals working for American and European companies can save up to 70% on taxes compared to working for Brazilian…
 - **[How Brazilians are embracing global job opportunities](https://kaptasglobal.io/blog/how-brazilians-are-embracing-global-professionalism)** (2024-09-03): Brazilian professionals are making significant strides in the global job market, capitalizing on the opportunities presented by remote work and digital transformation. This shift is evident in several areas, from the growing emphasis on qualifications to the economic and tax benefits that come with…
 - **[Why Brazil’s time zone is an ideal fit for international teams](https://kaptasglobal.io/blog/why-brazils-time-zone-is-an-ideal-fit-for-international-teams)** (2024-08-29): As companies continue to source talent across borders, aligning time zones has become a key factor in the success of remote teams. Brazil, with its advantageous location, offers a valuable alignment for American and Canadian companies. The country is just 4 hours ahead of San Francisco, 2 hours…
 
