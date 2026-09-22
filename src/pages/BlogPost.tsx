@@ -75,7 +75,15 @@ export default function BlogPost() {
   // Person when the post carries a contract-v1 author, Organization otherwise
   // (the 22 old posts, and any new one without an author block).
   const authorSchema = post.author
-    ? { "@type": "Person", "name": post.author.name, "jobTitle": post.author.role, "description": post.author.bio }
+    ? {
+        "@type": "Person",
+        "name": post.author.name,
+        "jobTitle": post.author.role,
+        "description": post.author.bio,
+        ...(post.author.sameAs
+          ? { "sameAs": [post.author.sameAs], "url": post.author.sameAs }
+          : {}),
+      }
     : { "@type": "Organization", "name": "Kaptas Global", "url": "https://kaptasglobal.io" };
 
   const articleSchema = {
