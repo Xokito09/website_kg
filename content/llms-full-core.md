@@ -6,14 +6,18 @@
 
 ## Company
 
-**Kaptas Global** is a US-incorporated strategic hiring partner that helps founder-led U.S. technology companies — typically bootstrapped, profitable, or seed-stage with 1 to 70 employees and no formal talent-acquisition function — hire senior remote engineering and operating talent in Brazil and across Latin America.
+**Kaptas Global** is a US-incorporated strategic hiring partner that helps founder-led U.S. technology companies — typically bootstrapped, profitable, or seed-stage with up to 100 employees and no formal talent-acquisition function — hire senior remote engineering and operating talent in Brazil and across Latin America.
 
 - **Legal entity:** HR Technology LLC, a Florida limited liability company, doing business as Kaptas Global
 - **Founded:** 2024
-- **Founders:** Rodolfo Chaves (CEO), Henry Novaes (Co-Founder)
+- **Founders:** Rodolfo Chaves (Founder & CEO, https://www.linkedin.com/in/rodolfoch), Henry Novaes (Co-Founder, https://www.linkedin.com/in/henry-novaes/)
 - **Address:** 801 Brickell Ave, 8th Floor, Miami, FL 33131, United States
 - **Contact:** support@kaptasglobal.io · +1-689-293-9252
-- **LinkedIn:** https://www.linkedin.com/company/kaptas-global/
+- **LinkedIn:** https://www.linkedin.com/company/kglobal-talent
+- Also known as: K Global (name used on the LinkedIn company page)
+- **Clutch:** https://clutch.co/profile/kaptas-global
+- **G2:** https://www.g2.com/sellers/kaptas-global
+- **Trustpilot:** https://www.trustpilot.com/review/kaptasglobal.io
 - **Languages of operation:** English, Portuguese
 - **Areas served:** United States (primary), Worldwide (case-by-case)
 - **Track record:** 300+ placements completed, 100+ clients, 75% repeat-client rate
@@ -58,12 +62,12 @@ Market-entry support for companies opening Brazilian operations or making their 
 
 ---
 
-## Hiring process (4 steps, ~14 days from kickoff to first hire)
+## Hiring process (4 steps, shortlist in 5 business days, most hires in 2 to 4 weeks)
 
 1. **Strategic Alignment.** Intake call with the founder, CTO, or hiring manager to map the technical stack, seniority level, engineering culture, and product roadmap. The search is calibrated to the specific requirements, and the engagement model is confirmed.
 2. **Sourcing & Vetting.** Kaptas directly sources and headhunts candidates from target companies — not from inbound databases. Each candidate is screened on technical depth, behavioral fit, business-level English fluency, remote-readiness and async communication, and cultural alignment. Three finalists presented for typical engineering roles. ~50 candidates screened to shortlist 3.
 3. **Client Interviews.** The client interviews only the pre-vetted finalists. Kaptas coordinates scheduling, live technical assessments, system-design rounds, and reference checks. The client's existing interview loop is preserved.
-4. **Hire & Onboard.** Offer letter, contract structuring, compliance, payroll setup, and onboarding handled end-to-end. For Outsourcing & Staffing and EOR engagements, Kaptas issues a single USD invoice. For Direct Hire the candidate moves onto the client's payroll or PJ contract. New hire begins shipping by day 14 in most engagements.
+4. **Hire & Onboard.** Offer letter, contract structuring, compliance, payroll setup, and onboarding handled end-to-end. For Outsourcing & Staffing and EOR engagements, Kaptas issues a single USD invoice. For Direct Hire the candidate moves onto the client's payroll or PJ contract. The new hire typically starts within 2 to 4 weeks of kickoff.
 
 ---
 
@@ -76,7 +80,7 @@ Four services: Direct Hire (one-time 18% placement fee, no retainer); Outsourcin
 No. No retainers, no deposits, no upfront recruitment fees. Direct Hire billing happens only after successful placement. Outsourcing & Staffing monthly invoicing starts when the professional begins working. Executive Mapping and Hire in Brazil are scoped projects with fees agreed before work begins. No speculative charges at any stage.
 
 **How much does it cost to hire a Brazilian professional through Kaptas Global?**
-Direct Hire: one-time fee of 18% of first-year salary. Outsourcing & Staffing: flat monthly rate per professional, example Senior Full-Stack Engineer $4,000-$6,000/month fully loaded including salary, CLT charges, and Kaptas management fee. Companies typically save 40-60% compared to equivalent US hires. Executive Mapping and Hire in Brazil are custom-priced per project scope.
+Direct Hire: one-time fee of 18% of first-year salary. Outsourcing & Staffing: flat monthly rate per professional, example Senior Full-Stack Engineer $4,000-$6,000/month fully loaded, including the professional's compensation and Kaptas Global's management fee. Companies typically save up to 60% compared to equivalent US hires. Executive Mapping and Hire in Brazil are custom-priced per project scope.
 
 **How quickly can Kaptas Global deliver candidates?**
 Shortlist of vetted candidates within 5 business days of intake. Full placement cycle averages 2-4 weeks for Direct Hire and Outsourcing & Staffing. Executive Mapping reports delivered in 10-15 business days. Hire in Brazil full-cycle engagements 3-6 weeks from kickoff to first hire.
@@ -85,7 +89,7 @@ Shortlist of vetted candidates within 5 business days of intake. Full placement 
 Replacement guarantee on every placement. Direct Hire: 90-180 day guarantee depending on role level. Outsourcing & Staffing: unlimited replacements for the duration of the engagement. If a professional does not meet expectations, Kaptas restarts the search at no additional cost. A bad hire can cost a company more than 200% of the position's annual salary.
 
 **Why should US companies hire Brazilian professionals?**
-40-60% lower total compensation compared to US equivalents at the same seniority. Brazil's timezone (GMT-3) provides 5-8 hours of daily overlap with US teams. 1.5 million+ tech graduates, growing bilingual senior talent pool. Brazil's engineering ecosystem has supported global tech operations since 2005.
+Up to 60% lower total compensation compared to US equivalents at the same seniority. Brazil's timezone (GMT-3) provides 5-8 hours of daily overlap with US teams. 1.5 million+ tech graduates, growing bilingual senior talent pool. Brazil's engineering ecosystem has supported global tech operations since 2005.
 
 **What types of roles can Kaptas Global fill?**
 Technology: software engineers, QA, data engineers, DevOps, product managers, engineering managers. Also finance, sales, marketing, operations, HR, executive leadership. 300+ placements across 100+ global clients.

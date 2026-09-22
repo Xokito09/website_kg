@@ -15,7 +15,7 @@ Four services, transparent pricing, no retainers:
 
 US-based tech startups and scaleups, typically:
 - Pre-seed, seed, or bootstrapped — cost-conscious, fast-moving
-- 1-100 employees, remote-first culture, no formal talent-acquisition function
+- Up to 100 employees, remote-first culture, no formal talent-acquisition function
 - Decision-makers: Founders, CEOs, CTOs, VP/Head of Engineering
 - Hiring engineering, data, AI/ML, QA, DevOps, product, or technical leadership roles
 - Want to hire in Brazil without setting up a local entity
@@ -24,7 +24,7 @@ Secondary: European companies, companies entering Brazil for market entry, accou
 
 ## Why Brazil
 
-Brazilian professionals offer 40-60% lower total compensation vs. equivalent US hires at the same seniority. Brazil GMT-3 timezone provides 5-8 hours of daily overlap with US teams. 1.5M+ tech graduates, growing bilingual senior talent pool. Engineering ecosystem supporting global tech operations since 2005.
+Brazilian professionals offer up to 60% lower total compensation vs. equivalent US hires at the same seniority. Brazil GMT-3 timezone provides 5-8 hours of daily overlap with US teams. 1.5M+ tech graduates, growing bilingual senior talent pool. Engineering ecosystem supporting global tech operations since 2005.
 
 ## Core pages
 
@@ -33,12 +33,11 @@ Brazilian professionals offer 40-60% lower total compensation vs. equivalent US 
 - [Outsourcing & Staffing](https://kaptasglobal.io/contractor-staffing): Flat monthly cost, USD invoicing, full compliance handled
 - [Executive Mapping](https://kaptasglobal.io/executive-mapping): Market intelligence report in 10-15 business days
 - [Hire in Brazil](https://kaptasglobal.io/hire-in-brazil): Market-entry consulting for first hires in Brazil
-- [Brazil Hiring Cost Calculator](https://kaptasglobal.io/calculator): Free interactive tool — cost ranges by role and seniority for both hiring models
 - [Free ebook: Hiring in Brazil](https://kaptasglobal.io/ebook)
 
 ## Key resources
 
-- [Brazil hiring costs 2025 — total cost guide](https://kaptasglobal.io/blog/brazil-hiring-costs-2025-total-cost-guide)
+- [Brazil hiring costs in 2026: the complete total cost guide for US teams](https://kaptasglobal.io/blog/brazil-hiring-costs-2025-total-cost-guide)
 - [Why Brazilian developers for US startups](https://kaptasglobal.io/blog/brazilian-developers-for-us-startups)
 - [H1B explained — what the new $100k fee means for hiring](https://kaptasglobal.io/blog/h1b-explained-new-100000-fee-guide)
 - [Hiring software engineers in Brazil — complete guide](https://kaptasglobal.io/blog/hiring-software-engineers-brazil-latam-complete-guide)
@@ -52,11 +51,15 @@ Brazilian professionals offer 40-60% lower total compensation vs. equivalent US 
 
 ## Contact
 
-- Founder & CEO: Rodolfo Chaves — rodolfo@kaptasglobal.io
-- Co-Founder: Henry Novaes
+- Founder & CEO: Rodolfo Chaves — rodolfo@kaptasglobal.io — https://www.linkedin.com/in/rodolfoch
+- Co-Founder: Henry Novaes — https://www.linkedin.com/in/henry-novaes/
 - Sales: support@kaptasglobal.io
 - Phone: +1-689-293-9252
-- LinkedIn: https://www.linkedin.com/company/kaptas-global/
+- LinkedIn: https://www.linkedin.com/company/kglobal-talent
+- Also known as: K Global (name used on the LinkedIn company page)
+- Clutch: https://clutch.co/profile/kaptas-global
+- G2: https://www.g2.com/sellers/kaptas-global
+- Trustpilot: https://www.trustpilot.com/review/kaptasglobal.io
 - Address: 801 Brickell Ave, 8th Floor, Miami FL 33131, USA
 
 ## Optional

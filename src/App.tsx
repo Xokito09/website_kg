@@ -17,7 +17,6 @@ const ExecutiveMapping = lazy(() => import("./pages/ExecutiveMapping"));
 const StartOperation = lazy(() => import("./pages/StartOperation"));
 const Ebook = lazy(() => import("./pages/Ebook"));
 const GetStarted = lazy(() => import("./pages/GetStarted"));
-const Calculator = lazy(() => import("./pages/Calculator"));
 const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy"));
 const TermsOfService = lazy(() => import("./pages/TermsOfService"));
 const NotFound = lazy(() => import("./pages/NotFound"));
@@ -40,7 +39,6 @@ export default function App() {
                 the service pages, so it shares the standard header/nav + footer
                 and is visually indistinguishable from a service page. */}
             <Route path="get-started" element={<GetStarted />} />
-            <Route path="calculator" element={<Calculator />} />
             <Route path="ebook" element={<Ebook />} />
             <Route path="privacy-policy" element={<PrivacyPolicy />} />
             <Route path="terms-of-service" element={<TermsOfService />} />

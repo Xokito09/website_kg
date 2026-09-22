@@ -3,9 +3,7 @@ import { motion } from "motion/react";
 import { Link } from "react-router-dom";
 import { ArrowRight, BookOpen, CheckCircle2, FileText, Clock, DollarSign, Users, Globe } from "lucide-react";
 import { SEO } from "../components/SEO";
-import { AEOContent } from "../components/AEOContent";
 import { organizationSchema, buildBreadcrumbSchema, SITE_URL, ORG_ID } from "../data/seoSchemas";
-import { AEO_PARAGRAPHS } from "../data/aeoContent";
 import { useTurnstile } from "../components/TurnstileWidget";
 
 /**
@@ -161,15 +159,12 @@ export default function Ebook() {
       <SEO
         title="The Smart Guide to Hiring Brazilian Engineers — Free Guide | Kaptas Global"
         description="Free interactive guide for founders and CTOs hiring senior remote engineers in Brazil. Costs, contract models (CLT, PJ, EOR), vetting, time zone reality, common pitfalls. 2026 edition."
-        keywords="hiring brazilian engineers guide, hire brazil developers ebook, CLT PJ EOR guide, nearshore brazil hiring guide, brazilian developer salary guide, kaptas global ebook"
         canonical="https://kaptasglobal.io/ebook"
         eyebrow="Free Guide"
         ogTitle="The Smart Guide to Hiring Brazilian Engineers"
         ogSubtitle="Costs, contract models, vetting, time zones, pitfalls. 2026 edition. Free for founders and CTOs."
         schemas={[organizationSchema, ebookSchema, ebookBreadcrumb]}
       />
-
-      <AEOContent paragraph={AEO_PARAGRAPHS.ebook} label="Hiring Brazilian Engineers guide overview" />
 
       <motion.section
         initial={{ opacity: 0, y: 20 }}

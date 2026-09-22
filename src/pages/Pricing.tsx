@@ -1,7 +1,5 @@
 import { SEO } from "../components/SEO";
-import { AEOContent } from "../components/AEOContent";
 import { organizationSchema, pricingFaqSchema, pricingServiceSchema, buildBreadcrumbSchema, SITE_URL } from "../data/seoSchemas";
-import { AEO_PARAGRAPHS } from "../data/aeoContent";
 import { Link } from "react-router-dom";
 import { ArrowRight, CheckCircle2, ChevronRight } from "lucide-react";
 import { motion } from "motion/react";
@@ -55,14 +53,12 @@ export default function Pricing() {
       <SEO
         title="Pricing — Kaptas Global | Hire Brazilian Talent at 18% or Flat Monthly Cost"
         description="Transparent pricing for hiring Brazilian professionals. Direct Hire at 18% one-time fee, Outsourcing & Staffing at a flat monthly cost. No retainers, no hidden fees. Replacement guarantee included."
-        keywords="hire brazilian talent pricing, outsourcing brazil cost, direct hire fee brazil, staffing brazil monthly cost, recruitment brazil pricing, nearshore hiring cost, brazilian developer salary, hire in brazil cost, executive mapping pricing, kaptas global pricing"
         canonical="https://kaptasglobal.io/pricing"
         eyebrow="Pricing"
         ogTitle="Transparent Pricing for Hiring in Brazil"
         ogSubtitle="Direct Hire 18% one-time. Outsourcing flat monthly. No retainers. No hidden fees."
         schemas={[organizationSchema, pricingServiceSchema, pricingFaqSchema, pricingBreadcrumb]}
       />
-      <AEOContent paragraph={AEO_PARAGRAPHS.pricing} label="Pricing overview" />
       <div>
         {/* 1. Hero */}
         <section className="relative pt-32 pb-40 lg:pt-48 lg:pb-64 px-6 md:px-12 overflow-hidden flex flex-col items-center text-center">
