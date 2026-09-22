@@ -40,6 +40,9 @@
     { "source": "/comments/feed", "destination": "/rss.xml", "permanent": true },
     { "source": "/comments/feed/", "destination": "/rss.xml", "permanent": true },
 
+    { "source": "/calculator", "destination": "/pricing", "permanent": true },
+    { "source": "/calculator/", "destination": "/pricing", "permanent": true },
+
     { "source": "/sitemap_index.xml", "destination": "/sitemap.xml", "permanent": true },
     { "source": "/post-sitemap.xml", "destination": "/sitemap.xml", "permanent": true },
     { "source": "/page-sitemap.xml", "destination": "/sitemap.xml", "permanent": true },

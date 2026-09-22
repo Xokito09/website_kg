@@ -2,9 +2,7 @@ import { useParams, Link, Navigate } from "react-router-dom";
 import { motion } from "motion/react";
 import { ArrowLeft, Calendar, Tag } from "lucide-react";
 import { SEO } from "../components/SEO";
-import { AEOContent } from "../components/AEOContent";
 import { organizationSchema, buildBreadcrumbSchema, SITE_URL } from "../data/seoSchemas";
-import { AEO_PARAGRAPHS } from "../data/aeoContent";
 import blogPostsRaw from "../data/blog-posts.json";
 import { formatDateLong } from "../lib/utils";
 import type { BlogPostData } from "../types/blog";
@@ -69,14 +67,6 @@ export default function BlogPost() {
   const metaTitle = post.metaTitle?.trim() || `${plainTitle} | Kaptas Global Blog`;
   const metaDescription = post.metaDescription?.trim() || plainExcerpt.slice(0, 160);
 
-  // AEO block for this post: lead with the article's own title + excerpt
-  // (per-post context so the 22 posts don't all ship an identical sr-only
-  // block), then the shared blog/company overview that gives answer engines
-  // the Kaptas entity + contact context the article body lacks.
-  const aeoParagraph =
-    `${plainTitle} — a Kaptas Global blog article.${plainExcerpt ? ` ${plainExcerpt}` : ""} ` +
-    AEO_PARAGRAPHS.blog;
-
   const keyTakeaways = post.keyTakeaways ?? [];
   const faqItems = post.faq ?? [];
   const relatedItems = post.related ?? [];
@@ -85,7 +75,15 @@ export default function BlogPost() {
   // Person when the post carries a contract-v1 author, Organization otherwise
   // (the 22 old posts, and any new one without an author block).
   const authorSchema = post.author
-    ? { "@type": "Person", "name": post.author.name, "jobTitle": post.author.role, "description": post.author.bio }
+    ? {
+        "@type": "Person",
+        "name": post.author.name,
+        "jobTitle": post.author.role,
+        "description": post.author.bio,
+        ...(post.author.sameAs
+          ? { "sameAs": [post.author.sameAs], "url": post.author.sameAs }
+          : {}),
+      }
     : { "@type": "Organization", "name": "Kaptas Global", "url": "https://kaptasglobal.io" };
 
   const articleSchema = {
@@ -150,8 +148,6 @@ export default function BlogPost() {
         preloadImage={post.featured_image || undefined}
         schemas={schemas}
       />
-
-      <AEOContent paragraph={aeoParagraph} label="Kaptas Global blog article overview" />
 
       {/* Hero — single ~820px column, same side borders as content and CTA below */}
       <motion.section

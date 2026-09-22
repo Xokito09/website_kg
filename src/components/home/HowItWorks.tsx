@@ -1,5 +1,6 @@
 import { motion } from "motion/react";
 import { fadeIn } from "./animations";
+import { TIME_TO_HIRE_WINDOW } from "../../data/claims";
 
 // Componente explicando o processo de contratação
 export function HowItWorks() {
@@ -7,7 +8,7 @@ export function HowItWorks() {
     <motion.section {...fadeIn} id="how-it-works" className="px-6 md:px-12 max-w-7xl mx-auto w-full">
       <div className="max-w-3xl mb-16">
         <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight mb-6">
-          From kickoff to hire in <span className="text-kaptas-purple">14 days</span>
+          From kickoff to hire in <span className="text-kaptas-purple">{TIME_TO_HIRE_WINDOW}</span>
         </h2>
         <p className="text-xl text-gray-400 font-medium">
           You interview 3 finalists. We handle the other 50.

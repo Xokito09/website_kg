@@ -23,6 +23,10 @@ export interface BlogAuthor {
   name: string;
   role: string;
   bio: string;
+  /** Canonical profile URL for the author. Feeds Person.sameAs + Person.url
+   *  in the Article schema, which is what lets an answer engine tie the byline
+   *  to a real, verifiable person instead of an unresolvable name string. */
+  sameAs?: string;
 }
 
 import type { CoverMotif } from "../lib/coverMotifs";

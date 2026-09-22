@@ -2,9 +2,7 @@ import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { motion } from "motion/react";
 import { SEO } from "../components/SEO";
-import { AEOContent } from "../components/AEOContent";
 import { organizationSchema, buildBreadcrumbSchema, SITE_URL } from "../data/seoSchemas";
-import { AEO_PARAGRAPHS } from "../data/aeoContent";
 import blogPostsRaw from "../data/blog-index.json";
 import { formatDateShort } from "../lib/utils";
 import type { BlogPostData } from "../types/blog";
@@ -56,7 +54,6 @@ export default function Blog() {
       <SEO
         title="Blog — Kaptas Global | Insights on Hiring in Brazil & Latin America"
         description="Actionable advice for startup founders and engineering leaders hiring in Brazil. Salary guides, hiring models, market insights, and compliance tips."
-        keywords="hiring in brazil blog, nearshore hiring insights, brazil developer salary, latam hiring guide, kaptas global blog"
         canonical="https://kaptasglobal.io/blog"
         eyebrow="Blog"
         ogTitle="Insights on Hiring in Brazil & LatAm"
@@ -69,7 +66,6 @@ export default function Blog() {
           ]),
         ]}
       />
-      <AEOContent paragraph={AEO_PARAGRAPHS.blog} label="Kaptas Global blog overview" />
 
       {/* Header */}
       <motion.section

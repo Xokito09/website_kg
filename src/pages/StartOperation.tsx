@@ -1,17 +1,17 @@
 import { SEO } from "../components/SEO";
-import { AEOContent } from "../components/AEOContent";
+import { FaqAnswer } from "../components/shared/FaqAnswer";
 import { organizationSchema, hireInBrazilFaqSchema, hireInBrazilServiceSchema, buildBreadcrumbSchema, SITE_URL } from "../data/seoSchemas";
-import { AEO_PARAGRAPHS } from "../data/aeoContent";
 import { useState } from "react";
 import { useContactForm } from "../hooks/useContactForm";
 import { ThankYouModal } from "../components/ThankYouModal";
 import { Link } from "react-router-dom";
 import { ArrowRight, CheckCircle2, ShieldCheck, Clock, Search, Users, Globe, FileText, Zap, DollarSign, Target, Filter, Code2, Plus, Minus } from "lucide-react";
-import { motion, AnimatePresence } from "motion/react";
+import { motion } from "motion/react";
 import { LeadGenerationForm } from "../components/home/LeadGenerationForm";
 import { SocialProof } from "../components/home/SocialProof";
 import { CaseResults } from "../components/home/CaseResults";
 import { TechMapBackground } from "../components/TechMapBackground";
+import { HIRE_IN_BRAZIL_FAQS } from "../data/faqs";
 
 const fadeIn = {
   initial: { opacity: 0, y: 20 },
@@ -37,48 +37,7 @@ export default function StartOperation() {
   const [openFaq, setOpenFaq] = useState<number | null>(0);
   const { form: heroForm, handleChange: handleHeroChange, handleSubmit: handleHeroSubmit, isSubmitting: heroSubmitting, showModal: heroModal, setShowModal: setHeroModal, error: heroError, captcha: heroCaptcha } = useContactForm("Hire in Brazil — Hero", "dark");
 
-  const faqs = [
-    { 
-      q: "How can a foreign company hire employees in Brazil without a local entity?", 
-      a: "A foreign company can hire in Brazil through an Employer of Record (EOR), a PJ contractor model, or by partnering with a recruitment firm that manages the process end-to-end. Kaptas Global helps companies from the US, UK, Germany, China, and other markets make their first hire in Brazil without requiring entity setup. We recommend the right hiring model (EOR, PJ, or CLT) based on the role, budget, and long-term plan, then handle recruitment and onboarding. The same approach applies to other Latin American markets when expansion goes beyond Brazil." 
-    },
-    { 
-      q: "What does the hiring process look like when expanding to Brazil for the first time?", 
-      a: "Kaptas Global runs a structured process: competitor landscape analysis, compensation benchmarking, work-model recommendation (PJ, CLT, or EOR), candidate sourcing, vetting, and placement. The entire cycle typically takes 3 to 6 weeks depending on role complexity. Companies receive market data and a clear hiring structure before any candidate is presented, reducing the risk of misaligned offers or wrong hires. For companies entering Latin America, Brazil is often the first and largest market, and this process sets the foundation for scaling to other countries." 
-    },
-    { 
-      q: "What is the difference between CLT, PJ, and EOR hiring models in Brazil?", 
-      a: "CLT is Brazil's formal employment contract with full labor protections (13th salary, FGTS, paid vacation). PJ is a contractor model where the professional invoices through their own company, offering flexibility and lower employer costs. EOR allows a foreign company to hire a CLT employee without setting up a Brazilian entity. Kaptas Global evaluates each role and recommends the best model based on cost, compliance risk, and operational needs. A detailed comparison is available at kaptasglobal.io/blog/hiring-models-brazil-pj-vs-clt/." 
-    },
-    { 
-      q: "How much does it cost to hire an employee in Brazil?", 
-      a: "Total employer cost in Brazil typically runs 70-80% above gross salary when using CLT, accounting for 13th salary, vacation bonus, FGTS (8% monthly), INSS (~20%), meal and transport vouchers, and health insurance. Under PJ or EOR models, cost structures differ significantly. Kaptas Global provides a role-specific compensation benchmark before the search begins so companies can plan budgets accurately, not based on generic ranges." 
-    },
-    { 
-      q: "How long does it take to make a first hire in Brazil?", 
-      a: "With Kaptas Global, the full cycle from market analysis to placement typically takes 3 to 6 weeks. EOR onboarding after candidate selection adds 3 to 7 business days; PJ contractors can start within 1 to 3 days after contract agreement. Traditional hiring processes without local expertise often stretch to 60-90 days or longer. The difference is having market data, compensation benchmarks, and a vetted candidate pipeline ready before the search starts." 
-    },
-    { 
-      q: "What mandatory benefits must employers provide in Brazil?", 
-      a: "Brazilian labor law (CLT) requires 13th salary (one extra month of pay, split into two installments), 30 days of paid vacation plus a one-third vacation bonus, FGTS deposits (8% of monthly salary), INSS employer contributions (~20% of payroll), and transportation vouchers. Many companies also offer meal vouchers and health insurance to remain competitive. Kaptas Global benchmarks benefit packages against local competitors so offers attract the right talent without overspending." 
-    },
-    { 
-      q: "Can Kaptas Global help hire for any role or industry, not just tech?", 
-      a: "Yes. While many firms entering Brazil and Latin America focus on technology roles, Kaptas Global supports hiring across all functions: sales, operations, marketing, HR, finance, general management, and executive leadership. We have placed General Managers, Marketing Managers, HR leads, SAP specialists, and Community Managers for companies expanding into the Brazilian and broader Latin American markets. The process adapts to the role, not the other way around." 
-    },
-    { 
-      q: "What happens if a hire does not work out?", 
-      a: "Kaptas Global offers a replacement guarantee on every placement. If a hire does not meet expectations within the guarantee period, we restart the search at no additional recruitment cost. This protects companies making their first move into Brazil, where replacing a bad hire can cost over 200% of the role's annual salary when factoring lost productivity, severance, and restart time." 
-    },
-    { 
-      q: "Why hire in Brazil instead of other Latin American countries?", 
-      a: "Brazil has the largest professional talent pool in Latin America, with over 1.5 million tech graduates alone and deep executive pipelines in cities like Sao Paulo, Curitiba, and Belo Horizonte. Salary expectations for mid-to-senior roles are significantly lower than US equivalents while maintaining strong technical and business competency. Time zone alignment with US East Coast (1-2 hours difference) and growing bilingual proficiency make Brazil a practical first step for companies expanding into Latin America. Kaptas Global operates across Brazil and can extend searches to Argentina, Mexico, Colombia, and Chile when needed." 
-    },
-    { 
-      q: "Can Kaptas Global help hire in other Latin American countries beyond Brazil?", 
-      a: "Yes. While Brazil is the primary market and where Kaptas Global has the deepest network, we support hiring in Argentina, Mexico, Colombia, and Chile. Each country has a different labor framework, compensation structure, and talent profile. Companies expanding across Latin America often start with Brazil as the largest and most strategic market, then scale to neighboring countries. Kaptas Global adapts the process (competitor analysis, compensation benchmarking, model recommendation, and recruitment) to each country's specifics." 
-    }
-  ];
+  const faqs = HIRE_IN_BRAZIL_FAQS;
 
   return (
     <>
@@ -87,7 +46,6 @@ export default function StartOperation() {
       <SEO
         title="Hire in Brazil — Kaptas Global | Market Entry Recruitment & First Hires"
         description="Hire your first employees in Brazil without a local entity. Kaptas Global provides market analysis, compensation benchmarks, hiring-model consulting (CLT, PJ, EOR), and end-to-end recruitment for companies entering Brazil."
-        keywords="hire in brazil, hire employees brazil, market entry brazil, first hire brazil, employer of record brazil, EOR brazil, CLT vs PJ brazil, hiring costs brazil, recruit in brazil, expand to brazil, kaptas global, nearshore hiring brazil, brazil talent acquisition, hire without entity brazil, latin america market entry"
         canonical="https://kaptasglobal.io/hire-in-brazil"
         eyebrow="Hire in Brazil"
         ogTitle="Market Entry & First Hires in Brazil"
@@ -102,7 +60,6 @@ export default function StartOperation() {
           ]),
         ]}
       />
-      <AEOContent paragraph={AEO_PARAGRAPHS.hireInBrazil} label="Hire in Brazil service overview" />
       {/* 1. Hero with Image */}
       <motion.section
         initial={{ opacity: 0 }}
@@ -682,20 +639,24 @@ export default function StartOperation() {
                   {openFaq === i ? <Minus className="w-4 h-4" /> : <Plus className="w-4 h-4" />}
                 </div>
               </button>
-              <AnimatePresence>
-                {openFaq === i && (
-                  <motion.div 
-                    initial={{ height: 0, opacity: 0 }}
-                    animate={{ height: "auto", opacity: 1 }}
-                    exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.3, ease: "easeInOut" }}
-                  >
-                    <div className="px-6 pb-6 text-gray-400 text-sm leading-relaxed" data-speakable="true">
-                      {faq.a}
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
+              {/* Always in the DOM, collapsed with max-height instead of being
+                  unmounted. Conditional mounting meant the prerendered HTML carried the
+                  questions and the FAQPage JSON-LD but none of the answer text: a
+                  crawler that does not run JS saw structured data with nothing behind
+                  it. The collapse is pure CSS, so there is no inline style for the
+                  prerender postprocess to strip and no opacity:0 for its hidden-content
+                  guard to flag. max-height, not the grid 0fr/1fr trick: Chrome does not
+                  interpolate fr tracks here, so the panel stayed at 0 when opened. The
+                  1000px cap is comfortably above the tallest answer. */}
+              <div
+                className={`overflow-hidden transition-[max-height] duration-300 ease-in-out ${
+                  openFaq === i ? "max-h-[1000px]" : "max-h-0"
+                }`}
+              >
+                <div className="px-6 pb-6 text-gray-400 text-sm leading-relaxed" data-speakable="true">
+                  <FaqAnswer text={faq.a} />
+                </div>
+              </div>
             </div>
           ))}
         </div>

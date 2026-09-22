@@ -1,17 +1,18 @@
 import { SEO } from "../components/SEO";
-import { AEOContent } from "../components/AEOContent";
 import { organizationSchema, directHireFaqSchema, directHireServiceSchema, buildBreadcrumbSchema, SITE_URL } from "../data/seoSchemas";
-import { AEO_PARAGRAPHS } from "../data/aeoContent";
+import { TIME_TO_HIRE_WINDOW } from "../data/claims";
+import { FaqAnswer } from "../components/shared/FaqAnswer";
 import { useState } from "react";
 import { useContactForm } from "../hooks/useContactForm";
 import { ThankYouModal } from "../components/ThankYouModal";
 import { Link } from "react-router-dom";
 import { ArrowRight, CheckCircle2, ShieldCheck, Clock, Search, Users, Globe, FileText, Zap, DollarSign, Target, Filter, Code2, Plus, Minus } from "lucide-react";
-import { motion, AnimatePresence } from "motion/react";
+import { motion } from "motion/react";
 import { LeadGenerationForm } from "../components/home/LeadGenerationForm";
 import { SocialProof } from "../components/home/SocialProof";
 import { CaseResults } from "../components/home/CaseResults";
 import { TechMapBackground } from "../components/TechMapBackground";
+import { DIRECT_HIRE_FAQS } from "../data/faqs";
 
 const fadeIn = {
   initial: { opacity: 0, y: 20 },
@@ -37,48 +38,7 @@ export default function DirectHire() {
   const [openFaq, setOpenFaq] = useState<number | null>(0);
   const { form: heroForm, handleChange: handleHeroChange, handleSubmit: handleHeroSubmit, isSubmitting: heroSubmitting, showModal: heroModal, setShowModal: setHeroModal, error: heroError, captcha: heroCaptcha } = useContactForm("Direct Hire — Hero", "dark");
 
-  const faqs = [
-    {
-      q: "How does direct hire work when hiring remote talent in Brazil?",
-      a: "Kaptas Global sources, screens, and presents a shortlist of pre-vetted candidates for your open role. You interview the finalists, choose who to hire, and bring them onto your own team. We charge a one-time finder's fee paid only after the professional starts. After placement, there are no ongoing fees, no middleman, and no dependency on Kaptas Global. You run the payroll, you manage the person, you own the relationship."
-    },
-    {
-      q: "How long does it take to hire through Kaptas Global?",
-      a: "Most clients receive a shortlist of 3 to 5 pre-vetted candidates within 5 business days. The average time from kickoff to signed hire is 14 days. For context, the industry average to hire a senior engineer is 35 to 45 days when recruiting internally, and up to 90 days for hard-to-fill roles."
-    },
-    {
-      q: "How much does direct hire cost, and when do I pay?",
-      a: "Kaptas Global charges a one-time finder's fee of 18% of the candidate's annual salary. There is no upfront payment. You pay nothing until the professional starts working. If you interview our candidates and decide not to hire, the cost is zero."
-    },
-    {
-      q: "What happens if the hire does not work out?",
-      a: "Every placement through Kaptas Global includes a 90 to 180-day replacement warranty at no additional cost. If the professional leaves or underperforms during the warranty period, we restart the search and present new candidates within the same 5-day shortlist timeline. The U.S. Department of Labor estimates a bad hire costs roughly 30% of annual salary. Our warranty exists to eliminate that risk."
-    },
-    {
-      q: "Can I hire as a contractor or for a permanent role?",
-      a: "Both. Kaptas Global supports contractor (PJ) and permanent (CLT) placements in Brazil. Most US companies hire Brazilian professionals as independent contractors, which avoids the need for a local entity. We help you choose the right structure based on your needs and walk you through the differences."
-    },
-    {
-      q: "Do I need to open a company in Brazil to hire directly?",
-      a: "No. Most clients hire Brazilian professionals as independent contractors without a local entity. The professional invoices your company directly, and you pay in USD or BRL depending on your preference. If you prefer a formal employment relationship, an Employer of Record (EOR) can handle local compliance on your behalf. Kaptas Global advises on the best path but does not act as an EOR."
-    },
-    {
-      q: "How does Kaptas Global vet candidates before I interview them?",
-      a: "We evaluate every candidate across five dimensions: technical and functional fit for your stack, business-level English through a live assessment, remote work maturity, understanding of the contractor model, and cultural alignment with your team. Only candidates who pass all five are presented. You interview finalists, not raw applicants."
-    },
-    {
-      q: "Who owns the intellectual property after a direct hire placement?",
-      a: "You do. Since the professional joins your team directly, all code, data, designs, and deliverables belong to your company. Kaptas Global recommends including IP assignment clauses in your contract with the hire, and we can share templates that our clients use."
-    },
-    {
-      q: "What is the timezone overlap between Brazil and the United States?",
-      a: "Brazil is 1 to 4 hours ahead of US Eastern Time, depending on the region. Teams on the East Coast get near-full overlap. West Coast teams typically share 4 to 6 hours of synchronous working time, which is enough for daily standups, code reviews, and real-time collaboration without overnight handoffs."
-    },
-    {
-      q: "What makes Kaptas Global different from other recruitment firms hiring in Brazil?",
-      a: "Kaptas Global is a US-incorporated company founded by Brazilians with direct access to the Brazilian talent market. We headhunt employed professionals from top-tier companies rather than pulling from job boards or recycled databases. Every search is built around your specific stack, seniority level, and team culture. With over 300 placements, a 14-day average time to hire, and a replacement warranty on every placement, we operate as a strategic hiring partner, not a resume vendor."
-    }
-  ];
+  const faqs = DIRECT_HIRE_FAQS;
 
   return (
     <>
@@ -87,7 +47,6 @@ export default function DirectHire() {
       <SEO
         title="Direct Hire in Brazil — Kaptas Global | One-Time 18% Fee, No Retainer"
         description="Hire Brazilian professionals directly on your team. Pre-vetted shortlist in 5 days. 18% one-time fee, paid after hire. Replacement warranty included."
-        keywords="direct hire brazil, hire developers brazil, one-time recruitment fee brazil, hire brazilian engineers, direct placement brazil, tech talent brazil, 18% hiring fee, pre-vetted developers brazil, replacement guarantee hiring, remote developers brazil"
         canonical="https://kaptasglobal.io/direct-hire"
         eyebrow="Direct Hire"
         ogTitle="Direct Hire in Brazil"
@@ -102,7 +61,6 @@ export default function DirectHire() {
           ]),
         ]}
       />
-      <AEOContent paragraph={AEO_PARAGRAPHS.directHire} label="Direct Hire service overview" />
       {/* 1. Hero with Image */}
       <motion.section
         initial={{ opacity: 0 }}
@@ -474,7 +432,7 @@ export default function DirectHire() {
                   <div className="space-y-3">
                     <div className="flex justify-between items-center">
                       <span className="text-gray-400 text-sm">Time to hire</span>
-                      <span className="text-kaptas-green font-bold">14 days</span>
+                      <span className="text-kaptas-green font-bold">{TIME_TO_HIRE_WINDOW}</span>
                     </div>
                     <div className="flex justify-between items-center">
                       <span className="text-gray-400 text-sm">Candidates screened - Headhunted</span>
@@ -539,12 +497,12 @@ export default function DirectHire() {
                 <div className="flex flex-col items-end text-right">
                   <span className="text-kaptas-green font-bold text-lg">1 hire, vetted and validated</span>
                   <span className="text-white font-bold text-[14px]">Total first-year cost: $70K-$94K</span>
-                  <span className="mt-2 text-xs font-bold bg-kaptas-green/10 border border-kaptas-green/20 text-kaptas-green px-3 py-1 rounded-full uppercase tracking-wider">Up to 67% less</span>
+                  <span className="mt-2 text-xs font-bold bg-kaptas-green/10 border border-kaptas-green/20 text-kaptas-green px-3 py-1 rounded-full uppercase tracking-wider">Up to 60% less</span>
                 </div>
               </div>
             </div>
             <div className="mt-4 text-xs text-gray-500 text-center px-4">
-              * That is up to 67% lower than hiring the same seniority in the US, with zero risk if the hire does not work out.
+              * That is up to 60% lower than hiring the same seniority in the US, with zero risk if the hire does not work out.
             </div>
           </motion.div>
         </motion.div>
@@ -695,8 +653,6 @@ export default function DirectHire() {
 
 
 
-
-
       {/* 4. Case Results */}
       <CaseResults />
 
@@ -741,20 +697,24 @@ export default function DirectHire() {
                   {openFaq === i ? <Minus className="w-4 h-4" /> : <Plus className="w-4 h-4" />}
                 </div>
               </button>
-              <AnimatePresence>
-                {openFaq === i && (
-                  <motion.div 
-                    initial={{ height: 0, opacity: 0 }}
-                    animate={{ height: "auto", opacity: 1 }}
-                    exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.3, ease: "easeInOut" }}
-                  >
-                    <div className="px-6 pb-6 text-gray-400 text-sm leading-relaxed" data-speakable="true">
-                      {faq.a}
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
+              {/* Always in the DOM, collapsed with max-height instead of being
+                  unmounted. Conditional mounting meant the prerendered HTML carried the
+                  questions and the FAQPage JSON-LD but none of the answer text: a
+                  crawler that does not run JS saw structured data with nothing behind
+                  it. The collapse is pure CSS, so there is no inline style for the
+                  prerender postprocess to strip and no opacity:0 for its hidden-content
+                  guard to flag. max-height, not the grid 0fr/1fr trick: Chrome does not
+                  interpolate fr tracks here, so the panel stayed at 0 when opened. The
+                  1000px cap is comfortably above the tallest answer. */}
+              <div
+                className={`overflow-hidden transition-[max-height] duration-300 ease-in-out ${
+                  openFaq === i ? "max-h-[1000px]" : "max-h-0"
+                }`}
+              >
+                <div className="px-6 pb-6 text-gray-400 text-sm leading-relaxed" data-speakable="true">
+                  <FaqAnswer text={faq.a} />
+                </div>
+              </div>
             </div>
           ))}
         </div>

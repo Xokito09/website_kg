@@ -2,6 +2,7 @@ import { ArrowRight, ShieldCheck, TrendingDown, Zap } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 import { useState, useEffect, lazy, Suspense } from "react";
 import { staggerContainer, staggerItem } from "./animations";
+import { COST_CLAIM_SHORT } from "../../data/claims";
 
 // Lazy: pulls react-simple-maps + d3 out of the critical bundle. The map is
 // a decorative background that already appeared late (its TopoJSON is
@@ -93,7 +94,7 @@ export function Hero() {
               <TrendingDown className="w-5 h-5" strokeWidth={1.5} />
             </div>
             <div>
-              <h3 className="font-medium text-base text-white mb-0.5">50%+ Cost Reduction</h3>
+              <h3 className="font-medium text-base text-white mb-0.5">{COST_CLAIM_SHORT}</h3>
               <p className="text-gray-400 text-sm">Compared to US engineering hires</p>
             </div>
           </motion.div>

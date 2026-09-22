@@ -1,5 +1,6 @@
 import { motion } from "motion/react";
 import { fadeIn } from "./animations";
+import { COST_SAVINGS } from "../../data/claims";
 
 // Componente de comparação de custos
 export function CostComparison() {
@@ -133,7 +134,7 @@ export function CostComparison() {
                   $70k
                   <span className="text-lg md:text-xl font-medium text-gray-400 tracking-normal drop-shadow-none">All-in</span>
                 </div>
-                <div className="text-kaptas-green font-bold text-sm mt-3 relative z-10 bg-kaptas-green/10 px-4 py-1.5 rounded-full border border-kaptas-green/20">~60% BURN REDUCTION</div>
+                <div className="text-kaptas-green font-bold text-sm mt-3 relative z-10 bg-kaptas-green/10 px-4 py-1.5 rounded-full border border-kaptas-green/20">{COST_SAVINGS.toUpperCase()} BURN REDUCTION</div>
               </div>
             </div>
           </div>

@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Plus, Minus } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 import { fadeIn } from "./animations";
+import { SHORTLIST, TIME_TO_HIRE_WINDOW } from "../../data/claims";
 
 // Componente de FAQ
 export function FaqSection() {
@@ -14,7 +15,7 @@ export function FaqSection() {
     },
     {
       question: "What is the typical time-to-hire?",
-      answer: "Our average time-to-hire is 14 days from the kickoff call to the accepted offer. We maintain an active network of passive candidates, allowing us to move much faster than traditional recruiting methods."
+      answer: `Our typical time-to-hire is ${TIME_TO_HIRE_WINDOW} from the kickoff call to the accepted offer, with ${SHORTLIST}. We maintain an active network of passive candidates, allowing us to move much faster than traditional recruiting methods.`
     },
     {
       question: "Do you handle payroll and compliance?",

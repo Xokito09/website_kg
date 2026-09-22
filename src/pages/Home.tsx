@@ -1,7 +1,5 @@
 import { SEO } from "../components/SEO";
-import { AEOContent } from "../components/AEOContent";
 import { organizationSchema, homeFaqSchema, homeServiceSchema, homeHowToSchema, websiteSchema } from "../data/seoSchemas";
-import { AEO_PARAGRAPHS } from "../data/aeoContent";
 import { Hero } from "../components/home/Hero";
 import { SocialProof } from "../components/home/SocialProof";
 import { WhyBrazil } from "../components/home/WhyBrazil";
@@ -21,14 +19,12 @@ export default function Home() {
     <div className="flex flex-col gap-32 pb-24">
       <SEO
         title="Hire Developers in Brazil — Kaptas Global | Outsourcing, Direct Hire & Staffing"
-        description="Hire senior Brazilian developers, engineers, and specialists for your US team. Outsourcing & Staffing, Direct Hire, Executive Mapping, and market entry support. 60% cost reduction, US timezone overlap, candidates in 5 days."
-        keywords="hire developers brazil, outsourcing brazil, direct hire brazil, nearshore developers, employer of record brazil, brazil tech talent, cost to hire developers brazil, remote developers brazil, brazilian engineers, kaptas global"
+        description="Hire senior Brazilian developers, engineers, and specialists for your US team. Outsourcing & Staffing, Direct Hire, Executive Mapping, and market entry support. Up to 60% lower cost, US timezone overlap, candidates in 5 days."
         canonical="https://kaptasglobal.io/"
         ogTitle="Hire Senior Brazilian Talent"
-        ogSubtitle="Outsourcing, Direct Hire, Executive Mapping. Candidates in 5 days, hires in 14."
+        ogSubtitle="Outsourcing, Direct Hire, Executive Mapping. Candidates in 5 days, hires in 2 to 4 weeks."
         schemas={[websiteSchema, organizationSchema, homeServiceSchema, homeHowToSchema, homeFaqSchema]}
       />
-      <AEOContent paragraph={AEO_PARAGRAPHS.home} label="Kaptas Global overview" />
       <Hero />
       {/* <SocialProof /> */}
       <WhyBrazil />
