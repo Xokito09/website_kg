@@ -89,6 +89,15 @@ export default function Pricing() {
                   No upfront or hidden costs. Your trusted partner in Brazil.
                 </span>
               </p>
+
+              <div className="mt-8 flex flex-col gap-2 text-base md:text-lg text-gray-400 font-light max-w-2xl text-center">
+                <p>
+                  <span className="font-semibold text-white">Outsourcing & Staffing</span> puts a full-time contractor on your team for one flat monthly cost.
+                </p>
+                <p>
+                  <span className="font-semibold text-white">Direct Hire</span> runs a dedicated search and charges a one-time fee only after a successful hire.
+                </p>
+              </div>
             </motion.div>
           </div>
         </section>
